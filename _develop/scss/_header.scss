@@ -1,0 +1,75 @@
+.header {
+    width: 100%;
+    height: 2rem;
+    //display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    display: none;
+    visibility: hidden;
+
+    &__menu {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        text-align: center;
+        left: 0;
+        margin: 0;
+
+        li {
+            width: initial;
+            display: inline-block;
+            position: relative;
+            padding: 0.5rem 0.5rem;
+            text-shadow: 0.1rem 0.1rem 0.3rem $primary;
+            font-family: $heading-font;
+            font-size: $font-size-h2;
+            font-weight: 500;
+            color: $secondary;
+
+            a {
+                width: auto;
+                height: 100%;
+                display: block;
+                font-family: $heading-font;
+                font-size: $font-size-h2;
+                font-weight: 500;
+                color: $secondary;
+            }
+
+            span {
+                width: auto;
+                height: 100%;
+                display: inline-block;
+                font-family: $heading-font;
+                font-size: $font-size-h2;
+                font-weight: 500;
+                color: $secondary;
+            }
+        }
+    }
+
+    @include grid-media($Small) {
+
+
+        &__menu {
+
+
+            li {
+                padding: 0.5rem 0.25rem;
+                font-size: $body-font-size;
+
+                a {
+                    font-size: $body-font-size;
+                }
+
+                span {
+                    font-size: $body-font-size;
+                }
+            }
+        }
+    }
+}
