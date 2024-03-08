@@ -3,21 +3,30 @@ class Settings {
     settingsBlock() {
         const
             settingsBack = document.createElement('div'),
-            settingsBlock = document.createElement('div')
+            settingsBlock = document.createElement('div'),
+            settingsTitle = document.createElement('div'),
+            settingsButtons = document.createElement('div')
         ;
         settingsBack.className = 'wrapper__lightbox';
         settingsBlock.className = 'wrapper__lightbox_block';
-        settingsBlock.innerHTML = `
-            <a href="javascript:void(0);" class="wrapper__lightbox_close" id="settingsCloseButton"></a>
-            <p id="settingsText">Весь игровой процесс будет сброшен и вы начнете игру с начала</p>
-            <a href="javascript:void(0);" class="wrapper__lightbox_button" id="clearProgressButton">Сбросить прогресс</a>
+        settingsTitle.className = 'wrapper__lightbox_title';
+        settingsButtons.className = 'wrapper__lightbox_buttons';
+        // settingsBlock.innerHTML = `
+        //     <a href="javascript:void(0);" class="wrapper__lightbox_close" id="settingsCloseButton"></a>
+        //     <p id="settingsText">Весь игровой процесс будет сброшен и вы начнете игру с начала</p>
+        //     <a href="javascript:void(0);" class="wrapper__lightbox_button" id="clearProgressButton">Сбросить прогресс</a>
+        //     <a href="javascript:void(0);" class="wrapper__lightbox_button" id="turnOfSoundButton">Выключить музыку</a>
+        // `;
+        settingsButtons.innerHTML = `
             <a href="javascript:void(0);" class="wrapper__lightbox_button" id="turnOfSoundButton">Выключить музыку</a>
         `;
-        settingsBlock.innerHTML = `
+        settingsTitle.innerHTML = `
+            <h3 class="wrapper__lightbox_title-text">Настройки</h3>
             <a href="javascript:void(0);" class="wrapper__lightbox_close" id="settingsCloseButton"></a>
-            <a href="javascript:void(0);" class="wrapper__lightbox_button" id="turnOfSoundButton">Выключить музыку</a>
         `;
         settingsBack.appendChild(settingsBlock);
+        settingsBlock.appendChild(settingsTitle);
+        settingsBlock.appendChild(settingsButtons);
         wrapper.appendChild(settingsBack);
 
         function settingsBlockAnim() {

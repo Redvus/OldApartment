@@ -1,5 +1,8 @@
-const container = document.querySelector('.container'),
-    wrapper = document.querySelector('.wrapper')
+const
+    container = document.querySelector('.container'),
+    wrapper = document.querySelector('.wrapper'),
+    wrapperBottom = document.querySelector('.wrapper__bottom'),
+    wrapperBack = document.querySelector('.wrapper__back')
 ;
 
 const soundsLoad = new Sounds();
@@ -13,21 +16,20 @@ function introDev() {
         clickLoadGame = document.getElementById('clickLoadGame'),
         clickAuthors = document.getElementById('clickAboutAuthors'),
         clickAbout = document.getElementById('clickAboutLibrary'),
-        wrapperTop = document.querySelector('.wrapper__top'),
-        wrapperTitle = document.querySelector('.wrapper__title'),
         wrapperBottom = document.querySelector('.wrapper__bottom'),
         wrapperCenter = document.querySelector('.wrapper__center'),
-        wrapperBack = document.querySelector('.wrapper__intro'),
+        wrapperBack = document.querySelector('.wrapper__back'),
+        wrapperIntro = document.querySelector('.wrapper__intro'),
+        wrapperBottomMenu = document.querySelector('.wrapper__bottom_menu'),
         backgroundMusicID = document.getElementById('backgroundMusicID'),
-        introFeather = document.getElementById('introFeather'),
         choiceCatLoad = new ChoiceCategory(),
         wrapperMobile = document.createElement('div')
     ;
 
-    wrapperMobile.className = 'wrapper__mobile';
-    wrapperMobile.innerHTML = `
-        <p>Игра разработана только<br />для десктопной версии</p>
-    `;
+    // wrapperMobile.className = 'wrapper__mobile';
+    // wrapperMobile.innerHTML = `
+    //     <p>Игра разработана только<br />для десктопной версии</p>
+    // `;
 
     clickLoadGame.addEventListener('click', () => {
         // soundsLoad.rightAnswer('assets/games/magicFeather/sounds/cp_progressClear.ogg');
@@ -43,37 +45,23 @@ function introDev() {
 
         let tl = gsap.timeline({
             onComplete: () => {
-                wrapper.className = 'wrapper';
-                wrapper.removeChild(wrapperTop);
-                wrapper.removeChild(wrapperCenter);
-                wrapper.removeChild(wrapperBottom);
-                wrapper.removeChild(wrapperBack);
-                wrapper.appendChild(container);
+                container.removeChild(wrapperCenter);
+                wrapperBottom.removeChild(wrapperBottomMenu);
+                familyDev();
             }
         });
         tl
-            .to(wrapperTop, {
-                duration: 0.4,
-                autoAlpha: 0,
-                y: '-3%'
-            })
             .to(wrapperCenter, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0,
                 y: '-3%'
             })
-            .to(wrapperBottom, {
+            .to(wrapperBottomMenu, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0,
                 y: '5%'
-            })
-            .to(wrapperBack, {
-                duration: 0.7,
-                delay: -0.5,
-                autoAlpha: 0,
-                // scale: 0.98
             })
         ;
     });
@@ -156,13 +144,12 @@ function introDev() {
         ;
     });
 
-    if (document.body.clientWidth < 570 || screen.width < 570) {
-        wrapper.removeChild(wrapperTop);
-        wrapper.removeChild(wrapperCenter);
-        wrapper.removeChild(wrapperBottom);
-        wrapper.removeChild(wrapperBack);
-        wrapper.appendChild(wrapperMobile);
-    }
+    // if (document.body.clientWidth < 570 || screen.width < 570) {
+    //     wrapper.removeChild(wrapperCenter);
+    //     wrapper.removeChild(wrapperBottom);
+    //     wrapper.removeChild(wrapperBack);
+    //     wrapper.appendChild(wrapperMobile);
+    // }
 }
 
 /* Authors */
@@ -280,21 +267,18 @@ function familyDev() {
     const
         familyDevLoad = new Intro(),
         arrowBackLoad = new ArrowsAll(),
-        settingsLoad = new Settings(),
-        timePause = 11000 // 11000
+        settingsLoad = new Settings()
     ;
 
     familyDevLoad.familyStart();
 
     const
-        introAboutBack = document.querySelector('.wrapper__back'),
-        wrapperBottom = document.createElement('div'),
-        wrapperTopAbout = document.querySelector('.wrapper__top')
+        familyManBlock = document.getElementById('familyManBlock'),
+        familyWomanBlock = document.getElementById('familyWomanBlock'),
+        familyGirlBlock = document.getElementById('familyGirlBlock'),
+        wrapperIntro = document.querySelector('.wrapper__intro')
     ;
 
-    wrapperBottom.className = 'wrapper__bottom';
-
-    wrapper.appendChild(wrapperBottom);
     wrapperBottom.innerHTML = `
         <div class="wrapper__bottom_part wrapper__bottom_part--left"></div>
         <div class="wrapper__bottom_part wrapper__bottom_part--center"></div>
@@ -324,52 +308,31 @@ function familyDev() {
     arrowBackClick.addEventListener('click', () => {
         let tl = gsap.timeline({
             onComplete: () => {
-                wrapper.removeChild(wrapperBottom);
-                wrapper.removeChild(wrapperTopAbout);
-                if (document.querySelector('.container-quest')) {
-                    wrapper.removeChild(document.querySelector('.container-quest'));
-                }
-                if (document.querySelector('.container__person')) {
-                    container.removeChild(document.querySelector('.container__person'));
-                }
-                if (document.querySelector('.wrapper__top_title')) {
-                    container.removeChild(document.querySelector('.wrapper__top_title'));
-                }
-                if (document.querySelector('.wrapper__top_title-sub')) {
-                    container.removeChild(document.querySelector('.wrapper__top_title-sub'));
-                }
-                if (document.querySelector('.container__difference')) {
-                    container.removeChild(document.querySelector('.container__difference'));
-                }
-                // wrapper.removeChild(container);
-                // container.className = 'container';
-                // container.removeChild(containerNestor);
-                // container.removeChild(containerVovka);
-                wrapper.removeChild(introAboutBack);
-                wrapper.className = 'wrapper';
+                wrapperBottom.removeChild(wrapperBottomLeft);
+                wrapperBottom.removeChild(wrapperBottomRight);
+                wrapperBottom.removeChild(wrapperBottomCenter);
+                container.removeChild(familyManBlock);
+                container.removeChild(familyWomanBlock);
+                container.removeChild(familyGirlBlock);
                 introDev();
             }
         });
         tl
             .to([
-                containerVovka,
-                containerNestor,
                 arrowBackClick,
                 arrowNextClick,
                 settingsClick,
-                document.querySelector('.container-quest'),
-                document.querySelector('.container__person'),
-                document.querySelector('.wrapper__top_title'),
-                document.querySelector('.wrapper__top_title-sub'),
-                document.querySelector('.container__difference')], {
+                familyManBlock,
+                familyWomanBlock,
+                familyGirlBlock], {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
-            .to(introAboutBack, {
-                autoAlpha: 0,
-                delay: '-0.1',
-                // scale: 0.98
-            })
+            // .to(introAboutBack, {
+            //     autoAlpha: 0,
+            //     delay: '-0.1',
+            //     // scale: 0.98
+            // })
         ;
     });
 
@@ -396,8 +359,7 @@ function familyDev() {
 
     //Settings
     const
-        settingButton = document.getElementById('settingsClick'),
-        wrapperTopTitle = document.querySelector('.wrapper__top')
+        settingButton = document.getElementById('settingsClick')
     ;
     settingButton.addEventListener('click', () => {
         settingsLoad.settingsBlock();
@@ -424,21 +386,21 @@ function familyDev() {
         //     settingsClearButton.textContent = 'Сбросить прогресс';
         // });
 
-        if (localStorage.getItem('backgroundMusic') === '0') {
-            settingsToggleMusic.textContent = 'Включить музыку';
-        }
+        // if (localStorage.getItem('backgroundMusic') === '0') {
+        //     settingsToggleMusic.textContent = 'Включить музыку';
+        // }
 
-        settingsToggleMusic.addEventListener('click', () => {
-            if (settingsToggleMusicID.paused || settingsMusicValue === '0') {
-                settingsToggleMusicID.play();
-                settingsToggleMusic.textContent = 'Выключить музыку';
-                localStorage.setItem('backgroundMusic', JSON.stringify(1));
-            } else if (settingsToggleMusicID.play || settingsMusicValue === '1'){
-                settingsToggleMusicID.pause();
-                settingsToggleMusic.textContent = 'Включить музыку';
-                localStorage.setItem('backgroundMusic', JSON.stringify(0));
-            }
-        });
+        // settingsToggleMusic.addEventListener('click', () => {
+        //     if (settingsToggleMusicID.paused || settingsMusicValue === '0') {
+        //         settingsToggleMusicID.play();
+        //         settingsToggleMusic.textContent = 'Выключить музыку';
+        //         localStorage.setItem('backgroundMusic', JSON.stringify(1));
+        //     } else if (settingsToggleMusicID.play || settingsMusicValue === '1'){
+        //         settingsToggleMusicID.pause();
+        //         settingsToggleMusic.textContent = 'Включить музыку';
+        //         localStorage.setItem('backgroundMusic', JSON.stringify(0));
+        //     }
+        // });
 
         settingsClose.addEventListener('click', () => {
             let tl = gsap.timeline({
@@ -462,11 +424,11 @@ function familyDev() {
 }
 
 function init() {
-    // introDev();
+    introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    familyDev();
+    // familyDev();
 }
 
 init();

@@ -2,74 +2,56 @@ class Intro {
 
     introStart() {
         const
-            introBlockTop = document.createElement('div'),
-            introBlockCenter = document.createElement('div')
+            introBack = document.createElement('div'),
+            introCenter = document.createElement('div'),
+            wrapperBack = document.querySelector('.wrapper__back'),
+            wrapperBottom = document.querySelector('.wrapper__bottom')
         ;
-        // introBlockTop.className = 'wrapper__top';
-        // introBlockTop.innerHTML = `
-        //     <picture class="wrapper__top_title wrapper__top_title--front">
-        //         <img src="assets/games/magicFeather/images/mf_titleStart.png" alt="Название игры. Волшебное перо">
-        //     </picture>
-        // `;
-        introBlockCenter.className = 'wrapper__center';
-        introBlockCenter.innerHTML = `
-            <h1>Старая<br />квартира</h1>
+        // introBack.className = 'wrapper__intro';
+        introCenter.className = 'wrapper__center';
+        introCenter.innerHTML = `
+            <h1 id="introTitleTop">Старая</h1>
+            <h1 id="introTitleBottom">квартира</h1>
         `;
-        // wrapper.removeChild(container);
-        // wrapper.appendChild(introBlockTop);
-        container.appendChild(introBlockCenter);
-
-        // const introBlockBack = document.createElement('div');
-        // introBlockBack.className = 'wrapper__intro';
-        // wrapper.appendChild(introBlockBack);
+        container.appendChild(introCenter);
+        // wrapperBack.appendChild(introBack);
 
         // Кнопки
-        const introBlockButtons = document.createElement('div');
-        introBlockButtons.className = 'wrapper__bottom';
+        const introBlockButtons = document.createElement('ul');
+        introBlockButtons.className = 'wrapper__bottom_menu';
         introBlockButtons.innerHTML = `
-            <ul class="wrapper__bottom_menu">
-                <li><a href="javascript:void(0);" id="clickAboutLibrary">О библиотеке</a></li>
-                <li><a href="javascript:void(0);" id="clickAboutAuthors">Авторы</a></li>
-                <li><a href="javascript:void(0);" id="clickLoadGame">Начать игру</a></li>
-            </ul>
+            <li><a href="javascript:void(0);" id="clickAboutLibrary">О библиотеке</a></li>
+            <li><a href="javascript:void(0);" id="clickAboutAuthors">Авторы</a></li>
+            <li><a href="javascript:void(0);" id="clickLoadGame">Начать игру</a></li>
         `;
-        wrapper.appendChild(introBlockButtons);
+        wrapperBottom.appendChild(introBlockButtons);
 
         const
-            wrapperTop = document.querySelector('.wrapper__top'),
-            wrapperTitle = document.querySelector('.wrapper__title'),
-            wrapperBottom = document.querySelector('.wrapper__bottom'),
-            wrapperBack = document.querySelector('.wrapper__intro'),
-            wrapperCenter = document.querySelector('.wrapper__center')
+            introTitleTop = document.getElementById('introTitleTop'),
+            introTitleBottom = document.getElementById('introTitleBottom'),
+            wrapperBottomMenu = document.querySelectorAll('.wrapper__bottom_menu > li')
         ;
 
         function introAnim() {
             let tl = gsap.timeline();
             tl
-                .to(wrapperBack, {
-                    duration: 0.6,
-                    autoAlpha: 1
-                })
-                .to(wrapperTop, {
-                    duration: 0.4,
-                    delay: '-0.4',
-                    y: '2%',
-                    autoAlpha: 1
-                })
-                .from(wrapperBottom, {
-                    duration: 0.4,
-                    delay: '-0.4',
-                    autoAlpha: 0
-                })
-                .to(wrapperCenter, {
+                .from([introTitleBottom, introTitleTop], {
                     duration: 1,
                     delay: '-0.4',
-                    y: '5%',
-                    autoAlpha: 1
+                    stagger: '0.05',
+                    y: '-10%',
+                    autoAlpha: 0
                 })
+                .from(wrapperBottomMenu, {
+                    duration: 0.4,
+                    delay: '-0.6',
+                    stagger: '0.05',
+                    autoAlpha: 0
+                })
+
             ;
         }
-        // introAnim();
+        introAnim();
     }
 
     familyStart() {
@@ -87,9 +69,6 @@ class Intro {
             wrapperBack = document.createElement('div')
         ;
 
-        // wrapperBack.className = 'wrapper__back';
-        // container.className += ' container--dialog';
-        // wrapperTopAbout.className = 'wrapper__top';
         familyManBlock.className = 'container__block';
         familyWomanBlock.className = 'container__block container__block--bottom';
         familyGirlBlock.className = 'container__block';
@@ -144,56 +123,42 @@ class Intro {
         container.appendChild(familyWomanBlock);
         container.appendChild(familyGirlBlock);
 
-        // const dialogBlockBack = document.createElement('div');
-        // dialogBlockBack.className = 'wrapper__back_dialog';
-        // wrapper.appendChild(dialogBlockBack);
-        // wrapper.appendChild(wrapperTopAbout);
-
-        // Кнопки
-        // const introBlockButtons = document.createElement('div');
-        // introBlockButtons.className = 'wrapper__bottom';
-        // introBlockButtons.innerHTML = `
-        //     <ul class="wrapper__bottom_menu">
-        //         <li><a href="javascript:void(0);" id="clickAboutLibrary">О библиотеке</a></li>
-        //         <li><a href="javascript:void(0);" id="clickAboutAuthors">Авторы</a></li>
-        //         <li><a href="javascript:void(0);" id="clickLoadGame">Начать игру</a></li>
-        //     </ul>
-        // `;
-        // wrapper.appendChild(introBlockButtons);
-
         const
-            containerVovka = document.getElementById('containerVovka'),
-            containerNestor = document.getElementById('containerNestor'),
-            wrapperDialogBack = document.querySelector('.wrapper__back_dialog')
+            manPhoto = document.getElementById('familyMan'),
+            manText = document.getElementById('familyTextMan'),
+            womanPhoto = document.getElementById('familyWoman'),
+            womanText = document.getElementById('familyTextWoman'),
+            girlPhoto = document.getElementById('familyGirl'),
+            girlText = document.getElementById('familyTextGirl')
         ;
 
-        // wrapperBack.appendChild(wrapperDialogBack);
-
-        function dialogAnim() {
+        function familyAnim() {
             let tl = gsap.timeline({
                 onComplete: () => {
-                    dialogBaloonLoad();
+
                 }
             });
             tl
-                .from(wrapperDialogBack, {
+                .from([manPhoto, manText], {
                     duration: 0.6,
-                    autoAlpha: 0
+                    autoAlpha: 0,
+                    stagger: '0.1'
                 })
-                .to(containerNestor, {
-                    duration: 0.4,
-                    delay: '-0.4',
-                    autoAlpha: 1
+                .from([womanPhoto, womanText], {
+                    duration: 0.6,
+                    delay: '-0.5',
+                    autoAlpha: 0,
+                    stagger: '0.1'
                 })
-                .to(containerVovka, {
-                    duration: 0.4,
-                    delay: '-0.2',
-                    x: '5%',
-                    autoAlpha: 1
+                .from([girlPhoto, girlText], {
+                    duration: 0.6,
+                    delay: '-0.5',
+                    autoAlpha: 0,
+                    stagger: '0.1'
                 })
             ;
         }
-        // dialogAnim();
+        familyAnim();
     }
 
     categoryLibrary() {
