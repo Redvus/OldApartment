@@ -424,11 +424,11 @@ function familyDev() {
 }
 
 function init() {
-    introDev();
+    // introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    // familyDev();
+    familyDev();
 }
 
 init();

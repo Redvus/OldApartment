@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9b24bc2e-8783-4334-a435-85ead6b0ac84" name="SMIBS" url="https://smibs.ru/old-appartment">
+        <fileTransfer rootFolder="/sites/new.smibs.ru/root/assets" accessType="SFTP" host="178.21.10.63" port="22" sshConfigId="85d14e1d-5f13-43fa-9260-592af6d99827" sshConfig="root@178.21.10.63:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
