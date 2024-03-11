@@ -350,10 +350,6 @@ function familyDev() {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
-            .to(containerVovka, {
-                duration: 1,
-                left: '40%'
-            })
         ;
     });
 
@@ -423,12 +419,28 @@ function familyDev() {
     });
 }
 
+function catDev() {
+    const category = new Category();
+    category.categoryQuest();
+
+    arrowBackLoad.arrowBackQuest();
+    arrowBackLoad.arrowSetting();
+
+    const
+        arrowBackClick = document.getElementById('arrowBack'),
+        settingsClick = document.getElementById('settingsClick'),
+        containerQuest = document.querySelector('.container-quest__bottom')
+    ;
+}
+
 function init() {
     // introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    familyDev();
+    // familyDev();
+    // questionCat_1_0();
+    catDev();
 }
 
 init();

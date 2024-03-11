@@ -1,30 +1,22 @@
 class Question {
 
-    questionBlock() {
-        const containerWrapper = document.createElement('div'),
-            containerWriter = document.createElement('div'),
+    questionBlock(questImage, questQuest, questAnswer) {
+        const
+            containerWrapper = document.createElement('div'),
             containerTitle = document.createElement('div'),
             wrapperTitleAuthors = document.createElement('div'),
             containerBlockLeft = document.createElement('div'),
             containerBlockRight = document.createElement('div')
         ;
-        containerWriter.className = 'container-quest';
+
         containerWrapper.className = 'container__wrapper container__wrapper_about';
         containerTitle.className = 'container__title container__title_category';
         containerBlockLeft.className = 'container__about container__about_left';
         containerBlockRight.className = 'container__about container__about_right';
         wrapperTitleAuthors.className = 'wrapper__top';
 
-        containerBlockLeft.id = 'containerBlockLeft';
-        containerBlockRight.id = 'containerBlockRight';
-
-        // wrapper.appendChild(wrapperTitleAuthors);
-        wrapper.appendChild(containerWriter);
-        containerWriter.appendChild(containerWrapper);
-        containerWrapper.appendChild(containerBlockLeft);
-        containerWrapper.appendChild(containerBlockRight);
-
-        const writerTitle = document.querySelector('.wrapper__top'),
+        const
+            writerTitle = document.querySelector('.wrapper__top'),
             aboutLeft = document.querySelector('.container__about_left'),
             aboutRight = document.querySelector('.container__about_right')
         ;
@@ -44,7 +36,7 @@ class Question {
                 })
             ;
         }
-        questionBlockAnim();
+        // questionBlockAnim();
     }
 
     questionBlockText(questQuestion,

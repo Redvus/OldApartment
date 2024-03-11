@@ -9,7 +9,24 @@ if (localStorage.getItem('mfDifferenceQuest_1_6') === null
     localStorage.setItem('mfDifferenceQuest_1_6', JSON.stringify(0));
 }
 
+if (localStorage.getItem('progressCat') === null ||
+    localStorage.getItem('progressCat') >= 0) {
+    localStorage.setItem('progressCat', JSON.stringify(0));
+}
+
+if (localStorage.getItem('progressCat_1') === null ||
+    localStorage.getItem('progressCat_1') >= 0) {
+    localStorage.setItem('progressCat_1', JSON.stringify(0));
+}
+
 function questionCat_1_0() {
+    let answerWrightNum = 0;
+
+    if (localStorage.getItem('progressCat_1_0') === null ||
+        localStorage.getItem('progressCat_1_0') >= 0) {
+        localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    }
+
     questionLoad.questionBlock();
     questionLoad.questionBlockText(
         'Микроволновка с&nbsp;искусственным интеллектом',
@@ -64,6 +81,16 @@ function questionCat_1_0() {
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
+            if (answerVarArray[i] !== answerVarArray[answerWrightNum]) {
+                let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                let progressCat_1 = progressCat_1_0 + 1;
+                let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+            }
+
             wrapperBottomRight.appendChild(arrowNextClick);
             arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
             arrowNextClick.id = 'questionNext_1_0';
@@ -109,6 +136,14 @@ function questionCat_1_0() {
 
 // По щучьему велению
 function questionCat_1_1() {
+    let answerWrightNum = 2;
+    let progressCat_1 = JSON.parse(localStorage.getItem('progressCat_1'));
+
+    if (localStorage.getItem('progressCat_1_1') === null ||
+        localStorage.getItem('progressCat_1_1') >= 0) {
+        localStorage.setItem('progressCat_1_1', JSON.stringify(0));
+    }
+
     questionLoad.questionBlockText(
         '«Бедный думает: «Все люди станут разгавливаться, а у меня ни куска нету! Пойду хоть воды принесу - ужо вместо щей похлебаю». Взял ведерко, пошел к … и только закинул в воду - вдруг попалась ему в ведерко большущая щука». Куда держал путь бедняк?',
         'к пруду',
@@ -154,6 +189,16 @@ function questionCat_1_1() {
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
+            if (answerVarArray[i] !== answerVarArray[answerWrightNum]) {
+                localStorage.setItem('progressCat_1_1', JSON.stringify(1));
+                let progressCat_1_1 = JSON.parse(localStorage.getItem('progressCat_1_1'));
+                let progressCat_1 = JSON.parse(localStorage.getItem('progressCat_1'));
+                let progressCatSum_1 = progressCat_1 + progressCat_1_1;
+
+                localStorage.setItem('progressCat_1', JSON.stringify(progressCatSum_1));
+                localStorage.setItem('progressCat', JSON.stringify(progressCatSum_1));
+            }
+
             wrapperBottomRight.appendChild(arrowNextClick);
             arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
             arrowNextClick.id = 'questionNext_1_1';
