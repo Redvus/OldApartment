@@ -419,18 +419,10 @@ function familyDev() {
     });
 }
 
-function catDev() {
-    const category = new Category();
-    category.categoryQuest();
-
-    arrowBackLoad.arrowBackQuest();
-    arrowBackLoad.arrowSetting();
-
-    const
-        arrowBackClick = document.getElementById('arrowBack'),
-        settingsClick = document.getElementById('settingsClick'),
-        containerQuest = document.querySelector('.container-quest__bottom')
-    ;
+function catLivingRoomLoad() {
+    const categoryLoad = new Category();
+    categoryLoad.categoryQuest('Гостиная', 'categoryLivingRoom');
+    questionCat_1_0();
 }
 
 function init() {
@@ -440,7 +432,7 @@ function init() {
     // writerStart();
     // familyDev();
     // questionCat_1_0();
-    catDev();
+    catLivingRoomLoad();
 }
 
 init();

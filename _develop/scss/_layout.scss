@@ -685,7 +685,7 @@
 		}
 
 		&__bottom {
-			width: calc(#{$containerWidth} - 5rem);
+			width: calc(#{$containerWidth} - 6rem);
 			height: calc((#{$containerWidth} / #{$containerQuestBottomProp}) - 2rem);
 			display: block;
 			position: absolute;
@@ -694,8 +694,88 @@
 			background: url("../images/oa_questBackBottom_2.png") 50% 0 / auto 100% no-repeat;
 			box-shadow: 0 1rem 3rem $seven;
 			border-radius: 0.8rem;
-			padding: 1rem 2.5rem;
+			padding: 1rem 3rem;
 			z-index: 2;
+
+			&_text {
+				width: 100%;
+				height: calc(50% - #{$paddingBase});
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+				margin-bottom: $paddingBase;
+
+				p {
+					margin: 0;
+					text-align: center;
+				}
+			}
+
+			&_buttons {
+				width: 100%;
+				height: 50%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				margin-left: 0;
+
+				li {
+					width: calc(100% / 3.5);
+					//height: 100%;
+					display: block;
+					position: relative;
+					//background: url("../images/mf_buttonStart.png") 100% 100% no-repeat;
+					//background-size: 100% 100%;
+
+					a {
+						width: calc(100% - 2rem);
+						//height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						padding: 1rem;
+						//background: linear-gradient($five, $secondary);
+						background-color: rgba($secondary, 0.5);
+						border-radius: 0.6rem;
+						color: $introButtonTextColor;
+						font-size: $font-size-large;
+						//text-transform: uppercase;
+						font-family: $primary-font-second;
+						transition: all $base-duration;
+
+						&.container-quest__bottom_buttons {
+
+							&--wrong {
+								background-color: rgba($five, 0.5);;
+							}
+
+							&--right {
+								background-color: rgba($eight, 0.5);
+							}
+						}
+					}
+
+					&:hover {
+
+						a {
+							//letter-spacing: 0.05rem;
+							background-color: rgba($secondary, 0.8);
+
+							&.container-quest__bottom_buttons {
+
+								&--wrong {
+									background-color: rgba($five, 0.5);;
+								}
+
+								&--right {
+									background-color: rgba($eight, 0.5);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -910,25 +990,6 @@
 				//margin-bottom: calc(#{$paddingBase} / 2.5);
 				margin: 0 $paddingBase;
 			}
-		}
-	}
-
-	&__person {
-		width: 100%;
-		height: 100%;
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-
-		img {
-			width: 100%;
-			height: 100%;
-			display: block;
-			position: relative;
-			//object-position: top;
-			object-fit: contain;
 		}
 	}
 
