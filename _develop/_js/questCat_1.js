@@ -35,7 +35,7 @@ function questionCat_1_0() {
         'печь Емели'
     );
 
-    questionLoad.answerBlock(0, 'Верно!');
+    questionLoad.answerBlock(0);
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -54,7 +54,10 @@ function questionCat_1_0() {
                 // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
                 // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
 
-                // questionCat_1_1();
+                // setTimeout(() => {
+                //     questionCat_1_1();
+                // }, 1000);
+
             }
         });
     }
@@ -77,7 +80,7 @@ function questionCat_1_1() {
         'печь Емели'
     );
 
-    questionLoad.answerBlock(0, 'Верно!');
+    questionLoad.answerBlock(0);
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),

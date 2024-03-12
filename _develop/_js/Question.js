@@ -131,7 +131,7 @@ class Question {
         // questionBlockAnim();
     }
 
-    answerBlock(answerVarNum, answerTextRight) {
+    answerBlock(answerVarNum) {
         const
             questionBlockQuest = document.querySelector('.container-quest__bottom_text--quest'),
             questionBlock = document.querySelector('.container-quest__bottom_text'),
@@ -139,6 +139,8 @@ class Question {
             questionBlockWrongText = document.createElement('span'),
             answerWrongVar = ['Неправильно', 'В следующий раз повезет', 'Не отчаивайтесь', 'Не совсем так', 'К сожалению нет'],
             answerWrongVarView = answerWrongVar[Math.floor(Math.random() * answerWrongVar.length)],
+            answerRightVar = ['Правильно!', 'Все верно!', 'Именно так!', 'Точно так!', 'Так держать!'],
+            answerRightVarView = answerRightVar[Math.floor(Math.random() * answerRightVar.length)],
             containerQuestBlock = document.querySelector('.container-quest'),
             containerQuestTop = document.querySelector('.container-quest__top'),
             containerQuestBottom = document.querySelector('.container-quest__bottom')
@@ -146,7 +148,7 @@ class Question {
 
         questionBlockText.id = 'answerWright';
         // questionBlockText.innerHTML = `
-        //     ${answerTextRight}
+        //     ${answerRightVarView}
         // `;
         questionBlockWrongText.id = 'answerWrong';
         // questionBlockWrongText.innerHTML = `
@@ -157,140 +159,43 @@ class Question {
             answerVar_2 = document.getElementById('answerVar_2'),
             answerVar_3 = document.getElementById('answerVar_3'),
             answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
-            answerLi = document.querySelectorAll('ul.container-quest__bottom_buttons > li'),
+            answerLi = document.querySelectorAll('ul.container-quest__bottom_buttons li'),
             answerLiRight = document.querySelectorAll('ul.container-quest__bottom_buttons > li > a')
         ;
 
         for (let i = 0; i < answerVarArray.length; i++) {
             if (answerVarArray[i] === answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {
-                    answerLi.forEach((el, idx) => {
-                        if (idx !== answerVarNum) {
-                            // el.remove();
-                            // questionBlock.removeChild(questionBlockQuest);
-                            // questionBlock.appendChild(questionBlockText);
-                            questionBlock.innerHTML = `
-                                <span>${answerTextRight}</span>
-                            `;
-                            let tl = gsap.timeline({
-                                onComplete: () => {
-                                    wrapper.removeChild(containerQuestBlock);
-                                }
-                            });
-                            tl
-                                .to([containerQuestTop, containerQuestBottom], {
-                                    autoAlpha: 0,
-                                    delay: '1',
-                                    y: '100%',
-                                    stagger: '0.3'
-                                })
-                            ;
-                        } else {
-                            let tl = gsap.timeline();
-                            let answerBlockText = document.getElementById('answerWright');
-                            answerLiRight[i].className += 'container-quest__bottom_buttons--right';
-                            // soundsLoad.rightAnswer('assets/games/kraevedia/sounds/cp_rightAnswer.ogg');
-                            tl
-                                .to(el, {
-                                    top: 0,
-                                    duration: 0.3,
-                                    delay: 0.1,
-                                    ease: 'back'
-                                })
-                                .from(answerBlockText, {
-                                    autoAlpha: 0,
-                                    duration: 0.2
-                                })
-                            ;
+                    questionBlock.innerHTML = `
+                        <span>${answerRightVarView}</span>
+                    `;
+                    answerLiRight[i].className += 'container-quest__bottom_buttons--right';
+                    // soundsLoad.rightAnswer('assets/games/kraevedia/sounds/cp_rightAnswer.ogg');
+                    let tl = gsap.timeline({
+                        onComplete: () => {
+                            wrapper.removeChild(containerQuestBlock);
                         }
                     });
+                    tl
+                        .to([containerQuestTop, containerQuestBottom], {
+                            autoAlpha: 0,
+                            delay: '1',
+                            y: '100%',
+                            stagger: '0.3'
+                        })
+                    ;
                 });
-            } else if (answerVarArray[i] === answerVarArray[0]) {
+            } else if (answerVarArray[i] !== answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {
-                    answerLi.forEach((el, idx) => {
-                        if (idx !== 0) {
-                            // el.remove();
-                            // questionBlock.removeChild(questionBlockQuest);
-                            // questionBlock.appendChild(questionBlockWrongText);
-                            questionBlock.innerHTML = `
-                                <span>${answerWrongVarView}</span>
-                            `;
-                        } else {
-                            let tl = gsap.timeline();
-                            let answerBlockWrongText = document.getElementById('answerWrong');
-                            answerLiRight[i].className += 'container-quest__bottom_buttons--wrong';
-                            tl
-                                .to(el, {
-                                    top: 0,
-                                    duration: 0.3,
-                                    delay: 0.1,
-                                    ease: 'back'
-                                })
-                                .from(answerBlockWrongText, {
-                                    autoAlpha: 0,
-                                    duration: 0.2
-                                })
-                            ;
-                        }
-                    });
-                });
-            } else if (answerVarArray[i] === answerVarArray[1]) {
-                answerVarArray[i].addEventListener('click', () => {
-                    answerLi.forEach((el, idx) => {
-                        if (idx !== 1) {
-                            // el.remove();
-                            // questionBlock.removeChild(questionBlockQuest);
-                            // questionBlock.appendChild(questionBlockWrongText);
-                            questionBlock.innerHTML = `
-                                <span>${answerWrongVarView}</span>
-                            `;
-                        } else {
-                            let tl = gsap.timeline();
-                            let answerBlockWrongText = document.getElementById('answerWrong');
-                            answerLiRight[i].className += 'container-quest__bottom_buttons--wrong';
-                            tl
-                                .to(el, {
-                                    top: 0,
-                                    duration: 0.3,
-                                    delay: 0.1,
-                                    ease: 'back'
-                                })
-                                .from(answerBlockWrongText, {
-                                    autoAlpha: 0,
-                                    duration: 0.2
-                                })
-                            ;
-                        }
-                    });
-                });
-            } else if (answerVarArray[i] === answerVarArray[2]) {
-                answerVarArray[i].addEventListener('click', () => {
-                    answerLi.forEach((el, idx) => {
-                        if (idx !== 2) {
-                            // el.remove();
-                            // questionBlock.removeChild(questionBlockQuest);
-                            // questionBlock.appendChild(questionBlockWrongText);
-                            questionBlock.innerHTML = `
-                                <span>${answerWrongVarView}</span>
-                            `;
-                        } else {
-                            let tl = gsap.timeline();
-                            let answerBlockWrongText = document.getElementById('answerWrong');
-                            answerLiRight[i].className += 'container-quest__bottom_buttons--wrong';
-                            tl
-                                .to(el, {
-                                    top: 0,
-                                    duration: 0.3,
-                                    delay: 0.1,
-                                    ease: 'back'
-                                })
-                                .from(answerBlockWrongText, {
-                                    autoAlpha: 0,
-                                    duration: 0.2
-                                })
-                            ;
-                        }
-                    });
+                    let tl = gsap.timeline();
+                    let answerBlockWrongText = document.getElementById('answerWrong');
+                    answerLiRight[i].className += 'container-quest__bottom_buttons--wrong';
+                    tl
+                        .from(answerBlockWrongText, {
+                            autoAlpha: 0,
+                            duration: 0.2
+                        })
+                    ;
                 });
             }
         }
