@@ -66,7 +66,7 @@ class ArrowsAll {
         function arrowNextAnim() {
             let arrowAnim = gsap.from(arrowNextLoad, {
                 duration: 1,
-                delay: 1,
+                delay: '0.4',
                 autoAlpha: 0
             });
         }

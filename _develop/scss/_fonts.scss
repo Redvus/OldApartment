@@ -40,7 +40,7 @@ $bourbon: (
 );
 
 $font-size-base:    $body-font-size !default;
-$font-size-large:   calc(#{$body-font-size} + 0.3rem) !default; // ~18px
+$font-size-large:   calc(#{$body-font-size} + 0.2rem) !default; // ~18px
 $font-size-small:   calc(#{$body-font-size} - 0.15rem) !default; // ~14px
 
 $font-size-h1:      calc(#{$body-font-size} + 6vmin) !default; // ~3rem 48px modular-scale(6)

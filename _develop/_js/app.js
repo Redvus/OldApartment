@@ -328,25 +328,32 @@ function familyDev() {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
-            // .to(introAboutBack, {
-            //     autoAlpha: 0,
-            //     delay: '-0.1',
-            //     // scale: 0.98
-            // })
         ;
     });
 
     arrowNextClick.addEventListener('click', () => {
         let tl = gsap.timeline({
             onComplete: () => {
-                // wrapperBottomCenter.removeChild(settingsClick);
+                wrapperBottomCenter.removeChild(settingsClick);
                 wrapperBottomRight.removeChild(arrowNextClick);
-                // wrapperBottomLeft.removeChild(arrowBackClick);
-                questionCat_1_0();
+                wrapperBottomLeft.removeChild(arrowBackClick);
+                wrapperBottom.removeChild(wrapperBottomLeft);
+                wrapperBottom.removeChild(wrapperBottomRight);
+                wrapperBottom.removeChild(wrapperBottomCenter);
+                container.removeChild(familyManBlock);
+                container.removeChild(familyWomanBlock);
+                container.removeChild(familyGirlBlock);
+                catLivingRoomLoad();
             }
         });
         tl
-            .to(arrowNextClick, {
+            .to([
+                arrowNextClick,
+                settingsClick,
+                arrowBackClick,
+                familyManBlock,
+                familyWomanBlock,
+                familyGirlBlock], {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
@@ -355,9 +362,9 @@ function familyDev() {
 
     //Settings
     const
-        settingButton = document.getElementById('settingsClick')
+        settingsButton = document.getElementById('settingsClick')
     ;
-    settingButton.addEventListener('click', () => {
+    settingsButton.addEventListener('click', () => {
         settingsLoad.settingsBlock();
         const settingsClearButton = document.getElementById('clearProgressButton'),
             settingsBack = document.querySelector('.wrapper__lightbox'),
@@ -425,14 +432,35 @@ function catLivingRoomLoad() {
     questionCat_1_0();
 }
 
+function catOfficeRoomLoad() {
+    const categoryLoad = new Category();
+    categoryLoad.categoryQuest('Кабинет', 'categoryOfficeRoom');
+    questionCat_2_0();
+}
+
+function catBedRoomLoad() {
+    const categoryLoad = new Category();
+    categoryLoad.categoryQuest('Спальня', 'categoryBedRoom');
+    questionCat_3_0();
+}
+
+function catChildRoomLoad() {
+    const categoryLoad = new Category();
+    categoryLoad.categoryQuest('Детская', 'categoryChildRoom');
+    questionCat_4_0();
+}
+
 function init() {
     // introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    // familyDev();
+    familyDev();
     // questionCat_1_0();
-    catLivingRoomLoad();
+    // catLivingRoomLoad();
+    // catOfficeRoomLoad();
+    // catBedRoomLoad();
+    // catChildRoomLoad();
 }
 
 init();

@@ -18,5 +18,29 @@ class Category {
         wrapperCategoryTitle.innerHTML = `
             <h1>${categoryTitle}</h1>
         `;
+
+        const
+            wrapperCatBack = document.querySelector('.wrapper__back_category'),
+            wrapperCatTitle = document.querySelector('.wrapper__top_title')
+        ;
+
+        function catQuestAnim() {
+            let tl = gsap.timeline();
+
+            tl
+                .from(wrapperCatBack, {
+                    duration: '0.6',
+                    autoAlpha: 0,
+                    scale: '1.05'
+                })
+                .from(wrapperCatTitle, {
+                    duration: '0.3',
+                    delay: '-0.1',
+                    autoAlpha: 0,
+                    y: '-10%'
+                })
+            ;
+        }
+        catQuestAnim();
     }
 }

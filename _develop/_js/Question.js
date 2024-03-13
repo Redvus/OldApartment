@@ -128,10 +128,10 @@ class Question {
                 })
             ;
         }
-        // questionBlockAnim();
+        questionBlockAnim();
     }
 
-    answerBlock(answerVarNum) {
+    answerBlock(answerVarNum, answerFull) {
         const
             questionBlockQuest = document.querySelector('.container-quest__bottom_text--quest'),
             questionBlock = document.querySelector('.container-quest__bottom_text'),
@@ -140,10 +140,7 @@ class Question {
             answerWrongVar = ['Неправильно', 'В следующий раз повезет', 'Не отчаивайтесь', 'Не совсем так', 'К сожалению нет'],
             answerWrongVarView = answerWrongVar[Math.floor(Math.random() * answerWrongVar.length)],
             answerRightVar = ['Правильно!', 'Все верно!', 'Именно так!', 'Точно так!', 'Так держать!'],
-            answerRightVarView = answerRightVar[Math.floor(Math.random() * answerRightVar.length)],
-            containerQuestBlock = document.querySelector('.container-quest'),
-            containerQuestTop = document.querySelector('.container-quest__top'),
-            containerQuestBottom = document.querySelector('.container-quest__bottom')
+            answerRightVarView = answerRightVar[Math.floor(Math.random() * answerRightVar.length)]
         ;
 
         questionBlockText.id = 'answerWright';
@@ -166,24 +163,17 @@ class Question {
         for (let i = 0; i < answerVarArray.length; i++) {
             if (answerVarArray[i] === answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {
-                    questionBlock.innerHTML = `
-                        <span>${answerRightVarView}</span>
-                    `;
+                    if (answerFull) {
+                        questionBlock.innerHTML = `
+                            <span>${answerFull}</span>
+                        `;
+                    } else {
+                        questionBlock.innerHTML = `
+                            <span>${answerRightVarView}</span>
+                        `;
+                    }
                     answerLiRight[i].className += 'container-quest__bottom_buttons--right';
                     // soundsLoad.rightAnswer('assets/games/kraevedia/sounds/cp_rightAnswer.ogg');
-                    let tl = gsap.timeline({
-                        onComplete: () => {
-                            wrapper.removeChild(containerQuestBlock);
-                        }
-                    });
-                    tl
-                        .to([containerQuestTop, containerQuestBottom], {
-                            autoAlpha: 0,
-                            delay: '1',
-                            y: '100%',
-                            stagger: '0.3'
-                        })
-                    ;
                 });
             } else if (answerVarArray[i] !== answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {

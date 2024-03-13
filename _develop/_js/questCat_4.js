@@ -1,482 +1,380 @@
+// Кабинет
+
+// if (localStorage.getItem('mfDifferenceQuest_1_6') === null
+//     || localStorage.getItem('mfDifferenceQuest_1_6') >= 7
+//     || localStorage.getItem('mfDifferenceQuest_1_6') <= 7) {
+//     localStorage.setItem('mfDifferenceQuest_1_6', JSON.stringify(0));
+// }
+//
+// if (localStorage.getItem('progressCat') === null ||
+//     localStorage.getItem('progressCat') >= 0) {
+//     localStorage.setItem('progressCat', JSON.stringify(0));
+// }
+//
+// if (localStorage.getItem('progressCat_1') === null ||
+//     localStorage.getItem('progressCat_1') >= 0) {
+//     localStorage.setItem('progressCat_1', JSON.stringify(0));
+// }
+
 function questionCat_4_0() {
-    questionLoad.questionBlock();
-    questionLoad.questionBlockText(
-        'Программу омоложения организма запускают:',
-        'райские яблочки',
-        'молодильные яблочки',
-        'наливные да сахарные яблочки');
+    let answerWrightNum = 0;
 
-    const
-        wrapperBottom = document.createElement('div'),
-        containerAbout = document.querySelector('.container__wrapper_about'),
-        wrapperTopAbout = document.querySelector('.wrapper__top'),
-        wrapperBackDialog = document.createElement('div'),
-        wrapperBack = document.querySelector('.wrapper__back'),
-        wrapperBackCatFourth = document.createElement('div'),
-        containerVovka = document.getElementById('containerVovka'),
-        containerNestor = document.getElementById('containerNestor')
-    ;
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    arrowBackLoad.arrowNextHidden();
-    wrapperBackCatFourth.className = 'wrapper__back_category wrapper__back_category--fourth';
-    wrapperBackDialog.className = 'wrapper__back_dialog';
-    // questionDialogPerson.dialogPersonStart();
-    wrapperBack.appendChild(wrapperBackDialog);
-    gsap.from(wrapperBackDialog, {
-        duration: 0.6,
-        autoAlpha: 0
-    });
-    gsap.to([containerVovka, containerNestor], {
-        duration: 0.6,
-        autoAlpha: 1
-    });
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Пётр Иванович свою продукцию поставляет в магазины, которые расположеныв центре города. Назовите эту площадь Самары и её современное название(если оно менялось)',
+        'Хлебная площадь',
+        'Алексеевская площадь',
+        'Красная площадь'
+    );
 
-    const
-        arrowBackClick = document.getElementById('arrowBack'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden'),
-        wrapperBottomLeft = document.querySelector('.wrapper__bottom_part--left'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right')
-    ;
-
-    const
-        questionBack_1 = document.getElementById('questionBack_1'),
-        containerQuest = document.querySelector('.container-quest'),
-        containerDialog = document.querySelector('.container--dialog'),
-        containerBlockLeft = document.getElementById('containerBlockLeft'),
-        containerBlockRight = document.getElementById('containerBlockRight'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        categoryQuestBack = document.createElement('div'),
-        containerInsideLeft = document.getElementById('containerInsideLeft'),
-        containerInsideRight = document.getElementById('containerInsideRight')
-    ;
-
-    questionLoad.answerBlock(1, 'Верно!');
+    questionLoad.answerBlock(0);
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_0';
-            const questionNext_4_0 = document.getElementById('questionNext_4_0');
-            questionNext_4_0.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
-                    onStart: () => {
-                        wrapperBack.appendChild(wrapperBackCatFourth);
-                    },
                     onComplete: () => {
-                        wrapperBack.removeChild(wrapperBackDialog);
-                        wrapperBottomRight.removeChild(questionNext_4_0);
-                        container.className = 'container';
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        questionCat_4_1();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            questionCat_4_1();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerVovka,
-                        containerNestor,
-                        containerInsideRight,
-                        containerInsideLeft], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
-                    })
-                    .to(wrapperBackDialog, {
-                        duration: 0.6,
-                        delay: '-0.3',
-                        autoAlpha: 1
-                    })
-                    .from(wrapperBackCatFourth, {
-                        duration: 0.6,
-                        delay: '-0.3',
-                        autoAlpha: 0
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
+            }
         });
     }
+
 }
 
-// Сивко-бурко
 function questionCat_4_1() {
-    questionLoad.questionBlockText(
-        'Вдруг от царя клич: ежели кто…, за того ее и взамуж отдаст. Царь созвал храбрецов, чтобы',
-        'спасти царевну от колдовства',
-        'рассмешить царевну',
-        'сорвать портрет и ширинку царевны высоко висящим на стене');
+    let answerWrightNum = 1;
 
-    arrowBackLoad.arrowNextHidden();
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    const questionBack_2 = document.getElementById('questionBack_2'),
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden'),
-        containerPerson = document.createElement('picture'),
-        wrapperTop = document.querySelector('.wrapper__top')
-    ;
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Антонина любит возиться с «пузелями». Что же такое «пузеля»?',
+        'Пупсы',
+        'Пазлы',
+        'Пудели'
+    );
 
-    containerPerson.className = 'container__person';
-    containerPerson.innerHTML = `
-        <img src="assets/games/magicFeather/images/mf_sivkoBurko.png" alt="Сивка-Бурка">
-    `;
-    wrapperTop.innerHTML = `
-        <h1 class="wrapper__top_title">Сивка-Бурка</h1>
-    `;
-    container.appendChild(containerPerson);
-    gsap.from(containerPerson, {
-        duration: 0.6,
-        autoAlpha: 0
-    });
-    gsap.to(wrapperTop, {
-        duration: 0.6,
-        autoAlpha: 1
-    });
-
-    questionLoad.answerBlock(2, 'Верно!');
+    questionLoad.answerBlock(answerWrightNum,
+        'В Российской империи складывание фрагментов в одну картинку чрезвычайно популярны. Произносится на немецкий манер: «пузель»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_1';
-            const questionNext_4_1 = document.getElementById('questionNext_4_1');
-            questionNext_4_1.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
+                    delay: 3,
                     onComplete: () => {
-                        wrapperBottomRight.removeChild(questionNext_4_1);
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        questionCat_4_2();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            questionCat_4_2();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerInsideRight,
-                        containerInsideLeft], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
+            }
         });
     }
-
 }
 
 function questionCat_4_2() {
-    questionLoad.questionBlockText(
-        'Иван-дурак за ними же поехал в чисто поле, в широко раздолье, гайкнул богатырским голосом: «Сивко-бурко, вещий воронко!». Иван-дурак … - оделся, молодец такой стал, что и братьям не узнать! Какой ритуал совершил Иван – дурак, чтобы преобразится?',
-        'залез коню в одно ухо, а в другое вылез',
-        'расчесал коню хвост и гриву',
-        'повернул кольцо на пальце');
+    let answerWrightNum = 0;
 
-    arrowBackLoad.arrowNextHidden();
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    const
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden')
-    ;
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Словосочетание «Добчинский и Бобчинский» всегда приводит Антонину в восторг. Это словосочетание относится:',
+        'к настольной игре',
+        'к названию книги',
+        'к названию фирмы, выпускающей игрушки'
+    );
 
-    questionLoad.answerBlock(0, 'Верно!');
+    questionLoad.answerBlock(answerWrightNum,
+        'Игру «Добчинский и Бобчинский», напоминающую домино назвали в честь городских помещиков, героев комедии Н.В. Гоголя «Ревизор»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_2';
-            const questionNext_4_2 = document.getElementById('questionNext_4_2');
-            questionNext_4_2.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
                     onComplete: () => {
-                        wrapperBottomRight.removeChild(questionNext_4_2);
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        questionCat_4_3();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            questionCat_4_3();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerInsideRight,
-                        containerInsideLeft], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
+            }
         });
     }
-
 }
 
 function questionCat_4_3() {
-    questionLoad.questionBlockText(
-        'Как только доехал до царских чертогов, портрет и ширинку так и сорвал. Сколько попыток совершил Иван-дурак, чтобы сорвать портрет царевны и ширинку?',
-        'три попытки',
-        'пять попыток',
-        'пять попыток');
+    let answerWrightNum = 2;
 
-    arrowBackLoad.arrowNextHidden();
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    const
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden')
-    ;
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Любимая сказка Антонины «Аленький цветочек» Сергея Аксакова. А кто из художников сделал первые иллюстрации к этой сказке?',
+        'Владимир Сутеев',
+        'Иван Билибин',
+        'Николай Богатов'
+    );
 
-    questionLoad.answerBlock(0, 'Правильно!');
+    questionLoad.answerBlock(answerWrightNum,
+        'Первым иллюстратором был Николай Алексеевич Богатов, создавший несколько чёрно-белых рисунков для альманаха «Волшебный фонарь»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_3';
-            const questionNext_4_3 = document.getElementById('questionNext_4_3');
-            questionNext_4_3.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
                     onComplete: () => {
-                        wrapperBottomRight.removeChild(questionNext_4_3);
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        questionCat_4_4();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            questionCat_4_4();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerInsideRight,
-                        containerInsideLeft], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
+            }
         });
     }
-
 }
 
 function questionCat_4_4() {
-    questionLoad.questionBlockText(
-        '«Чрез немного времени царь сделал …, созывает всех бояр, воевод, князей, думных, сенаторов, купцов, мещан и крестьян». Царь всех созывает...',
-        'на бал',
-        'на пир',
-        'на соревнование');
+    let answerWrightNum = 2;
 
-    arrowBackLoad.arrowNextHidden();
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    const
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden')
-    ;
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Летом особое место уделяется играм в саду, их разнообразие поражает. Подскажите, какая игра появилась значительно позже 1907 года?',
+        '«Жмурки»',
+        '«Лапта»',
+        '«Резиночки»'
+    );
 
-    questionLoad.answerBlock(0, 'Точно!');
+    questionLoad.answerBlock(answerWrightNum,
+        'Игра «резиночки» стала известна и обрела большую популярность лишь в 1990 – х годах');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_4';
-            const questionNext_4_4 = document.getElementById('questionNext_4_4');
-            questionNext_4_4.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
+                    delay: 4,
                     onComplete: () => {
-                        wrapperBottomRight.removeChild(questionNext_4_4);
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        questionCat_4_5();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            questionCat_4_5();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerInsideRight,
-                        containerInsideLeft], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
+            }
         });
     }
-
 }
 
 function questionCat_4_5() {
-    questionLoad.questionBlockText(
-        'Царевна потчует гостей, каждому подносит пива и смотрит,... - тот ее и жених.',
-        'кто ей улыбнётся',
-        'кто утрётся ширинкой',
-        'у кого кольцо сверкнёт огоньком');
+    let answerWrightNum = 0;
 
-    arrowBackLoad.arrowNextHidden();
+    // if (localStorage.getItem('progressCat_1_0') === null ||
+    //     localStorage.getItem('progressCat_1_0') >= 0) {
+    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
+    // }
 
-    const
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden'),
-        containerPerson = document.querySelector('.container__person')
+    questionLoad.questionBlock(
+        'oa_grammofon.png',
+        'Антонина в саду часто играет с обручем. Эта игра называется?',
+        '«Серсо»',
+        '«Кольцо»',
+        '«Волчок»'
+    );
 
-    ;
-
-    questionLoad.answerBlock(1, 'Совершеноо верно!');
+    questionLoad.answerBlock(answerWrightNum,
+        '«Серсо» - так назывался обруч, который катали особой палочкой, считалось, что эта игра развивает у девочек грацию и красоту движений');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
         answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3]
+        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+        containerQuestBlock = document.querySelector('.container-quest'),
+        containerQuestTop = document.querySelector('.container-quest__top'),
+        containerQuestBottom = document.querySelector('.container-quest__bottom')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
-            wrapperBottomRight.appendChild(arrowNextClick);
-            arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-            arrowNextClick.id = 'questionNext_4_5';
-            const questionNext_4_5 = document.getElementById('questionNext_4_5');
-            questionNext_4_5.addEventListener('click', () => {
+            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
                 let tl = gsap.timeline({
+                    delay: 4,
                     onComplete: () => {
-                        wrapperBottomRight.removeChild(questionNext_4_5);
-                        containerBlockLeft.removeChild(containerInsideLeft);
-                        containerBlockRight.removeChild(containerInsideRight);
-                        container.removeChild(containerPerson);
-                        wrapper.removeChild(containerQuest);
-                        questionCat_4_6();
+                        wrapper.removeChild(containerQuestBlock);
+                        setTimeout(() => {
+                            // questionCat_1_5();
+                        }, questTimePaused);
                     }
                 });
                 tl
-                    .to([
-                        containerInsideRight,
-                        containerInsideLeft,
-                        containerQuest,
-                        containerPerson], {
+                    .to([containerQuestTop, containerQuestBottom], {
                         autoAlpha: 0,
-                        delay: '-0.1'
+                        delay: '1',
+                        y: '100%',
+                        stagger: '0.3'
                     })
                 ;
-            });
-        });
-    }
-
-}
-
-function questionCat_4_6() {
-    arrowBackLoad.arrowNextHidden();
-
-    const questionBack_2 = document.getElementById('questionBack_2'),
-        containerQuest = document.querySelector('.container-quest'),
-        wrapperBottomAll = document.querySelector('.wrapper__bottom'),
-        wrapperCategory = document.querySelector('.wrapper__category'),
-        wrapperBottomRight = document.querySelector('.wrapper__bottom_part--right'),
-        arrowNextClick = document.querySelector('.wrapper__service_arrow--hidden'),
-        containerDifference = document.createElement('div'),
-        findFrog = document.createElement('picture'),
-        wrapperBack = document.querySelector('.wrapper__back'),
-        wrapperBackCatFourth = document.querySelector('.wrapper__back_category--fourth'),
-        wrapperTop = document.querySelector('.wrapper__top'),
-        wrapperTopSubTitle = document.createElement('h2')
-    ;
-
-    containerDifference.className = 'container__difference';
-    wrapperTopSubTitle.className = 'wrapper__top_title-sub';
-    wrapperTopSubTitle.innerHTML = 'Найди царевну-лягушку';
-    wrapperTop.appendChild(wrapperTopSubTitle);
-    findFrog.id = 'frogSingle';
-    containerDifference.innerHTML = `
-        <img src="assets/games/magicFeather/images/mf_sivkoBurkoDifference.png" alt="Сивко-Бурко. Найди лягушку">
-    `;
-    findFrog.innerHTML = `
-        <img src="assets/games/magicFeather/images/mf_sivkoBurkoFrog.png" alt="Сивко-Бурко. Найди лягушку">
-    `;
-    container.appendChild(containerDifference);
-    containerDifference.appendChild(findFrog);
-    gsap.from(containerDifference, {
-        duration: 0.6,
-        autoAlpha: 0
-    });
-
-    const
-        wrapperTopTitle = document.querySelector('.wrapper__top_title'),
-        frogSingle = document.getElementById('frogSingle')
-    ;
-    frogSingle.addEventListener('click', () => {
-        let tl = gsap.timeline({
-            onComplete: () => {
-                wrapperBottomRight.appendChild(arrowNextClick);
-                arrowNextClick.className = 'wrapper__service_arrow wrapper__service_arrow--next';
-                arrowNextClick.id = 'questionNext_4_6';
-                const questionNext_4_6 = document.getElementById('questionNext_4_6');
-                questionNext_4_6.addEventListener('click', () => {
-                    let tl = gsap.timeline({
-                        onComplete: () => {
-                            wrapperBack.removeChild(wrapperBackCatFourth);
-                            wrapperTop.removeChild(wrapperTopTitle);
-                            wrapperTop.removeChild(wrapperTopSubTitle);
-                            wrapperBottomRight.removeChild(questionNext_4_6);
-                            container.removeChild(containerDifference);
-                            questionCat_5_0();
-                        }
-                    });
-                    tl
-                        .to(containerDifference, {
-                            autoAlpha: 0,
-                            delay: '-0.1'
-                        })
-                        .to([
-                            wrapperBackCatFourth,
-                            wrapperTopTitle,
-                            wrapperTopSubTitle], {
-                            duration: 0.3,
-                            autoAlpha: 0
-                        })
-                    ;
-                });
             }
         });
-        tl
-            .to(frogSingle, {
-                duration: 0.3,
-                autoAlpha: 1
-            })
-        ;
-    });
+    }
 }
