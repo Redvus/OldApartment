@@ -339,7 +339,11 @@ function questionCat_2_5() {
         answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
         containerQuestBlock = document.querySelector('.container-quest'),
         containerQuestTop = document.querySelector('.container-quest__top'),
-        containerQuestBottom = document.querySelector('.container-quest__bottom')
+        containerQuestBottom = document.querySelector('.container-quest__bottom'),
+        wrapperBack = document.querySelector('.wrapper__back'),
+        wrapperCatBack = document.querySelector('.wrapper__back_category'),
+        wrapperTop = document.querySelector('.wrapper__top'),
+        wrapperCatTitle = document.querySelector('.wrapper__top_title')
     ;
 
     for (let i = 0; i < answerVarArray.length; i++) {
@@ -357,17 +361,33 @@ function questionCat_2_5() {
                     delay: 4,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
+                        wrapperBack.removeChild(wrapperCatBack);
+                        wrapperTop.removeChild(wrapperCatTitle);
                         setTimeout(() => {
-                            // questionCat_1_5();
+                            catBedRoomLoad();
                         }, questTimePaused);
                     }
                 });
                 tl
-                    .to([containerQuestTop, containerQuestBottom], {
+                    .to([
+                        containerQuestTop,
+                        containerQuestBottom], {
                         autoAlpha: 0,
                         delay: '1',
                         y: '100%',
                         stagger: '0.3'
+                    })
+                    .to(wrapperCatTitle, {
+                        duration: '0.3',
+                        delay: '-0.1',
+                        autoAlpha: 0,
+                        y: '-10%'
+                    })
+                    .to(wrapperCatBack, {
+                        autoAlpha: 0,
+                        duration: '0.6',
+                        delay: '-0.1',
+                        scale: 1.05
                     })
                 ;
             }

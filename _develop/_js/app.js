@@ -455,9 +455,8 @@ function init() {
     // authorsStart();
     // aboutStart();
     // writerStart();
-    familyDev();
-    // questionCat_1_0();
-    // catLivingRoomLoad();
+    // familyDev();
+    catLivingRoomLoad();
     // catOfficeRoomLoad();
     // catBedRoomLoad();
     // catChildRoomLoad();

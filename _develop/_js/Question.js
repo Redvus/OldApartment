@@ -128,7 +128,114 @@ class Question {
                 })
             ;
         }
-        questionBlockAnim();
+        // questionBlockAnim();
+    }
+
+    questionBlockFind(
+        questItemIcon_1,
+        questItemIcon_2,
+        questItemIcon_3) {
+
+        const
+            containerQuest = document.createElement('div'),
+            containerQuestBottom = document.createElement('div'),
+            wrapperCategoryBack = document.querySelector('.wrapper__back_category'),
+            wrapperBack = document.querySelector('.wrapper__back'),
+            wrapperCategoryTitle = document.querySelector('.wrapper__top_title'),
+            wrapperTop = document.querySelector('.wrapper__top'),
+            containerQuestBottomCells = document.createElement('ul'),
+            containerQuestBottomText = document.createElement('div')
+        ;
+
+        containerQuest.className = 'container-quest';
+        containerQuestBottom.className = 'container-quest__bottom';
+        containerQuestBottomCells.className = 'container-quest__bottom_cells';
+        containerQuestBottomText.className = 'container-quest__bottom_text';
+
+        containerQuestBottomText.innerHTML = `
+            <p class="container-quest__bottom_text--quest">Найдите три предмета, не соответствующие эпохе</p>
+        `;
+
+        containerQuestBottomCells.innerHTML = `
+            <li id="cellVar_1"><img src="assets/games/oldApartment/images/${questItemIcon_1}.png" alt=""></li>
+            <li id="cellVar_2"><img src="assets/games/oldApartment/images/${questItemIcon_2}.png" alt=""></li>
+            <li id="cellVar_3"><img src="assets/games/oldApartment/images/${questItemIcon_3}.png" alt=""></li>
+        `;
+
+        wrapper.appendChild(containerQuest);
+        containerQuest.appendChild(containerQuestBottom);
+
+        arrowBackLoad.arrowBackQuest();
+        arrowBackLoad.arrowSetting();
+
+        const
+            cellVar_1 = document.getElementById('cellVar_1'),
+            cellVar_2 = document.getElementById('cellVar_2'),
+            cellVar_3 = document.getElementById('cellVar_3'),
+            cellVarList = [cellVar_1, cellVar_2, cellVar_3]
+        ;
+
+        containerQuestBottom.appendChild(containerQuestBottomText);
+        containerQuestBottom.appendChild(containerQuestBottomCells);
+
+        const
+            arrowBackClick = document.getElementById('arrowBack'),
+            settingsClick = document.getElementById('settingsClick'),
+            containerQuestBlock = document.querySelector('.container-quest'),
+            containerQuestBottomTextDiv = document.querySelector('.container-quest__bottom_text'),
+            containerQuestBottomButton = document.querySelectorAll('.container-quest__bottom_buttons > li')
+        ;
+
+        arrowBackClick.addEventListener('click', () => {
+            let tl = gsap.timeline({
+                onComplete: () => {
+                    wrapperTop.removeChild(wrapperCategoryTitle);
+                    wrapper.removeChild(containerQuestBlock);
+                    wrapperBack.removeChild(wrapperCategoryBack);
+                    introDev();
+                }
+            });
+            tl
+                .to([
+                    arrowBackClick,
+                    settingsClick,
+                    wrapperCategoryTitle,
+                    containerQuestBlock], {
+                    autoAlpha: 0,
+                    delay: '-0.1'
+                })
+                .to(wrapperCategoryBack, {
+                    autoAlpha: 0,
+                    duration: '0.6',
+                    delay: '-0.1',
+                    scale: 1.05
+                })
+            ;
+        });
+
+        function questionBlockAnim() {
+            let tl = gsap.timeline();
+            tl
+                .from(containerQuestBottom, {
+                    autoAlpha: 0,
+                    duration: 0.4,
+                    delay: 0.2,
+                    y: '100%'
+                })
+                .from(containerQuestBottomTextDiv, {
+                    autoAlpha: 0,
+                    duration: 0.4,
+                    delay: '-0.2'
+                })
+                .from(containerQuestBottomButton, {
+                    autoAlpha: 0,
+                    duration: 0.4,
+                    delay: '-0.4',
+                    stagger: '0.05'
+                })
+            ;
+        }
+        // questionBlockAnim();
     }
 
     answerBlock(answerVarNum, answerFull) {
@@ -172,8 +279,13 @@ class Question {
                             <span>${answerRightVarView}</span>
                         `;
                     }
+                    gsap.from(questionBlock, {
+                        duration: '0.4',
+                        delay: '0.1',
+                        autoAlpha: 0,
+                    });
                     answerLiRight[i].className += 'container-quest__bottom_buttons--right';
-                    // soundsLoad.rightAnswer('assets/games/kraevedia/sounds/cp_rightAnswer.ogg');
+                    soundsLoad.rightAnswer('assets/games/oldApartment/sounds/rightAnswer_1.ogg');
                 });
             } else if (answerVarArray[i] !== answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {
