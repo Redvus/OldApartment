@@ -1,48 +1,38 @@
 class Category {
 
-    categoryQuest(
-        categoryTitle,
-        categoryBackID,
-        questItem_1,
-        questItem_2,
-        questItem_3) {
+    categoryQuest(categoryTitle, categoryBackID, categoryBackTopID) {
         const
             wrapperCategoryBack = document.createElement('div'),
             wrapperBack = document.querySelector('.wrapper__back'),
             wrapperCategoryTitle = document.createElement('div'),
             wrapperTop = document.querySelector('.wrapper__top'),
-            containerQuest = document.querySelector('.container-quest')
+            wrapperCategoryBackTop = document.createElement('div')
         ;
 
         wrapperCategoryBack.className = 'wrapper__back_category';
+        wrapperCategoryBackTop.className = 'wrapper__back_category';
         wrapperCategoryBack.id = `${categoryBackID}`;
+        wrapperCategoryBackTop.id = `${categoryBackTopID}`;
         wrapperCategoryTitle.className = 'wrapper__top_title';
 
         wrapperBack.appendChild(wrapperCategoryBack);
+        wrapperBack.appendChild(wrapperCategoryBackTop);
         wrapperTop.appendChild(wrapperCategoryTitle);
-        container.appendChild(containerQuest);
 
         wrapperCategoryTitle.innerHTML = `
             <h1>${categoryTitle}</h1>
         `;
 
-        containerQuest.innerHTML = `
-            <img id="${questItem_1}" class="container-quest__item" src="assets/games/oldApartment/images/${questItem_1}.png" alt="">
-            <img id="${questItem_2}" class="container-quest__item" src="assets/games/oldApartment/images/${questItem_2}.png" alt="">
-            <img id="${questItem_3}" class="container-quest__item" src="assets/games/oldApartment/images/${questItem_3}.png" alt="">
-        `;
-
         const
             wrapperCatBack = document.querySelector('.wrapper__back_category'),
-            wrapperCatTitle = document.querySelector('.wrapper__top_title'),
-            containerQuestItem = document.querySelector('.container-quest__item')
+            wrapperCatTitle = document.querySelector('.wrapper__top_title')
         ;
 
         function catQuestAnim() {
             let tl = gsap.timeline();
 
             tl
-                .from([wrapperCatBack, containerQuestItem], {
+                .from(wrapperCatBack, {
                     duration: '0.6',
                     autoAlpha: 0,
                     // scale: '1.05'

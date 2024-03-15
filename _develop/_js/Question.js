@@ -128,13 +128,10 @@ class Question {
                 })
             ;
         }
-        // questionBlockAnim();
+        questionBlockAnim();
     }
 
-    questionBlockFind(
-        questItemIcon_1,
-        questItemIcon_2,
-        questItemIcon_3) {
+    questionBlockFind() {
 
         const
             containerQuest = document.createElement('div'),
@@ -156,24 +153,11 @@ class Question {
             <p class="container-quest__bottom_text--quest">Найдите три предмета, не соответствующие эпохе</p>
         `;
 
-        containerQuestBottomCells.innerHTML = `
-            <li id="cellVar_1"><img src="assets/games/oldApartment/images/${questItemIcon_1}.png" alt=""></li>
-            <li id="cellVar_2"><img src="assets/games/oldApartment/images/${questItemIcon_2}.png" alt=""></li>
-            <li id="cellVar_3"><img src="assets/games/oldApartment/images/${questItemIcon_3}.png" alt=""></li>
-        `;
-
         wrapper.appendChild(containerQuest);
         containerQuest.appendChild(containerQuestBottom);
 
         arrowBackLoad.arrowBackQuest();
         arrowBackLoad.arrowSetting();
-
-        const
-            cellVar_1 = document.getElementById('cellVar_1'),
-            cellVar_2 = document.getElementById('cellVar_2'),
-            cellVar_3 = document.getElementById('cellVar_3'),
-            cellVarList = [cellVar_1, cellVar_2, cellVar_3]
-        ;
 
         containerQuestBottom.appendChild(containerQuestBottomText);
         containerQuestBottom.appendChild(containerQuestBottomCells);
@@ -208,7 +192,7 @@ class Question {
                     autoAlpha: 0,
                     duration: '0.6',
                     delay: '-0.1',
-                    scale: 1.05
+                    // scale: 1.05
                 })
             ;
         });

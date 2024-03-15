@@ -6,12 +6,12 @@ const
     questTimePaused = 300
 ;
 
-// if (localStorage.getItem('mfDifferenceQuest_1_6') === null
-//     || localStorage.getItem('mfDifferenceQuest_1_6') >= 7
-//     || localStorage.getItem('mfDifferenceQuest_1_6') <= 7) {
-//     localStorage.setItem('mfDifferenceQuest_1_6', JSON.stringify(0));
-// }
-//
+if (localStorage.getItem('livingRoomQuest_1_0') === null
+    || localStorage.getItem('livingRoomQuest_1_0') >= 3
+    || localStorage.getItem('livingRoomQuest_1_0') <= 3) {
+    localStorage.setItem('livingRoomQuest_1_0', JSON.stringify(0));
+}
+
 // if (localStorage.getItem('progressCat') === null ||
 //     localStorage.getItem('progressCat') >= 0) {
 //     localStorage.setItem('progressCat', JSON.stringify(0));
@@ -30,54 +30,90 @@ function questionCat_1_0() {
     //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
     // }
 
-    questionLoad.questionBlockFind(
-        'oa_itemLivingIcon_1',
-        'oa_itemLiving_1',
-        'oa_itemLivingIcon_2',
-        'oa_itemLiving_2',
-        'oa_itemLivingIcon_3',
-        'oa_itemLiving_3'
-    );
+    questionLoad.questionBlockFind();
 
-    let answerVar_1 = document.getElementById('answerVar_1'),
-        answerVar_2 = document.getElementById('answerVar_2'),
-        answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+    const
+        containerQuest = document.querySelector('.container-quest'),
+        containerQuestBottomCells = document.querySelector('.container-quest__bottom_cells'),
         containerQuestBlock = document.querySelector('.container-quest'),
-        containerQuestTop = document.querySelector('.container-quest__top'),
-        containerQuestBottom = document.querySelector('.container-quest__bottom')
+        containerQuestBottom = document.querySelector('.container-quest__bottom'),
+        categoryLivingRoomTop = document.getElementById('categoryLivingRoomTop'),
+        wrapperBack = document.querySelector('.wrapper__back')
     ;
 
-    // for (let i = 0; i < answerVarArray.length; i++) {
-    //     answerVarArray[i].addEventListener('click', () => {
-    //         if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-    //             // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-    //             // let progressCat_1 = progressCat_1_0 + 1;
-    //             // let progressCatSum = progressCat_1 + progressCat_1_0;
-    //
-    //             // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-    //             // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-    //             // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
-    //
-    //             let tl = gsap.timeline({
-    //                 onComplete: () => {
-    //                     wrapper.removeChild(containerQuestBlock);
-    //                     setTimeout(() => {
-    //                         questionCat_1_1();
-    //                     }, questTimePaused);
-    //                 }
-    //             });
-    //             tl
-    //                 .to([containerQuestTop, containerQuestBottom], {
-    //                     autoAlpha: 0,
-    //                     delay: '1',
-    //                     y: '100%',
-    //                     stagger: '0.3'
-    //                 })
-    //             ;
-    //         }
-    //     });
-    // }
+    containerQuestBottomCells.innerHTML = `
+        <li  class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemLivingIcon_1.png" id="cellVar_1" alt=""></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemLivingIcon_2.png" id="cellVar_2" alt=""></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemLivingIcon_3.png" id="cellVar_3" alt=""></li>
+    `;
+
+    container.innerHTML = `
+        <div id="oa_itemLiving_1"></div>
+        <div id="oa_itemLiving_2"></div>
+        <div id="oa_itemLiving_3"></div>
+    `;
+
+    const
+        cellVar_1 = document.getElementById('cellVar_1'),
+        cellVar_2 = document.getElementById('cellVar_2'),
+        cellVar_3 = document.getElementById('cellVar_3'),
+        cellVarList = [cellVar_1, cellVar_2, cellVar_3],
+        itemLiving_1 = document.getElementById('oa_itemLiving_1'),
+        itemLiving_2 = document.getElementById('oa_itemLiving_2'),
+        itemLiving_3 = document.getElementById('oa_itemLiving_3'),
+        itemLivingList = [itemLiving_1, itemLiving_2, itemLiving_3]
+    ;
+
+    let containerQuestItem = document.querySelector('.container-quest__item');
+    gsap.from(containerQuestItem, {
+        autoAlpha: 0,
+        duration: '0.6',
+        delay: '0.05'
+    });
+
+    for (let i = 0; i < itemLivingList.length; i++) {
+        itemLivingList[i].addEventListener('click', () => {
+            let livingRoomQuest_1_0 = JSON.parse(localStorage.getItem('livingRoomQuest_1_0'));
+            let livingRoomQuest_1_0_sum = livingRoomQuest_1_0 + 1;
+            localStorage.setItem('livingRoomQuest_1_0', JSON.stringify(livingRoomQuest_1_0_sum));
+            gsap.to(cellVarList[i], {
+                autoAlpha: 1,
+                scale: 1
+            })
+
+            if (livingRoomQuest_1_0_sum === 3) {
+                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
+                // let progressCat_1 = progressCat_1_0 + 1;
+                // let progressCatSum = progressCat_1 + progressCat_1_0;
+
+                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
+                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+
+                let tl = gsap.timeline({
+                    onComplete: () => {
+                        wrapper.removeChild(containerQuestBlock);
+                        wrapperBack.removeChild(categoryLivingRoomTop);
+                        setTimeout(() => {
+                            questionCat_1_1();
+                        }, questTimePaused);
+                    }
+                });
+                tl
+                    .to(categoryLivingRoomTop, {
+                        duration: '0.3',
+                        delay: '0.3',
+                        autoAlpha: 0
+                    })
+                    .to(containerQuestBottom, {
+                        autoAlpha: 0,
+                        delay: '0.3',
+                        y: '100%'
+                    })
+                ;
+            }
+        });
+    }
 
 }
 

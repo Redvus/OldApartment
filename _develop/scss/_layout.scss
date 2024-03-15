@@ -198,7 +198,7 @@
 		left: 0;
 		bottom: 0;
 		margin: 0 calc((100vw - #{$containerWidth}) / 2);
-		z-index: 3;
+		z-index: 10;
 		//opacity: 0;
 
 		&_menu {
@@ -319,6 +319,11 @@
 
 		#categoryLivingRoom {
 			background: url("../images/oa_livingRoom.jpg") 50% 0 no-repeat;
+			background-size: auto 100%;
+		}
+
+		#categoryLivingRoomTop {
+			background: url("../images/oa_livingRoom_1.jpg") 50% 0 no-repeat;
 			background-size: auto 100%;
 		}
 
@@ -641,7 +646,9 @@
 }
 
 .container {
+	//width: 100vw;
 	width: $containerWidth;
+	//height: 100vh;
 	height: $containerHeight;
 	display: flex;
 	align-items: center;
@@ -651,7 +658,7 @@
 	margin-top: -7vh;
 	transform: translate(-50%, -50%);
 	//background-color: cornflowerblue;
-	z-index: 5;
+	z-index: 11;
 
 	&--about {
 		width: $containerAboutWidth;
@@ -829,6 +836,19 @@
 					}
 				}
 			}
+
+			&_icon {
+
+				img {
+					opacity: 0;
+					transform: scale(1.1);
+				}
+			}
+		}
+
+		&__item {
+			opacity: 0;
+			transform: scale(1.1);
 		}
 	}
 
@@ -1043,25 +1063,6 @@
 				//margin-bottom: calc(#{$paddingBase} / 2.5);
 				margin: 0 $paddingBase;
 			}
-		}
-	}
-
-	&__difference {
-		width: 100%;
-		height: auto;
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-
-		img {
-			width: 100%;
-			height: 100%;
-			display: block;
-			position: relative;
-			//object-position: top;
-			object-fit: cover;
 		}
 	}
 

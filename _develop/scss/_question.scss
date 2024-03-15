@@ -258,10 +258,31 @@
 }
 
 #oa_itemLiving_1 {
-    width: 13%;
-    height: auto;
+    width: 31vmin;
+    height: 15vmin;
     display: block;
     position: absolute;
-    left: 16%;
-    top: 11.5%;
+    left: 2%;
+    top: 40%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemLiving_2 {
+    width: 18vmin;
+    height: 7vmin;
+    display: block;
+    position: absolute;
+    left: 65%;
+    top: 11vmin;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemLiving_3 {
+    width: 25vmin;
+    height: 7vmin;
+    display: block;
+    position: absolute;
+    left: 97vmin;
+    top: 29.5vmin;
+    //background-color: rgba($fourth, 0.6);
 }

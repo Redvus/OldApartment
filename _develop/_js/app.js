@@ -428,7 +428,10 @@ function familyDev() {
 
 function catLivingRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest('Гостиная', 'categoryLivingRoom');
+    categoryLoad.categoryQuest(
+        'Гостиная',
+        'categoryLivingRoom',
+        'categoryLivingRoomTop');
     questionCat_1_0();
 }
 
