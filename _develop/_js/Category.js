@@ -2,7 +2,7 @@ class Category {
 
     categoryQuest(categoryTitle, categoryBackID, categoryBackTopID) {
         const
-            wrapperCategoryBack = document.createElement('div'),
+            wrapperCategoryBack = document.createElement('picture'),
             wrapperBack = document.querySelector('.wrapper__back'),
             wrapperCategoryTitle = document.createElement('div'),
             wrapperTop = document.querySelector('.wrapper__top'),
@@ -10,7 +10,7 @@ class Category {
         ;
 
         wrapperCategoryBack.className = 'wrapper__back_category';
-        wrapperCategoryBackTop.className = 'wrapper__back_category';
+        wrapperCategoryBackTop.className = 'wrapper__back_category wrapper__back_category--top';
         wrapperCategoryBack.id = `${categoryBackID}`;
         wrapperCategoryBackTop.id = `${categoryBackTopID}`;
         wrapperCategoryTitle.className = 'wrapper__top_title';

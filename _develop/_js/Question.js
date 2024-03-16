@@ -141,19 +141,22 @@ class Question {
             wrapperCategoryTitle = document.querySelector('.wrapper__top_title'),
             wrapperTop = document.querySelector('.wrapper__top'),
             containerQuestBottomCells = document.createElement('ul'),
-            containerQuestBottomText = document.createElement('div')
+            containerQuestBottomText = document.createElement('div'),
+            containerFind = document.createElement('div')
         ;
 
         containerQuest.className = 'container-quest';
         containerQuestBottom.className = 'container-quest__bottom';
         containerQuestBottomCells.className = 'container-quest__bottom_cells';
         containerQuestBottomText.className = 'container-quest__bottom_text';
+        containerFind.className = 'container-find';
 
         containerQuestBottomText.innerHTML = `
             <p class="container-quest__bottom_text--quest">Найдите три предмета, не соответствующие эпохе</p>
         `;
 
         wrapper.appendChild(containerQuest);
+        wrapper.appendChild(containerFind);
         containerQuest.appendChild(containerQuestBottom);
 
         arrowBackLoad.arrowBackQuest();
@@ -167,7 +170,9 @@ class Question {
             settingsClick = document.getElementById('settingsClick'),
             containerQuestBlock = document.querySelector('.container-quest'),
             containerQuestBottomTextDiv = document.querySelector('.container-quest__bottom_text'),
-            containerQuestBottomButton = document.querySelectorAll('.container-quest__bottom_buttons > li')
+            containerQuestBottomButton = document.querySelectorAll('.container-quest__bottom_buttons > li'),
+            wrapperCategoryBackTop = document.querySelector('.wrapper__back_category--top'),
+            containerFindBlock = document.querySelector('.container-find')
         ;
 
         arrowBackClick.addEventListener('click', () => {
@@ -176,6 +181,8 @@ class Question {
                     wrapperTop.removeChild(wrapperCategoryTitle);
                     wrapper.removeChild(containerQuestBlock);
                     wrapperBack.removeChild(wrapperCategoryBack);
+                    wrapperBack.removeChild(wrapperCategoryBackTop);
+                    wrapper.removeChild(containerFindBlock);
                     introDev();
                 }
             });
@@ -188,7 +195,7 @@ class Question {
                     autoAlpha: 0,
                     delay: '-0.1'
                 })
-                .to(wrapperCategoryBack, {
+                .to([wrapperCategoryBack, wrapperCategoryBackTop, containerFindBlock], {
                     autoAlpha: 0,
                     duration: '0.6',
                     delay: '-0.1',

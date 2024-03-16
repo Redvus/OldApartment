@@ -33,7 +33,7 @@ function questionCat_1_0() {
     questionLoad.questionBlockFind();
 
     const
-        containerQuest = document.querySelector('.container-quest'),
+        containerFind = document.querySelector('.container-find'),
         containerQuestBottomCells = document.querySelector('.container-quest__bottom_cells'),
         containerQuestBlock = document.querySelector('.container-quest'),
         containerQuestBottom = document.querySelector('.container-quest__bottom'),
@@ -47,7 +47,7 @@ function questionCat_1_0() {
         <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemLivingIcon_3.png" id="cellVar_3" alt=""></li>
     `;
 
-    container.innerHTML = `
+    containerFind.innerHTML = `
         <div id="oa_itemLiving_1"></div>
         <div id="oa_itemLiving_2"></div>
         <div id="oa_itemLiving_3"></div>
@@ -61,7 +61,8 @@ function questionCat_1_0() {
         itemLiving_1 = document.getElementById('oa_itemLiving_1'),
         itemLiving_2 = document.getElementById('oa_itemLiving_2'),
         itemLiving_3 = document.getElementById('oa_itemLiving_3'),
-        itemLivingList = [itemLiving_1, itemLiving_2, itemLiving_3]
+        itemLivingList = [itemLiving_1, itemLiving_2, itemLiving_3],
+        containerFindBlock = document.querySelector('.container-find')
     ;
 
     let containerQuestItem = document.querySelector('.container-quest__item');
@@ -93,6 +94,7 @@ function questionCat_1_0() {
                 let tl = gsap.timeline({
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
+                        wrapper.removeChild(containerFindBlock);
                         wrapperBack.removeChild(categoryLivingRoomTop);
                         setTimeout(() => {
                             questionCat_1_1();
@@ -100,7 +102,7 @@ function questionCat_1_0() {
                     }
                 });
                 tl
-                    .to(categoryLivingRoomTop, {
+                    .to([categoryLivingRoomTop, containerFindBlock], {
                         duration: '0.3',
                         delay: '0.3',
                         autoAlpha: 0
@@ -157,7 +159,7 @@ function questionCat_1_1() {
                 // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
 
                 let tl = gsap.timeline({
-                    delay: 3,
+                    delay: 1,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -336,7 +338,7 @@ function questionCat_1_4() {
                 // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -374,7 +376,7 @@ function questionCat_1_5() {
     );
 
     questionLoad.answerBlock(answerWrightNum,
-        '9 (22) марта 1907 года самарский губернатор Владимир Якунин выдал гражданину города Орска М. Д. Спиридонову разрешение издавать в Самаре ежедневную газету «Прибой».');
+        '9 (22) марта 1907 года самарский губернатор Владимир Якунин выдал гражданину города Орска М.&nbsp;Д.&nbsp;Спиридонову разрешение издавать в Самаре ежедневную газету «Прибой».');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -401,7 +403,7 @@ function questionCat_1_5() {
                 // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         wrapperBack.removeChild(wrapperCatBack);

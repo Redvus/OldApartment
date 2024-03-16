@@ -437,19 +437,28 @@ function catLivingRoomLoad() {
 
 function catOfficeRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest('Кабинет', 'categoryOfficeRoom');
+    categoryLoad.categoryQuest(
+        'Кабинет',
+        'categoryOfficeRoom',
+        'categoryOfficeRoomTop');
     questionCat_2_0();
 }
 
 function catBedRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest('Спальня', 'categoryBedRoom');
+    categoryLoad.categoryQuest(
+        'Спальня',
+        'categoryBedRoom',
+        'categoryBedRoomTop');
     questionCat_3_0();
 }
 
 function catChildRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest('Детская', 'categoryChildRoom');
+    categoryLoad.categoryQuest(
+        'Детская',
+        'categoryChildRoom',
+        'categoryChildRoomTop');
     questionCat_4_0();
 }
 
@@ -459,8 +468,8 @@ function init() {
     // aboutStart();
     // writerStart();
     // familyDev();
-    catLivingRoomLoad();
-    // catOfficeRoomLoad();
+    // catLivingRoomLoad();
+    catOfficeRoomLoad();
     // catBedRoomLoad();
     // catChildRoomLoad();
 }
