@@ -258,14 +258,14 @@
 }
 
 #oa_itemLiving_1 {
-    width: 22vmin;
-    height: 16vmin;
-    display: block;
-    position: absolute;
-    left: 25%;
-    top: 45%;
-    //background-color: rgba($fourth, 0.6);
-}
+     width: 22vmin;
+     height: 16vmin;
+     display: block;
+     position: absolute;
+     left: 25%;
+     top: 45%;
+     //background-color: rgba($fourth, 0.6);
+ }
 
 #oa_itemLiving_2 {
     width: 20vmin;
@@ -284,5 +284,104 @@
     position: absolute;
     left: 80%;
     top: 47%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemOffice_1 {
+    width: 26vw;
+    height: 20vh;
+    display: block;
+    position: absolute;
+    left: 42%;
+    top: 63%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+ }
+
+#oa_itemOffice_2 {
+    width: 15vw;
+    height: 9vh;
+    display: block;
+    position: absolute;
+    left: 58%;
+    top: 89%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemOffice_3 {
+    width: 21vw;
+    height: 22vh;
+    display: block;
+    position: absolute;
+    left: 75%;
+    top: 47%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemBed_1 {
+    width: 23vw;
+    height: 12vh;
+    display: block;
+    position: absolute;
+    left: 1vw;
+    top: 13%;
+    transform-origin: 100% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemBed_2 {
+    width: 23vw;
+    height: 9vh;
+    display: block;
+    position: absolute;
+    left: 3%;
+    top: 59%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemBed_3 {
+    width: 20vw;
+    height: 10vh;
+    display: block;
+    position: absolute;
+    left: 0%;
+    top: 97%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemChild_1 {
+    width: 15vw;
+    height: 20vh;
+    display: block;
+    position: absolute;
+    left: 17vw;
+    top: 42%;
+    transform-origin: 100% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemChild_2 {
+    width: 22vw;
+    height: 35vh;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 50% 50%;
+    //background-color: rgba($fourth, 0.6);
+}
+
+#oa_itemChild_3 {
+    width: 25vw;
+    height: 40vh;
+    display: block;
+    position: absolute;
+    left: 73%;
+    top: 17%;
+    transform-origin: 50% 50%;
     //background-color: rgba($fourth, 0.6);
 }

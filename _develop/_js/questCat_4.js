@@ -1,88 +1,113 @@
-// Кабинет
+// Детская
 
-// if (localStorage.getItem('mfDifferenceQuest_1_6') === null
-//     || localStorage.getItem('mfDifferenceQuest_1_6') >= 7
-//     || localStorage.getItem('mfDifferenceQuest_1_6') <= 7) {
-//     localStorage.setItem('mfDifferenceQuest_1_6', JSON.stringify(0));
-// }
-//
-// if (localStorage.getItem('progressCat') === null ||
-//     localStorage.getItem('progressCat') >= 0) {
-//     localStorage.setItem('progressCat', JSON.stringify(0));
-// }
-//
-// if (localStorage.getItem('progressCat_1') === null ||
-//     localStorage.getItem('progressCat_1') >= 0) {
-//     localStorage.setItem('progressCat_1', JSON.stringify(0));
-// }
+if (localStorage.getItem('childRoomQuest_4_0') === null
+    || localStorage.getItem('childRoomQuest_4_0') >= 3
+    || localStorage.getItem('childRoomQuest_4_0') <= 3) {
+    localStorage.setItem('childRoomQuest_4_0', JSON.stringify(0));
+}
 
 function questionCat_4_0() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_0') === null ||
+        localStorage.getItem('progressOldApartment_4_0') >= 0) {
+        localStorage.setItem('progressOldApartment_4_0', JSON.stringify(0));
+    }
 
-    questionLoad.questionBlock(
-        'oa_grammofon.png',
-        'Пётр Иванович свою продукцию поставляет в магазины, которые расположеныв центре города. Назовите эту площадь Самары и её современное название(если оно менялось)',
-        'Хлебная площадь',
-        'Алексеевская площадь',
-        'Красная площадь'
-    );
+    questionLoad.questionBlockFind();
 
-    questionLoad.answerBlock(0);
-
-    let answerVar_1 = document.getElementById('answerVar_1'),
-        answerVar_2 = document.getElementById('answerVar_2'),
-        answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+    const
+        containerFind = document.querySelector('.container-find'),
+        containerQuestBottomCells = document.querySelector('.container-quest__bottom_cells'),
         containerQuestBlock = document.querySelector('.container-quest'),
-        containerQuestTop = document.querySelector('.container-quest__top'),
-        containerQuestBottom = document.querySelector('.container-quest__bottom')
+        containerQuestBottom = document.querySelector('.container-quest__bottom'),
+        categoryChildRoomTop = document.getElementById('categoryChildRoomTop'),
+        wrapperBack = document.querySelector('.wrapper__back')
     ;
 
-    for (let i = 0; i < answerVarArray.length; i++) {
-        answerVarArray[i].addEventListener('click', () => {
-            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
+    containerQuestBottomCells.innerHTML = `
+        <li  class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemChildIcon_1.png" id="cellVar_1" alt="oa_itemChildIcon_1.png"></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemChildIcon_2.png" id="cellVar_2" alt="oa_itemChildIcon_2.png"></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemChildIcon_3.png" id="cellVar_3" alt="oa_itemChildIcon_3.png"></li>
+    `;
 
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+    containerFind.innerHTML = `
+        <div id="oa_itemChild_1"></div>
+        <div id="oa_itemChild_2"></div>
+        <div id="oa_itemChild_3"></div>
+    `;
+
+    const
+        cellVar_1 = document.getElementById('cellVar_1'),
+        cellVar_2 = document.getElementById('cellVar_2'),
+        cellVar_3 = document.getElementById('cellVar_3'),
+        cellVarList = [cellVar_1, cellVar_2, cellVar_3],
+        itemChild_1 = document.getElementById('oa_itemChild_1'),
+        itemChild_2 = document.getElementById('oa_itemChild_2'),
+        itemChild_3 = document.getElementById('oa_itemChild_3'),
+        itemChildList = [itemChild_1, itemChild_2, itemChild_3],
+        containerFindBlock = document.querySelector('.container-find')
+    ;
+
+    let containerQuestItem = document.querySelector('.container-quest__item');
+    gsap.from(containerQuestItem, {
+        autoAlpha: 0,
+        duration: '0.6',
+        delay: '0.05'
+    });
+
+    for (let i = 0; i < itemChildList.length; i++) {
+        itemChildList[i].addEventListener('click', () => {
+            let childRoomQuest_4_0 = JSON.parse(localStorage.getItem('childRoomQuest_4_0'));
+            let childRoomQuest_4_0_sum = childRoomQuest_4_0 + 1;
+            localStorage.setItem('childRoomQuest_4_0', JSON.stringify(childRoomQuest_4_0_sum));
+            gsap.to(cellVarList[i], {
+                autoAlpha: 1,
+                scale: 1
+            });
+            itemChildList[i].style.pointerEvents = 'none';
+
+            if (childRoomQuest_4_0_sum === 3) {
+                localStorage.setItem('progressOldApartment_4_0', JSON.stringify(1));
+                let progressOldApartment_4_0 = JSON.parse(localStorage.getItem('progressOldApartment_4_0'));
+                let progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_4 + progressOldApartment_4_0;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
+                        wrapper.removeChild(containerFindBlock);
+                        wrapperBack.removeChild(categoryChildRoomTop);
                         setTimeout(() => {
                             questionCat_4_1();
                         }, questTimePaused);
                     }
                 });
                 tl
-                    .to([containerQuestTop, containerQuestBottom], {
+                    .to([categoryChildRoomTop, containerFindBlock], {
+                        duration: '0.3',
+                        delay: '0.3',
+                        autoAlpha: 0
+                    })
+                    .to(containerQuestBottom, {
                         autoAlpha: 0,
-                        delay: '1',
-                        y: '100%',
-                        stagger: '0.3'
+                        delay: '0.3',
+                        y: '100%'
                     })
                 ;
             }
         });
     }
-
 }
 
 function questionCat_4_1() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_1') === null ||
+        localStorage.getItem('progressOldApartment_4_1') >= 0) {
+        localStorage.setItem('progressOldApartment_4_1', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -107,13 +132,11 @@ function questionCat_4_1() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_4_1', JSON.stringify(1));
+                let progressOldApartment_4_1 = JSON.parse(localStorage.getItem('progressOldApartment_4_1'));
+                let progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_4 + progressOldApartment_4_1;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
                     delay: 3,
@@ -140,10 +163,10 @@ function questionCat_4_1() {
 function questionCat_4_2() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_2') === null ||
+        localStorage.getItem('progressOldApartment_4_2') >= 0) {
+        localStorage.setItem('progressOldApartment_4_2', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -168,15 +191,14 @@ function questionCat_4_2() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_4_2', JSON.stringify(1));
+                let progressOldApartment_4_2 = JSON.parse(localStorage.getItem('progressOldApartment_4_2'));
+                let progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_4 + progressOldApartment_4_2;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -200,10 +222,10 @@ function questionCat_4_2() {
 function questionCat_4_3() {
     let answerWrightNum = 2;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_3') === null ||
+        localStorage.getItem('progressOldApartment_4_3') >= 0) {
+        localStorage.setItem('progressOldApartment_4_3', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -228,15 +250,14 @@ function questionCat_4_3() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_4_3', JSON.stringify(1));
+                let progressOldApartment_4_3 = JSON.parse(localStorage.getItem('progressOldApartment_4_3'));
+                let progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_4 + progressOldApartment_4_3;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -260,10 +281,10 @@ function questionCat_4_3() {
 function questionCat_4_4() {
     let answerWrightNum = 2;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_4') === null ||
+        localStorage.getItem('progressOldApartment_4_4') >= 0) {
+        localStorage.setItem('progressOldApartment_4_4', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -288,16 +309,14 @@ function questionCat_4_4() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_4_4', JSON.stringify(1));
+                let progressOldApartment_4_4 = JSON.parse(localStorage.getItem('progressOldApartment_4_4'));
+                let progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_4 + progressOldApartment_4_4;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
+                    delay: 2,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -321,10 +340,12 @@ function questionCat_4_4() {
 function questionCat_4_5() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_4_0') === null ||
+        localStorage.getItem('progressOldApartment_4_0') >= 0) {
+        localStorage.setItem('progressOldApartment_4_0', JSON.stringify(0));
+    }
+
+    const finalBlock = new Settings();
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -353,23 +374,71 @@ function questionCat_4_5() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_4_5', JSON.stringify(1));
+                let
+                    progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1')),
+                    progressOldApartment_2 = JSON.parse(localStorage.getItem('progressOldApartment_2')),
+                    progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3')),
+                    progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4')),
+                    progressOldApartment = JSON.parse(localStorage.getItem('progressOldApartment'))
+                ;
+                let progressOldApartment_4_5 = JSON.parse(localStorage.getItem('progressOldApartment_4_5'));
+                let progressOldApartment_4Sum = progressOldApartment_4 + progressOldApartment_4_5;
+                localStorage.setItem('progressOldApartment_4', JSON.stringify(progressOldApartment_4Sum));
+                let progressOldApartment_4End = JSON.parse(localStorage.getItem('progressOldApartment_4'));
+                let progressOldApartmentSum = progressOldApartment_1 + progressOldApartment_2 + progressOldApartment_3 + progressOldApartment_4End;
+                localStorage.setItem('progressOldApartment', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         wrapperBack.removeChild(wrapperCatBack);
                         wrapperTop.removeChild(wrapperCatTitle);
-                        setTimeout(() => {
-                            // catChildRoomLoad();
-                        }, questTimePaused);
+                        finalBlock.finalBlock();
+                        const
+                            settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
+                            settingsTextWrong = document.createElement('div'),
+                            settingsTextWright = document.createElement('div')
+                        ;
+                        settingsTextWrong.innerHTML = `
+                        <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
+                    `;
+                        settingsTextWright.innerHTML = `
+                        <p>Вы отлично справились, поздравляем!</p>
+                    `;
+                        if (progressOldApartment < 24) {
+                            settingsBlock.appendChild(settingsTextWrong);
+                        } else if (progressOldApartment === 24) {
+                            settingsBlock.appendChild(settingsTextWright);
+                        }
+
+                        const finalButtonBlock = document.getElementById('finalButton');
+
+                        finalButtonBlock.addEventListener('click', () => {
+                            const
+                                settingsBack = document.querySelector('.wrapper__lightbox'),
+                                settingsBlock = document.querySelector('.wrapper__lightbox_block--final')
+                            ;
+                            let tl = gsap.timeline({
+                                onComplete: () => {
+                                    wrapper.removeChild(settingsBack);
+                                    introDev();
+                                }
+                            });
+                            tl
+                                .to(settingsBack, {
+                                    duration: 0.3,
+                                    autoAlpha: 0
+                                })
+                                .to(settingsBlock, {
+                                    duration: 0.3,
+                                    delay: '-0.07',
+                                    y: '-5%',
+                                    autoAlpha: 0
+                                })
+                            ;
+                        });
                     }
                 });
                 tl

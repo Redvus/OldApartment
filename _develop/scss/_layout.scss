@@ -354,8 +354,18 @@
 			background-size: auto 100%;
 		}
 
+		#categoryBedRoomTop {
+			background: url("../images/oa_bedRoomTop.png") 50% 0 no-repeat;
+			background-size: auto 100%;
+		}
+
 		#categoryChildRoom {
 			background: url("../images/oa_childRoom.jpg") 50% 0 no-repeat;
+			background-size: auto 100%;
+		}
+
+		#categoryChildRoomTop {
+			background: url("../images/oa_childRoomTop.png") 50% 0 no-repeat;
 			background-size: auto 100%;
 		}
 	}
@@ -378,12 +388,17 @@
 			height: calc((#{$settingsWidth} / 1.335) - (#{$paddingBase} * 8));
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
+			justify-content: space-between;
 			position: relative;
 			background: no-repeat 50% / 100% 100% url("../images/oa_settingsBack.png");
 			margin-top: calc(-#{$paddingBase} * 6);
 			padding: calc(#{$paddingBase} * 4);
 			//transform: translate(-50%, -50%);
+			text-align: center;
+
+			&--final {
+				flex-direction: column-reverse;
+			}
 		}
 
 		&_title {
@@ -394,11 +409,11 @@
 			align-items: center;
 			justify-content: space-between;
 			position: relative;
-			margin-bottom: 2rem;
+			margin-bottom: 1rem;
 
 			&-text {
 				font-size: calc(#{$body-font-size} + 4vmin);
-				margin-top: 0.5rem;
+				//margin-top: 0.5rem;
 			}
 		}
 
@@ -413,8 +428,8 @@
 		}
 
 		&_button {
-			width: 100%;
-			height: 7vh;
+			width: calc(100% - 1rem);
+			height: 4rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -424,10 +439,12 @@
 			font-size: $font-size-h6;
 			text-align: center;
 			background: linear-gradient(lighten($primary, 10%), $primary);
-			margin-bottom: 1.5rem;
+			margin-right: 0.5rem;
+			padding: 0 0.5rem;
+			line-height: 1;
 
 			&:last-child {
-				margin-bottom: 0;
+				margin-right: 0;
 			}
 
 			&:hover {
@@ -473,7 +490,7 @@
 		}
 
 		#settingsText {
-			min-height: 12vh;
+			min-height: 4rem;
 		}
 	}
 

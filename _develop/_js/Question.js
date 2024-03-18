@@ -11,7 +11,8 @@ class Question {
             wrapperCategoryTitle = document.querySelector('.wrapper__top_title'),
             wrapperTop = document.querySelector('.wrapper__top'),
             containerQuestBottomText = document.createElement('div'),
-            containerQuestBottomButtons = document.createElement('ul')
+            containerQuestBottomButtons = document.createElement('ul'),
+            settingsLoad = new Settings()
         ;
 
         containerQuest.className = 'container-quest';
@@ -95,6 +96,68 @@ class Question {
             ;
         });
 
+        //Settings
+        settingsClick.addEventListener('click', () => {
+            settingsLoad.settingsBlock();
+            const settingsClearButton = document.getElementById('clearProgressButton'),
+                settingsBack = document.querySelector('.wrapper__lightbox'),
+                settingsBlock = document.querySelector('.wrapper__lightbox_block'),
+                settingsClose = document.getElementById('settingsCloseButton'),
+                settingsText = document.getElementById('settingsText'),
+                settingsToggleMusic = document.getElementById('turnOfSoundButton'),
+                settingsToggleMusicID = document.getElementById('backgroundMusicID'),
+                settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'));
+
+            // settingsClearButton.addEventListener('click', () => {
+            //     localStorage.clear();
+            // });
+
+            // settingsClearButton.addEventListener('mouseover', () => {
+            //     settingsText.textContent = 'Вы уверены?';
+            //     settingsClearButton.textContent = 'Да';
+            // });
+            //
+            // settingsClearButton.addEventListener('mouseleave', () => {
+            //     settingsText.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
+            //     settingsClearButton.textContent = 'Сбросить прогресс';
+            // });
+
+            // if (localStorage.getItem('backgroundMusic') === '0') {
+            //     settingsToggleMusic.textContent = 'Включить музыку';
+            // }
+
+            // settingsToggleMusic.addEventListener('click', () => {
+            //     if (settingsToggleMusicID.paused || settingsMusicValue === '0') {
+            //         settingsToggleMusicID.play();
+            //         settingsToggleMusic.textContent = 'Выключить музыку';
+            //         localStorage.setItem('backgroundMusic', JSON.stringify(1));
+            //     } else if (settingsToggleMusicID.play || settingsMusicValue === '1'){
+            //         settingsToggleMusicID.pause();
+            //         settingsToggleMusic.textContent = 'Включить музыку';
+            //         localStorage.setItem('backgroundMusic', JSON.stringify(0));
+            //     }
+            // });
+
+            settingsClose.addEventListener('click', () => {
+                let tl = gsap.timeline({
+                    onComplete: () => {
+                        wrapper.removeChild(settingsBack);
+                    }
+                });
+                tl
+                    .to(settingsBlock, {
+                        duration: 0.3,
+                        y: '5%',
+                        autoAlpha: 0
+                    })
+                    .to(settingsBack, {
+                        duration: 0.3,
+                        autoAlpha: 0
+                    })
+                ;
+            });
+        });
+
         function questionBlockAnim() {
             let tl = gsap.timeline();
             tl
@@ -142,7 +205,8 @@ class Question {
             wrapperTop = document.querySelector('.wrapper__top'),
             containerQuestBottomCells = document.createElement('ul'),
             containerQuestBottomText = document.createElement('div'),
-            containerFind = document.createElement('div')
+            containerFind = document.createElement('div'),
+            settingsLoad = new Settings()
         ;
 
         containerQuest.className = 'container-quest';
@@ -204,6 +268,68 @@ class Question {
             ;
         });
 
+        //Settings
+        settingsClick.addEventListener('click', () => {
+            settingsLoad.settingsBlock();
+            const settingsClearButton = document.getElementById('clearProgressButton'),
+                settingsBack = document.querySelector('.wrapper__lightbox'),
+                settingsBlock = document.querySelector('.wrapper__lightbox_block'),
+                settingsClose = document.getElementById('settingsCloseButton'),
+                settingsText = document.getElementById('settingsText'),
+                settingsToggleMusic = document.getElementById('turnOfSoundButton'),
+                settingsToggleMusicID = document.getElementById('backgroundMusicID'),
+                settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'));
+
+            // settingsClearButton.addEventListener('click', () => {
+            //     localStorage.clear();
+            // });
+
+            // settingsClearButton.addEventListener('mouseover', () => {
+            //     settingsText.textContent = 'Вы уверены?';
+            //     settingsClearButton.textContent = 'Да';
+            // });
+            //
+            // settingsClearButton.addEventListener('mouseleave', () => {
+            //     settingsText.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
+            //     settingsClearButton.textContent = 'Сбросить прогресс';
+            // });
+
+            // if (localStorage.getItem('backgroundMusic') === '0') {
+            //     settingsToggleMusic.textContent = 'Включить музыку';
+            // }
+
+            // settingsToggleMusic.addEventListener('click', () => {
+            //     if (settingsToggleMusicID.paused || settingsMusicValue === '0') {
+            //         settingsToggleMusicID.play();
+            //         settingsToggleMusic.textContent = 'Выключить музыку';
+            //         localStorage.setItem('backgroundMusic', JSON.stringify(1));
+            //     } else if (settingsToggleMusicID.play || settingsMusicValue === '1'){
+            //         settingsToggleMusicID.pause();
+            //         settingsToggleMusic.textContent = 'Включить музыку';
+            //         localStorage.setItem('backgroundMusic', JSON.stringify(0));
+            //     }
+            // });
+
+            settingsClose.addEventListener('click', () => {
+                let tl = gsap.timeline({
+                    onComplete: () => {
+                        wrapper.removeChild(settingsBack);
+                    }
+                });
+                tl
+                    .to(settingsBlock, {
+                        duration: 0.3,
+                        y: '5%',
+                        autoAlpha: 0
+                    })
+                    .to(settingsBack, {
+                        duration: 0.3,
+                        autoAlpha: 0
+                    })
+                ;
+            });
+        });
+
         function questionBlockAnim() {
             let tl = gsap.timeline();
             tl
@@ -226,7 +352,7 @@ class Question {
                 })
             ;
         }
-        // questionBlockAnim();
+        questionBlockAnim();
     }
 
     answerBlock(answerVarNum, answerFull) {

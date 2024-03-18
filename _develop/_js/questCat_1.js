@@ -12,23 +12,13 @@ if (localStorage.getItem('livingRoomQuest_1_0') === null
     localStorage.setItem('livingRoomQuest_1_0', JSON.stringify(0));
 }
 
-// if (localStorage.getItem('progressCat') === null ||
-//     localStorage.getItem('progressCat') >= 0) {
-//     localStorage.setItem('progressCat', JSON.stringify(0));
-// }
-//
-// if (localStorage.getItem('progressCat_1') === null ||
-//     localStorage.getItem('progressCat_1') >= 0) {
-//     localStorage.setItem('progressCat_1', JSON.stringify(0));
-// }
-
 function questionCat_1_0() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_0') === null ||
+        localStorage.getItem('progressOldApartment_1_0') >= 0) {
+        localStorage.setItem('progressOldApartment_1_0', JSON.stringify(0));
+    }
 
     questionLoad.questionBlockFind();
 
@@ -80,16 +70,15 @@ function questionCat_1_0() {
             gsap.to(cellVarList[i], {
                 autoAlpha: 1,
                 scale: 1
-            })
+            });
+            itemLivingList[i].style.pointerEvents = 'none';
 
             if (livingRoomQuest_1_0_sum === 3) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_0', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_0 = JSON.parse(localStorage.getItem('progressOldApartment_1_0'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_0;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     onComplete: () => {
@@ -122,10 +111,10 @@ function questionCat_1_0() {
 function questionCat_1_1() {
     let answerWrightNum = 2;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_1') === null ||
+        localStorage.getItem('progressOldApartment_1_1') >= 0) {
+        localStorage.setItem('progressOldApartment_1_1', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -150,13 +139,11 @@ function questionCat_1_1() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_1', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_1 = JSON.parse(localStorage.getItem('progressOldApartment_1_1'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_1;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     delay: 1,
@@ -183,10 +170,10 @@ function questionCat_1_1() {
 function questionCat_1_2() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_2') === null ||
+        localStorage.getItem('progressOldApartment_1_2') >= 0) {
+        localStorage.setItem('progressOldApartment_1_2', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -210,13 +197,11 @@ function questionCat_1_2() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_2', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_2 = JSON.parse(localStorage.getItem('progressOldApartment_1_2'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_2;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     onComplete: () => {
@@ -242,10 +227,10 @@ function questionCat_1_2() {
 function questionCat_1_3() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_3') === null ||
+        localStorage.getItem('progressOldApartment_1_3') >= 0) {
+        localStorage.setItem('progressOldApartment_1_3', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -269,13 +254,11 @@ function questionCat_1_3() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_3', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_3 = JSON.parse(localStorage.getItem('progressOldApartment_1_3'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_3;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     onComplete: () => {
@@ -301,10 +284,10 @@ function questionCat_1_3() {
 function questionCat_1_4() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_4') === null ||
+        localStorage.getItem('progressOldApartment_1_4') >= 0) {
+        localStorage.setItem('progressOldApartment_1_4', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -329,13 +312,11 @@ function questionCat_1_4() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_4', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_4 = JSON.parse(localStorage.getItem('progressOldApartment_1_4'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_4;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     delay: 3,
@@ -362,10 +343,10 @@ function questionCat_1_4() {
 function questionCat_1_5() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_1_5') === null ||
+        localStorage.getItem('progressOldApartment_1_5') >= 0) {
+        localStorage.setItem('progressOldApartment_1_5', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -394,13 +375,11 @@ function questionCat_1_5() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_1_5', JSON.stringify(1));
+                let progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1'));
+                let progressOldApartment_1_5 = JSON.parse(localStorage.getItem('progressOldApartment_1_5'));
+                let progressOldApartment_1Sum = progressOldApartment_1 + progressOldApartment_1_5;
+                localStorage.setItem('progressOldApartment_1', JSON.stringify(progressOldApartment_1Sum));
 
                 let tl = gsap.timeline({
                     delay: 3,

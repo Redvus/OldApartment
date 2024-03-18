@@ -1,88 +1,115 @@
-// Кабинет
+// Спальня
 
-// if (localStorage.getItem('mfDifferenceQuest_1_6') === null
-//     || localStorage.getItem('mfDifferenceQuest_1_6') >= 7
-//     || localStorage.getItem('mfDifferenceQuest_1_6') <= 7) {
-//     localStorage.setItem('mfDifferenceQuest_1_6', JSON.stringify(0));
-// }
-//
-// if (localStorage.getItem('progressCat') === null ||
-//     localStorage.getItem('progressCat') >= 0) {
-//     localStorage.setItem('progressCat', JSON.stringify(0));
-// }
-//
-// if (localStorage.getItem('progressCat_1') === null ||
-//     localStorage.getItem('progressCat_1') >= 0) {
-//     localStorage.setItem('progressCat_1', JSON.stringify(0));
-// }
+if (localStorage.getItem('bedRoomQuest_3_0') === null
+    || localStorage.getItem('bedRoomQuest_3_0') >= 3
+    || localStorage.getItem('bedRoomQuest_3_0') <= 3) {
+    localStorage.setItem('bedRoomQuest_3_0', JSON.stringify(0));
+}
 
 function questionCat_3_0() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_0') === null ||
+        localStorage.getItem('progressOldApartment_3_0') >= 0) {
+        localStorage.setItem('progressOldApartment_3_0', JSON.stringify(0));
+    }
 
-    questionLoad.questionBlock(
-        'oa_grammofon.png',
-        'Пётр Иванович свою продукцию поставляет в магазины, которые расположеныв центре города. Назовите эту площадь Самары и её современное название(если оно менялось)',
-        'Хлебная площадь',
-        'Алексеевская площадь',
-        'Красная площадь'
-    );
+    questionLoad.questionBlockFind();
 
-    questionLoad.answerBlock(0);
-
-    let answerVar_1 = document.getElementById('answerVar_1'),
-        answerVar_2 = document.getElementById('answerVar_2'),
-        answerVar_3 = document.getElementById('answerVar_3'),
-        answerVarArray = [answerVar_1, answerVar_2, answerVar_3],
+    const
+        containerFind = document.querySelector('.container-find'),
+        containerQuestBottomCells = document.querySelector('.container-quest__bottom_cells'),
         containerQuestBlock = document.querySelector('.container-quest'),
-        containerQuestTop = document.querySelector('.container-quest__top'),
-        containerQuestBottom = document.querySelector('.container-quest__bottom')
+        containerQuestBottom = document.querySelector('.container-quest__bottom'),
+        categoryBedRoomTop = document.getElementById('categoryBedRoomTop'),
+        wrapperBack = document.querySelector('.wrapper__back')
     ;
 
-    for (let i = 0; i < answerVarArray.length; i++) {
-        answerVarArray[i].addEventListener('click', () => {
-            if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
+    containerQuestBottomCells.innerHTML = `
+        <li  class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemBedIcon_1.png" id="cellVar_1" alt="oa_itemBedIcon_1.png"></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemBedIcon_2.png" id="cellVar_2" alt="oa_itemBedIcon_1
+        2.png"></li>
+        <li class="container-quest__bottom_icon"><img src="assets/games/oldApartment/images/oa_itemBedIcon_3.png" id="cellVar_3" alt="oa_itemBedIcon_1
+       3.png"></li>
+    `;
 
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+    containerFind.innerHTML = `
+        <div id="oa_itemBed_1"></div>
+        <div id="oa_itemBed_2"></div>
+        <div id="oa_itemBed_3"></div>
+    `;
+
+    const
+        cellVar_1 = document.getElementById('cellVar_1'),
+        cellVar_2 = document.getElementById('cellVar_2'),
+        cellVar_3 = document.getElementById('cellVar_3'),
+        cellVarList = [cellVar_1, cellVar_2, cellVar_3],
+        itemBed_1 = document.getElementById('oa_itemBed_1'),
+        itemBed_2 = document.getElementById('oa_itemBed_2'),
+        itemBed_3 = document.getElementById('oa_itemBed_3'),
+        itemBedList = [itemBed_1, itemBed_2, itemBed_3],
+        containerFindBlock = document.querySelector('.container-find')
+    ;
+
+    let containerQuestItem = document.querySelector('.container-quest__item');
+    gsap.from(containerQuestItem, {
+        autoAlpha: 0,
+        duration: '0.6',
+        delay: '0.05'
+    });
+
+    for (let i = 0; i < itemBedList.length; i++) {
+        itemBedList[i].addEventListener('click', () => {
+            let bedRoomQuest_3_0 = JSON.parse(localStorage.getItem('bedRoomQuest_3_0'));
+            let bedRoomQuest_3_0_sum = bedRoomQuest_3_0 + 1;
+            localStorage.setItem('bedRoomQuest_3_0', JSON.stringify(bedRoomQuest_3_0_sum));
+            gsap.to(cellVarList[i], {
+                autoAlpha: 1,
+                scale: 1
+            });
+            itemBedList[i].style.pointerEvents = 'none';
+
+            if (bedRoomQuest_3_0_sum === 3) {
+                localStorage.setItem('progressOldApartment_3_0', JSON.stringify(1));
+                let progressOldApartment_3_0 = JSON.parse(localStorage.getItem('progressOldApartment_3_0'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_0;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
+                        wrapper.removeChild(containerFindBlock);
+                        wrapperBack.removeChild(categoryBedRoomTop);
                         setTimeout(() => {
                             questionCat_3_1();
                         }, questTimePaused);
                     }
                 });
                 tl
-                    .to([containerQuestTop, containerQuestBottom], {
+                    .to([categoryBedRoomTop, containerFindBlock], {
+                        duration: '0.3',
+                        delay: '0.3',
+                        autoAlpha: 0
+                    })
+                    .to(containerQuestBottom, {
                         autoAlpha: 0,
-                        delay: '1',
-                        y: '100%',
-                        stagger: '0.3'
+                        delay: '0.3',
+                        y: '100%'
                     })
                 ;
             }
         });
     }
-
 }
 
 function questionCat_3_1() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_1') === null ||
+        localStorage.getItem('progressOldApartment_3_1') >= 0) {
+        localStorage.setItem('progressOldApartment_3_1', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -92,7 +119,9 @@ function questionCat_3_1() {
         'Женская школа при монастыре'
     );
 
-    questionLoad.answerBlock(answerWrightNum);
+    // }
+
+    questionLoad.answerBlock(answerWrightNum, '');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -106,16 +135,13 @@ function questionCat_3_1() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_3_1', JSON.stringify(1));
+                let progressOldApartment_3_1 = JSON.parse(localStorage.getItem('progressOldApartment_3_1'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_1;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
-                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -139,21 +165,20 @@ function questionCat_3_1() {
 function questionCat_3_2() {
     let answerWrightNum = 0;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_2') === null ||
+        localStorage.getItem('progressOldApartment_3_2') >= 0) {
+        localStorage.setItem('progressOldApartment_3_2', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
         'В каком магазине самарские рукодельницы приобретают швейную машинку?',
-        'в магазине Гольдебаева',
-        'в фирменном магазине',
-        'заказать в Германии'
+        'В магазине Гольдебаева',
+        'В фирменном магазине',
+        'Заказать в Германии'
     );
 
-    questionLoad.answerBlock(answerWrightNum,
-        'Наряд можно было сшить на швейной машинке, купленной у Гольдебаева. У него же можно было научиться управляться с этим чудом техники. При магазине имелась и мастерская «для исправления швейных машин, даже старых, негодных, которые могут шить также, как шили новые».');
+    questionLoad.answerBlock(answerWrightNum, 'Наряд можно было сшить на швейной машинке, купленной у Гольдебаева. У него же можно было научиться управляться с этим чудом техники. При магазине имелась и мастерская «для исправления швейных машин, даже старых, негодных, которые могут шить также, как шили новые»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -167,15 +192,14 @@ function questionCat_3_2() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_3_2', JSON.stringify(1));
+                let progressOldApartment_3_2 = JSON.parse(localStorage.getItem('progressOldApartment_3_2'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_2;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
+                    delay: 4,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -199,21 +223,21 @@ function questionCat_3_2() {
 function questionCat_3_3() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_3') === null ||
+        localStorage.getItem('progressOldApartment_3_3') >= 0) {
+        localStorage.setItem('progressOldApartment_3_3', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
         'Шерсть из этого необыкновенного состава доступна самарским модницам:',
-        'Cинтетическая',
-        'Cосновая',
-        'Панская'
+        'Синтетическая',
+        'Сосновая',
+        'Паутинная'
     );
 
     questionLoad.answerBlock(answerWrightNum,
-        'Лесная или сосновая шерсть приготовляется из волокон, заключающихся в хвое сосен. Применение находит для изготовления тканей, ношение которых будто бы должно иметь целебное значение');
+        '«Лесная или сосновая шерсть приготовляется из волокон, заключающихся в хвое сосен. Применение находит для изготовления тканей, ношение которых будто бы должно иметь целебное значение»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -227,15 +251,14 @@ function questionCat_3_3() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_3_3', JSON.stringify(1));
+                let progressOldApartment_3_3 = JSON.parse(localStorage.getItem('progressOldApartment_3_3'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_3;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
+                    delay: 3,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -259,10 +282,10 @@ function questionCat_3_3() {
 function questionCat_3_4() {
     let answerWrightNum = 1;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_4') === null ||
+        localStorage.getItem('progressOldApartment_3_4') >= 0) {
+        localStorage.setItem('progressOldApartment_3_4', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -272,8 +295,7 @@ function questionCat_3_4() {
         'Устройство прачечное механическое'
     );
 
-    questionLoad.answerBlock(answerWrightNum,
-        'Водопроводная и техническая контора «Донат» предлагала устройство «паровых прачешень»');
+    questionLoad.answerBlock(answerWrightNum, 'Водопроводная и техническая контора «Донат» предлагала устройство «паровых прачешень»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -287,16 +309,13 @@ function questionCat_3_4() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_3_4', JSON.stringify(1));
+                let progressOldApartment_3_4 = JSON.parse(localStorage.getItem('progressOldApartment_3_4'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_4;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         setTimeout(() => {
@@ -318,12 +337,12 @@ function questionCat_3_4() {
 }
 
 function questionCat_3_5() {
-    let answerWrightNum = 0;
+    let answerWrightNum = 2;
 
-    // if (localStorage.getItem('progressCat_1_0') === null ||
-    //     localStorage.getItem('progressCat_1_0') >= 0) {
-    //     localStorage.setItem('progressCat_1_0', JSON.stringify(0));
-    // }
+    if (localStorage.getItem('progressOldApartment_3_5') === null ||
+        localStorage.getItem('progressOldApartment_3_5') >= 0) {
+        localStorage.setItem('progressOldApartment_3_5', JSON.stringify(0));
+    }
 
     questionLoad.questionBlock(
         'oa_grammofon.png',
@@ -333,7 +352,7 @@ function questionCat_3_5() {
         'Частных лавках'
     );
 
-    questionLoad.answerBlock(answerWrightNum);
+    questionLoad.answerBlock(answerWrightNum, 'Косметику и парфюмерию дамы приобретают в аптеках. Именно аптекарские магазины предлагают «духи английские и французские во флаконах и в развес, личную пудру»');
 
     let answerVar_1 = document.getElementById('answerVar_1'),
         answerVar_2 = document.getElementById('answerVar_2'),
@@ -351,16 +370,13 @@ function questionCat_3_5() {
     for (let i = 0; i < answerVarArray.length; i++) {
         answerVarArray[i].addEventListener('click', () => {
             if (answerVarArray[i] === answerVarArray[answerWrightNum]) {
-                // let progressCat_1_0 = JSON.parse(localStorage.getItem('progressCat_1_0'));
-                // let progressCat_1 = progressCat_1_0 + 1;
-                // let progressCatSum = progressCat_1 + progressCat_1_0;
-
-                // localStorage.setItem('progressCat_1_0', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat_1', JSON.stringify(progressCat_1));
-                // localStorage.setItem('progressCat', JSON.stringify(progressCatSum));
+                localStorage.setItem('progressOldApartment_3_5', JSON.stringify(1));
+                let progressOldApartment_3_5 = JSON.parse(localStorage.getItem('progressOldApartment_3_5'));
+                let progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3'));
+                let progressOldApartmentSum = progressOldApartment_3 + progressOldApartment_3_5;
+                localStorage.setItem('progressOldApartment_3', JSON.stringify(progressOldApartmentSum));
 
                 let tl = gsap.timeline({
-                    delay: 4,
                     onComplete: () => {
                         wrapper.removeChild(containerQuestBlock);
                         wrapperBack.removeChild(wrapperCatBack);

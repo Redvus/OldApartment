@@ -267,7 +267,16 @@ function familyDev() {
     const
         familyDevLoad = new Intro(),
         arrowBackLoad = new ArrowsAll(),
-        settingsLoad = new Settings()
+        settingsLoad = new Settings(),
+        finalBlock = new Settings()
+    ;
+
+    let
+        progressOldApartment_1 = JSON.parse(localStorage.getItem('progressOldApartment_1')),
+        progressOldApartment_2 = JSON.parse(localStorage.getItem('progressOldApartment_2')),
+        progressOldApartment_3 = JSON.parse(localStorage.getItem('progressOldApartment_3')),
+        progressOldApartment_4 = JSON.parse(localStorage.getItem('progressOldApartment_4')),
+        progressOldApartment = JSON.parse(localStorage.getItem('progressOldApartment'))
     ;
 
     familyDevLoad.familyStart();
@@ -343,7 +352,60 @@ function familyDev() {
                 container.removeChild(familyManBlock);
                 container.removeChild(familyWomanBlock);
                 container.removeChild(familyGirlBlock);
-                catLivingRoomLoad();
+                if (progressOldApartment_1 < 6) {
+                    catLivingRoomLoad();
+                } else if (progressOldApartment_1 === 6 && progressOldApartment_2 < 6) {
+                    catOfficeRoomLoad();
+                } else if (progressOldApartment_2 === 6 && progressOldApartment_3 < 6) {
+                    catBedRoomLoad();
+                } else if (progressOldApartment_3 === 6 && progressOldApartment_4 < 6) {
+                    catChildRoomLoad();
+                } else if (progressOldApartment === 24) {
+                    finalBlock.finalBlock();
+                    const
+                        settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
+                        settingsTextWrong = document.createElement('div'),
+                        settingsTextWright = document.createElement('div')
+                    ;
+                    settingsTextWrong.innerHTML = `
+                        <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
+                    `;
+                    settingsTextWright.innerHTML = `
+                        <p>Вы отлично справились, поздравляем!</p>
+                    `;
+                    if (progressOldApartment < 24) {
+                        settingsBlock.appendChild(settingsTextWrong);
+                    } else if (progressOldApartment === 24) {
+                        settingsBlock.appendChild(settingsTextWright);
+                    }
+
+                    const finalButtonBlock = document.getElementById('finalButton');
+
+                    finalButtonBlock.addEventListener('click', () => {
+                        const
+                            settingsBack = document.querySelector('.wrapper__lightbox'),
+                            settingsBlock = document.querySelector('.wrapper__lightbox_block--final')
+                        ;
+                        let tl = gsap.timeline({
+                            onComplete: () => {
+                                wrapper.removeChild(settingsBack);
+                                introDev();
+                            }
+                        });
+                        tl
+                            .to(settingsBack, {
+                                duration: 0.3,
+                                autoAlpha: 0
+                            })
+                            .to(settingsBlock, {
+                                duration: 0.3,
+                                delay: '-0.07',
+                                y: '-5%',
+                                autoAlpha: 0
+                            })
+                        ;
+                    });
+                }
             }
         });
         tl
@@ -366,28 +428,16 @@ function familyDev() {
     ;
     settingsButton.addEventListener('click', () => {
         settingsLoad.settingsBlock();
-        const settingsClearButton = document.getElementById('clearProgressButton'),
+
+        const
             settingsBack = document.querySelector('.wrapper__lightbox'),
             settingsBlock = document.querySelector('.wrapper__lightbox_block'),
             settingsClose = document.getElementById('settingsCloseButton'),
             settingsText = document.getElementById('settingsText'),
             settingsToggleMusic = document.getElementById('turnOfSoundButton'),
             settingsToggleMusicID = document.getElementById('backgroundMusicID'),
-            settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'));
-
-        // settingsClearButton.addEventListener('click', () => {
-        //     localStorage.clear();
-        // });
-
-        // settingsClearButton.addEventListener('mouseover', () => {
-        //     settingsText.textContent = 'Вы уверены?';
-        //     settingsClearButton.textContent = 'Да';
-        // });
-        //
-        // settingsClearButton.addEventListener('mouseleave', () => {
-        //     settingsText.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
-        //     settingsClearButton.textContent = 'Сбросить прогресс';
-        // });
+            settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'))
+        ;
 
         // if (localStorage.getItem('backgroundMusic') === '0') {
         //     settingsToggleMusic.textContent = 'Включить музыку';
@@ -428,38 +478,190 @@ function familyDev() {
 
 function catLivingRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest(
-        'Гостиная',
-        'categoryLivingRoom',
-        'categoryLivingRoomTop');
-    questionCat_1_0();
+    let
+        progressOldApartment_1_0 = JSON.parse(localStorage.getItem('progressOldApartment_1_0')),
+        progressOldApartment_1_1 = JSON.parse(localStorage.getItem('progressOldApartment_1_1')),
+        progressOldApartment_1_2 = JSON.parse(localStorage.getItem('progressOldApartment_1_2')),
+        progressOldApartment_1_3 = JSON.parse(localStorage.getItem('progressOldApartment_1_3')),
+        progressOldApartment_1_4 = JSON.parse(localStorage.getItem('progressOldApartment_1_4')),
+        progressOldApartment_1_5 = JSON.parse(localStorage.getItem('progressOldApartment_1_5'))
+    ;
+
+    if (progressOldApartment_1_0 === 0) {
+        categoryLoad.categoryQuest(
+            'Гостиная',
+            'categoryLivingRoom',
+            'categoryLivingRoomTop');
+    } else if (progressOldApartment_1_0 === 1) {
+        categoryLoad.categoryQuestSimple(
+            'Гостиная',
+            'categoryLivingRoom');
+    }
+
+    if (progressOldApartment_1_0 === 0) {
+        questionCat_1_0();
+    } else if (
+        progressOldApartment_1_1 === 0 &&
+        progressOldApartment_1_0 === 1) {
+        questionCat_1_1();
+    } else if (
+        progressOldApartment_1_2 === 0 &&
+        progressOldApartment_1_1 === 1) {
+        questionCat_1_2();
+    } else if (
+        progressOldApartment_1_3 === 0 &&
+        progressOldApartment_1_2 === 1) {
+        questionCat_1_3();
+    } else if (
+        progressOldApartment_1_4 === 0 &&
+        progressOldApartment_1_3 === 1) {
+        questionCat_1_4();
+    } else if (
+        progressOldApartment_1_5 === 0 &&
+        progressOldApartment_1_4 === 1) {
+        questionCat_1_5();
+    }
 }
 
 function catOfficeRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest(
-        'Кабинет',
-        'categoryOfficeRoom',
-        'categoryOfficeRoomTop');
-    questionCat_2_0();
+    let
+        progressOldApartment_2_0 = JSON.parse(localStorage.getItem('progressOldApartment_2_0')),
+        progressOldApartment_2_1 = JSON.parse(localStorage.getItem('progressOldApartment_2_1')),
+        progressOldApartment_2_2 = JSON.parse(localStorage.getItem('progressOldApartment_2_2')),
+        progressOldApartment_2_3 = JSON.parse(localStorage.getItem('progressOldApartment_2_3')),
+        progressOldApartment_2_4 = JSON.parse(localStorage.getItem('progressOldApartment_2_4')),
+        progressOldApartment_2_5 = JSON.parse(localStorage.getItem('progressOldApartment_2_5'))
+    ;
+
+    if (progressOldApartment_2_0 === 0) {
+        categoryLoad.categoryQuest(
+            'Кабинет',
+            'categoryOfficeRoom',
+            'categoryOfficeRoomTop');
+    } else if (progressOldApartment_2_0 === 1) {
+        categoryLoad.categoryQuestSimple(
+            'Кабинет',
+            'categoryOfficeRoom');
+    }
+
+    if (progressOldApartment_2_0 === 0) {
+        questionCat_2_0();
+    } else if (
+        progressOldApartment_2_1 === 0 &&
+        progressOldApartment_2_0 === 1) {
+        questionCat_2_1();
+    } else if (
+        progressOldApartment_2_2 === 0 &&
+        progressOldApartment_2_1 === 1) {
+        questionCat_2_2();
+    } else if (
+        progressOldApartment_2_3 === 0 &&
+        progressOldApartment_2_2 === 1) {
+        questionCat_2_3();
+    } else if (
+        progressOldApartment_2_4 === 0 &&
+        progressOldApartment_2_3 === 1) {
+        questionCat_2_4();
+    } else if (
+        progressOldApartment_2_5 === 0 &&
+        progressOldApartment_2_4 === 1) {
+        questionCat_2_5();
+    }
 }
 
 function catBedRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest(
-        'Спальня',
-        'categoryBedRoom',
-        'categoryBedRoomTop');
-    questionCat_3_0();
+    let
+        progressOldApartment_3_0 = JSON.parse(localStorage.getItem('progressOldApartment_3_0')),
+        progressOldApartment_3_1 = JSON.parse(localStorage.getItem('progressOldApartment_3_1')),
+        progressOldApartment_3_2 = JSON.parse(localStorage.getItem('progressOldApartment_3_2')),
+        progressOldApartment_3_3 = JSON.parse(localStorage.getItem('progressOldApartment_3_3')),
+        progressOldApartment_3_4 = JSON.parse(localStorage.getItem('progressOldApartment_3_4')),
+        progressOldApartment_3_5 = JSON.parse(localStorage.getItem('progressOldApartment_3_5'))
+    ;
+
+    if (progressOldApartment_3_0 === 0) {
+        categoryLoad.categoryQuest(
+            'Спальня',
+            'categoryBedRoom',
+            'categoryBedRoomTop');
+    } else if (progressOldApartment_3_0 === 1) {
+        categoryLoad.categoryQuestSimple(
+            'Спальня',
+            'categoryBedRoom');
+    }
+
+    if (progressOldApartment_3_0 === 0) {
+        questionCat_3_0();
+    } else if (
+        progressOldApartment_3_1 === 0 &&
+        progressOldApartment_3_0 === 1) {
+        questionCat_3_1();
+    } else if (
+        progressOldApartment_3_2 === 0 &&
+        progressOldApartment_3_1 === 1) {
+        questionCat_3_2();
+    } else if (
+        progressOldApartment_3_3 === 0 &&
+        progressOldApartment_3_2 === 1) {
+        questionCat_3_3();
+    } else if (
+        progressOldApartment_3_4 === 0 &&
+        progressOldApartment_3_3 === 1) {
+        questionCat_3_4();
+    } else if (
+        progressOldApartment_3_5 === 0 &&
+        progressOldApartment_3_4 === 1) {
+        questionCat_3_5();
+    }
 }
 
 function catChildRoomLoad() {
     const categoryLoad = new Category();
-    categoryLoad.categoryQuest(
-        'Детская',
-        'categoryChildRoom',
-        'categoryChildRoomTop');
-    questionCat_4_0();
+    let
+        progressOldApartment_4_0 = JSON.parse(localStorage.getItem('progressOldApartment_4_0')),
+        progressOldApartment_4_1 = JSON.parse(localStorage.getItem('progressOldApartment_4_1')),
+        progressOldApartment_4_2 = JSON.parse(localStorage.getItem('progressOldApartment_4_2')),
+        progressOldApartment_4_3 = JSON.parse(localStorage.getItem('progressOldApartment_4_3')),
+        progressOldApartment_4_4 = JSON.parse(localStorage.getItem('progressOldApartment_4_4')),
+        progressOldApartment_4_5 = JSON.parse(localStorage.getItem('progressOldApartment_4_5'))
+    ;
+
+    if (progressOldApartment_4_0 === 0) {
+        categoryLoad.categoryQuest(
+            'Детская',
+            'categoryChildRoom',
+            'categoryChildRoomTop');
+    } else if (progressOldApartment_4_0 === 1) {
+        categoryLoad.categoryQuestSimple(
+            'Детская',
+            'categoryChildRoom');
+    }
+
+    if (progressOldApartment_4_0 === 0) {
+        questionCat_4_0();
+    } else if (
+        progressOldApartment_4_1 === 0 &&
+        progressOldApartment_4_0 === 1) {
+        questionCat_4_1();
+    } else if (
+        progressOldApartment_4_2 === 0 &&
+        progressOldApartment_4_1 === 1) {
+        questionCat_4_2();
+    } else if (
+        progressOldApartment_4_3 === 0 &&
+        progressOldApartment_4_2 === 1) {
+        questionCat_4_3();
+    } else if (
+        progressOldApartment_4_4 === 0 &&
+        progressOldApartment_4_3 === 1) {
+        questionCat_4_4();
+    } else if (
+        progressOldApartment_4_5 === 0 &&
+        progressOldApartment_4_4 === 1) {
+        questionCat_4_5();
+    }
 }
 
 function init() {
@@ -467,9 +669,9 @@ function init() {
     // authorsStart();
     // aboutStart();
     // writerStart();
-    // familyDev();
+    familyDev();
     // catLivingRoomLoad();
-    catOfficeRoomLoad();
+    // catOfficeRoomLoad();
     // catBedRoomLoad();
     // catChildRoomLoad();
 }
