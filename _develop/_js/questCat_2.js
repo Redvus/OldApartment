@@ -112,12 +112,14 @@ function questionCat_2_1() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_2_1.png',
         'Пётр Иванович свою продукцию поставляет в магазины, которые расположеныв центре города. Назовите эту площадь Самары и её современное название(если оно менялось)',
         'Хлебная площадь',
         'Алексеевская площадь',
         'Красная площадь'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 
@@ -169,12 +171,14 @@ function questionCat_2_2() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_2_2.png',
         'Второй магазин располагался на этой площади.Как называли её жители Самары?',
         'Ильинская',
         'Соборная',
         'Петропавловская'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 
@@ -226,12 +230,14 @@ function questionCat_2_3() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_2_3.png',
         'Третий магазин находится на этой улице:',
         'Водников',
         'Предтеченская',
         'Панская'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         'Улица Панская, в 1926 году переименованная в Ленинградскую');
@@ -285,12 +291,14 @@ function questionCat_2_4() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_2_4.png',
         'В этом примечательном здании нередко решаются финансовые дела семьи Ермолаевых. Скажите, что в нём располагается?',
         'Торговая палата',
         'Хлебная биржа',
         'Городской банк'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 
@@ -342,12 +350,14 @@ function questionCat_2_5() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_2_5.png',
         'Завершив работу с бумагами, Пётр Иванович обычно посещает:',
         'Мукомольную мельницу',
         'Хлебзавод',
         'Баню'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 

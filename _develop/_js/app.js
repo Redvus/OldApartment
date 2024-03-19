@@ -1,8 +1,7 @@
 const
     container = document.querySelector('.container'),
     wrapper = document.querySelector('.wrapper'),
-    wrapperBottom = document.querySelector('.wrapper__bottom'),
-    wrapperBack = document.querySelector('.wrapper__back')
+    wrapperBottom = document.querySelector('.wrapper__bottom')
 ;
 
 const soundsLoad = new Sounds();
@@ -70,37 +69,22 @@ function introDev() {
         let tl = gsap.timeline({
             onComplete: () => {
                 wrapper.className = 'wrapper';
-                wrapper.removeChild(wrapperTop);
-                // wrapper.removeChild(wrapperTitle);
-                wrapper.removeChild(wrapperBottom);
-                wrapper.removeChild(wrapperBack);
-                wrapper.appendChild(container);
-                wrapper.removeChild(wrapperCenter);
+                container.removeChild(wrapperCenter);
+                wrapperBottom.removeChild(wrapperBottomMenu);
                 authorsStart();
             }
         });
         tl
-            .to(wrapperTop, {
-                duration: 0.4,
-                autoAlpha: 0,
-                y: '-3%'
-            })
             .to(wrapperCenter, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0
             })
-            .to(wrapperBottom, {
+            .to(wrapperBottomMenu, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0,
                 y: '5%'
-            })
-            .to(wrapperBack, {
-                duration: 0.7,
-                delay: -0.5,
-                autoAlpha: 0,
-                // scale: 0.98
             })
         ;
     });
@@ -109,37 +93,22 @@ function introDev() {
         let tl = gsap.timeline({
             onComplete: () => {
                 wrapper.className = 'wrapper';
-                wrapper.removeChild(wrapperTop);
-                // wrapper.removeChild(wrapperTitle);
-                wrapper.removeChild(wrapperBottom);
-                wrapper.removeChild(wrapperBack);
-                wrapper.appendChild(container);
-                wrapper.removeChild(wrapperCenter);
+                container.removeChild(wrapperCenter);
+                wrapperBottom.removeChild(wrapperBottomMenu);
                 aboutStart();
             }
         });
         tl
-            .to(wrapperTop, {
-                duration: 0.4,
-                autoAlpha: 0,
-                y: '-3%'
-            })
             .to(wrapperCenter, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0
             })
-            .to(wrapperBottom, {
+            .to(wrapperBottomMenu, {
                 duration: 0.7,
                 delay: -0.5,
                 autoAlpha: 0,
                 y: '5%'
-            })
-            .to(wrapperBack, {
-                duration: 0.7,
-                delay: -0.5,
-                autoAlpha: 0,
-                // scale: 0.98
             })
         ;
     });
@@ -154,7 +123,8 @@ function introDev() {
 
 /* Authors */
 function authorsStart() {
-    const authorsLoad = new About(),
+    const
+        authorsLoad = new About(),
         arrowBackLoad = new ArrowsAll()
     ;
 
@@ -167,14 +137,10 @@ function authorsStart() {
         'Александр Суворов');
 
     const
-        containerAbout = document.querySelector('.container__wrapper_about'),
-        introAboutBack = document.querySelector('.wrapper__service'),
-        wrapperTopAbout = document.querySelector('.wrapper__top'),
-        wrapperBottom = document.createElement('div')
+        wrapperTitleAuthors = document.querySelector('.wrapper__top_title'),
+        containerAbout = document.querySelector('.container__about_block'),
+        wrapperTop = document.querySelector('.wrapper__top')
     ;
-
-    wrapperBottom.className = 'wrapper__bottom';
-    wrapper.appendChild(wrapperBottom);
 
     arrowBackLoad.arrowBack();
     const arrowBackClick = document.getElementById('arrowBack');
@@ -183,28 +149,20 @@ function authorsStart() {
     arrowBackClick.addEventListener('click', () => {
         let tl = gsap.timeline({
             onComplete: () => {
-                wrapper.removeChild(wrapperBottom);
+                wrapperBottom.removeChild(arrowBackClick);
+                wrapperTop.removeChild(wrapperTitleAuthors);
                 container.removeChild(containerAbout);
-                wrapper.removeChild(introAboutBack);
-                wrapper.removeChild(wrapperTopAbout);
-                wrapper.className = 'wrapper';
+                container.className = 'container';
                 introDev();
             }
         });
         tl
-            .to(wrapperTopAbout, {
-                duration: 0.4,
-                autoAlpha: 0,
-                y: '-3%'
-            })
-            .to([containerAbout, arrowBackClick], {
+            .to([
+                containerAbout,
+                arrowBackClick,
+                wrapperTitleAuthors], {
                 autoAlpha: 0,
                 delay: '-0.1'
-            })
-            .to(introAboutBack, {
-                autoAlpha: 0,
-                delay: '-0.1',
-                // scale: 0.98
             })
         ;
     });
@@ -219,14 +177,11 @@ function aboutStart() {
     aboutLoad.aboutLibrary('МБУК г.о. Самара «Самарская муниципальная информационно-библиотечная система» была создана в декабре 1986 года. На сегодняшний день в ее составе&nbsp;– Центральная городская библиотека имени Н.К. Крупской и 35 библиотек-филиалов, нашими читателями являются жители всех 9 районов города. Библиотеки системы&nbsp;– это информационные, образовательные центры, место культурного отдыха и общения. СМИБС находится в центре мировых событий, активно участвует в общероссийских акциях и в жизни города.', 'В библиотеках системы можно получить информацию и литературу по любой теме, доступ к электронным базам данных, воспользоваться услугами Интернет-залов, Центрами общественного доступа, побывать на презентациях выставок и творческих встречах, а также воспользоваться дополнительными сервисными услугами:<ul><li>ксерокопированием</li><li>сканированием</li><li>ламинированием</li><li>документов</li><li>распечаткой информации</li><li>на принтере</li><li>записью на электронные</li><li>носители</li></ul>');
 
     const
-        containerAbout = document.querySelector('.container__wrapper_about'),
-        introAboutBack = document.querySelector('.wrapper__service'),
-        wrapperTopAbout = document.querySelector('.wrapper__top'),
-        wrapperBottom = document.createElement('div')
+        wrapperTitleAuthors = document.querySelector('.wrapper__top_title'),
+        containerAboutLeft = document.querySelector('.container__about_left'),
+        containerAboutRight = document.querySelector('.container__about_right'),
+        wrapperTop = document.querySelector('.wrapper__top')
     ;
-
-    wrapperBottom.className = 'wrapper__bottom';
-    wrapper.appendChild(wrapperBottom);
 
     arrowBackLoad.arrowBack();
     const arrowBackClick = document.getElementById('arrowBack');
@@ -235,28 +190,22 @@ function aboutStart() {
     arrowBackClick.addEventListener('click', () => {
         let tl = gsap.timeline({
             onComplete: () => {
-                wrapper.removeChild(wrapperBottom);
-                container.removeChild(containerAbout);
-                wrapper.removeChild(introAboutBack);
-                wrapper.removeChild(wrapperTopAbout);
-                wrapper.className = 'wrapper';
+                wrapperBottom.removeChild(arrowBackClick);
+                wrapperTop.removeChild(wrapperTitleAuthors);
+                container.removeChild(containerAboutLeft);
+                container.removeChild(containerAboutRight);
+                container.className = 'container';
                 introDev();
             }
         });
         tl
-            .to(wrapperTopAbout, {
-                duration: 0.4,
-                autoAlpha: 0,
-                y: '-3%'
-            })
-            .to([containerAbout, arrowBackClick], {
+            .to([
+                containerAboutLeft,
+                containerAboutRight,
+                arrowBackClick,
+                wrapperTitleAuthors], {
                 autoAlpha: 0,
                 delay: '-0.1'
-            })
-            .to(introAboutBack, {
-                autoAlpha: 0,
-                delay: '-0.1',
-                // scale: 0.98
             })
         ;
     });
@@ -285,7 +234,8 @@ function familyDev() {
         familyManBlock = document.getElementById('familyManBlock'),
         familyWomanBlock = document.getElementById('familyWomanBlock'),
         familyGirlBlock = document.getElementById('familyGirlBlock'),
-        wrapperIntro = document.querySelector('.wrapper__intro')
+        wrapperTop = document.querySelector('.wrapper__top'),
+        wrapperTopCount = document.createElement('div')
     ;
 
     wrapperBottom.innerHTML = `
@@ -293,6 +243,22 @@ function familyDev() {
         <div class="wrapper__bottom_part wrapper__bottom_part--center"></div>
         <div class="wrapper__bottom_part wrapper__bottom_part--right"></div>
     `;
+
+    let progressCount = Math.floor(((
+        progressOldApartment_1 +
+        progressOldApartment_2 +
+        progressOldApartment_3 +
+        progressOldApartment_4) * 100) / 24);
+
+    wrapperTopCount.className = 'wrapper__top_count';
+    wrapperTopCount.innerHTML = `
+        <span>Прогресс: ${progressCount}%</span>
+    `;
+    wrapperTop.appendChild(wrapperTopCount);
+    gsap.from(wrapperTopCount, {
+        duration: 0.3,
+        autoAlpha: 0
+    })
 
     arrowBackLoad.arrowBack();
     arrowBackLoad.clearStorage();
@@ -320,6 +286,7 @@ function familyDev() {
                 wrapperBottom.removeChild(wrapperBottomLeft);
                 wrapperBottom.removeChild(wrapperBottomRight);
                 wrapperBottom.removeChild(wrapperBottomCenter);
+                wrapperTop.removeChild(wrapperTopCount);
                 container.removeChild(familyManBlock);
                 container.removeChild(familyWomanBlock);
                 container.removeChild(familyGirlBlock);
@@ -333,7 +300,8 @@ function familyDev() {
                 settingsClick,
                 familyManBlock,
                 familyWomanBlock,
-                familyGirlBlock], {
+                familyGirlBlock,
+                wrapperTopCount], {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
@@ -349,6 +317,7 @@ function familyDev() {
                 wrapperBottom.removeChild(wrapperBottomLeft);
                 wrapperBottom.removeChild(wrapperBottomRight);
                 wrapperBottom.removeChild(wrapperBottomCenter);
+                wrapperTop.removeChild(wrapperTopCount);
                 container.removeChild(familyManBlock);
                 container.removeChild(familyWomanBlock);
                 container.removeChild(familyGirlBlock);
@@ -415,7 +384,8 @@ function familyDev() {
                 arrowBackClick,
                 familyManBlock,
                 familyWomanBlock,
-                familyGirlBlock], {
+                familyGirlBlock,
+                wrapperTopCount], {
                 autoAlpha: 0,
                 delay: '-0.1'
             })
@@ -665,11 +635,11 @@ function catChildRoomLoad() {
 }
 
 function init() {
-    // introDev();
+    introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    familyDev();
+    // familyDev();
     // catLivingRoomLoad();
     // catOfficeRoomLoad();
     // catBedRoomLoad();

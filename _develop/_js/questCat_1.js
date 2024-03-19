@@ -117,7 +117,7 @@ function questionCat_1_1() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_1_1.png',
         'В 1907 году губернию возглавляет:',
         'Константин Карлович Грот',
         'Пётр Владимирович Алабин',
@@ -176,12 +176,14 @@ function questionCat_1_2() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_1_2.png',
         'В доме часто звучала любимая композиция Петра Ивановича.<br />На стихи И. С. Тургенева, музыка Эраста Абазова',
         '«Как хорошо»',
         '«Утро туманное»',
         '«На сопках Манчьжурии»'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 
@@ -233,8 +235,8 @@ function questionCat_1_3() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
-        'Анна Семёновна увлечена музыкой и сама часто музицирует за фортепиано. Ей нравятся произведения Баха  и одного российского композитора, на творчествокоторого оказала  значительное влияние поэзия А. Белого, В. Брюсова, А. Блока',
+        'oa_quest_1_3.png',
+        'Анна Семёновна увлечена музыкой и сама часто музицирует за фортепиано. Ей нравятся произведения Баха и одного российского композитора, на творчествокоторого оказала  значительное влияние поэзия А. Белого, В. Брюсова, А. Блока',
         'Пётр Чайковский',
         'Александр Скрябин',
         'Исаак Дунаевский'
@@ -290,7 +292,7 @@ function questionCat_1_4() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_1_4.png',
         'Устройство для извлечения музыкальных звуков, обязательный атрибут в каждой гостиной:',
         'Патефон',
         'Граммофон',
@@ -349,12 +351,14 @@ function questionCat_1_5() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_1_5.png',
         'За чтением этой газеты Пётр Иванович любит испить утренний чай. Сегодня она известна как Волжская коммуна:',
         '«Городской вестник»',
         '«Прибой»',
         '«Голос Самары»'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         '9 (22) марта 1907 года самарский губернатор Владимир Якунин выдал гражданину города Орска М.&nbsp;Д.&nbsp;Спиридонову разрешение издавать в Самаре ежедневную газету «Прибой».');

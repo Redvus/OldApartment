@@ -75,7 +75,7 @@ class Question {
                     wrapperTop.removeChild(wrapperCategoryTitle);
                     wrapper.removeChild(containerQuestBlock);
                     wrapperBack.removeChild(wrapperCategoryBack);
-                    introDev();
+                    familyDev();
                 }
             });
             tl
@@ -247,7 +247,7 @@ class Question {
                     wrapperBack.removeChild(wrapperCategoryBack);
                     wrapperBack.removeChild(wrapperCategoryBackTop);
                     wrapper.removeChild(containerFindBlock);
-                    introDev();
+                    familyDev();
                 }
             });
             tl

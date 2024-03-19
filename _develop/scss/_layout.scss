@@ -54,6 +54,10 @@
 				margin-top: -0.2rem;
 			}
 		}
+
+		span {
+			font-size: $font-size-h4;
+		}
 	}
 
 	&__center {
@@ -694,12 +698,6 @@
 	//background-color: cornflowerblue;
 	z-index: 5;
 
-	&--about {
-		width: $containerAboutWidth;
-		height: $containerAboutWidthMobile;
-		margin-top: 2vh;
-	}
-
 	&-quest {
 		width: $containerWidth;
 		height: $containerAboutWidthMobile;
@@ -725,9 +723,10 @@
 
 			picture {
 				width: auto;
-				height: 50%;
+				height: 60%;
 				display: block;
-				margin-top: -13%;
+				margin-top: -12%;
+				margin-left: -1%;
 
 				img {
 					width: 100%;
@@ -975,13 +974,32 @@
 	}
 
 	&__about {
-		width: 100%;
-		height: 100%;
+		//width: 100%;
+		//height: 100%;
 		display: flex;
-		flex-direction: column;
+		//flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		position: relative;
+		margin-top: 0;
+
+		.wrapper__lightbox_block {
+			margin: 0;
+		}
+
+		&_block {
+			width: calc(#{$settingsWidth} - (#{$paddingBase} * 8));
+			height: calc((#{$settingsWidth} / 1.25) - (#{$paddingBase} * 8));
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			background: no-repeat 50% / 100% 100% url("../images/oa_settingsBack.png");
+			margin: 0;
+			padding: calc(#{$paddingBase} * 4);
+			//transform: translate(-50%, -50%);
+			text-align: center;
+		}
 
 		&_inside {
 			width: 100%;
@@ -1040,7 +1058,7 @@
 		&_text {
 			width: 100%;
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: center;
 			padding: 0;
 
 			p {
@@ -1061,7 +1079,7 @@
 		&_person {
 			text-align: center;
 			margin-top: calc(#{$paddingBase} * 1.5);
-			color: $secondary;
+			color: $primary;
 
 			p {
 				margin: 0;
@@ -1077,36 +1095,6 @@
 				border: $border_4;
 				padding: calc(#{$paddingBase} / 4) calc(#{$paddingBase} / 2);
 				display: inline-block;
-			}
-		}
-
-		&_left {
-			width: calc(50% - (#{$paddingBase} * 2));
-			//height: calc(100% - #{$containerAboutPadding} - (calc(#{$containerAboutPadding} - (#{$paddingBase} * 2))));
-			height: calc(100% - (#{$containerAboutPadding} * 3));
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin-right: calc(#{$paddingBase} * 2);
-			//padding: $containerAboutPadding calc(#{$paddingBase} * 4) calc(#{$containerAboutPadding} - (#{$paddingBase} * 2));
-			padding: calc(#{$containerAboutPadding} * 2) calc(#{$paddingBase} * 4) $containerAboutPadding;
-			background: url("../images/mf_fieldTextAuthors.png") 50% 50% / 100% no-repeat;
-		}
-
-		&_right {
-			width: calc(50% - (#{$paddingBase} * 2));
-			height: calc(100% - (#{$containerAboutPadding} * 3));
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			margin-left: calc(#{$paddingBase} * 2);
-			padding: calc(#{$containerAboutPadding} * 2) calc(#{$paddingBase} * 4) $containerAboutPadding;
-			background: url("../images/mf_fieldTextAuthors.png") 50% 50% / 100% no-repeat;
-
-			p {
-				//margin-bottom: calc(#{$paddingBase} / 2.5);
-				margin: 0 $paddingBase;
 			}
 		}
 	}

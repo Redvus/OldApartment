@@ -8,38 +8,20 @@ class About {
                  personThirdTitle,
                  personThirdName) {
         const
-            containerWrapper = document.createElement('div'),
-            containerTitle = document.createElement('div'),
             wrapperTitleAuthors = document.createElement('div'),
-            containerAboutLeft = document.createElement('div'),
-            containerAboutRight = document.createElement('div')
+            containerAbout = document.createElement('div'),
+            wrapperTop = document.querySelector('.wrapper__top')
         ;
 
-        containerWrapper.className = 'container__wrapper container__wrapper_about';
-        containerTitle.className = 'container__title container__title_category';
-        containerAboutLeft.className = 'container__about container__about_left';
-        containerAboutRight.className = 'container__about container__about_right';
-        wrapperTitleAuthors.className = 'wrapper__top';
-        container.className = 'container container--about';
+        containerAbout.className = 'container__about_block';
+        wrapperTitleAuthors.className = 'wrapper__top_title';
+        container.className = 'container container__about';
 
         wrapperTitleAuthors.innerHTML = `
-            <picture id="authorsTitle" class="wrapper__top_title wrapper__top_title--about">
-                <img src="assets/games/magicFeather/images/mf_titleAbout.png" alt="Волшебное перо. Об авторах">
-            </picture>
+            <h1>Авторы</h1>
         `;
 
-        containerAboutLeft.innerHTML = `
-            <div class="container__about_inside">
-                <picture id="aboutSparkle">
-                    <img src="assets/games/magicFeather/images/mf_featherSparkles.png" alt="Вспышка под пером">
-                </picture>
-                <picture id="aboutFeather">
-                    <img src="assets/games/magicFeather/images/mf_featherStart.png" alt="Перо">
-                </picture>
-            </div>
-        `;
-
-        containerAboutRight.innerHTML = `
+        containerAbout.innerHTML = `
             <div class="container__about_inside container__about_text  container__about_text--center">
                 <div class="container__about_person">
                     <h4>${personFirstTitle}</h4>
@@ -56,52 +38,28 @@ class About {
                 </div>
             </div>
         `;
-        wrapper.appendChild(wrapperTitleAuthors);
-        container.appendChild(containerWrapper);
-        containerWrapper.appendChild(containerAboutLeft);
-        containerWrapper.appendChild(containerAboutRight);
+        wrapperTop.appendChild(wrapperTitleAuthors);
+        container.appendChild(containerAbout);
 
-        const introBlockBack = document.createElement('div');
-        introBlockBack.className = 'wrapper__service';
-        wrapper.appendChild(introBlockBack);
-
-        // const wrapperAboutBack = document.createElement('div');
-        // wrapperAboutBack.className = 'wrapper__back_about';
-        // wrapper.appendChild(wrapperAboutBack);
-
-        let titleAuthors = document.querySelector('.wrapper__top'),
+        let titleAuthors = document.querySelector('.wrapper__top_title'),
             containerAboutPerson = document.querySelectorAll('.container__about_person'),
-            aboutBack = document.querySelector('.wrapper__back_about'),
-            aboutLeft = document.querySelector('.container__about_left'),
-            aboutRight = document.querySelector('.container__about_right'),
-            aboutSparkle = document.getElementById('aboutSparkle'),
-            aboutFeather = document.getElementById('aboutFeather')
+            aboutBlock = document.querySelector('.container__about')
         ;
 
         function aboutAuthorsAnim() {
             let tl = new gsap.timeline();
 
             tl
-                .from(introBlockBack, {
+                .from(aboutBlock, {
                     autoAlpha: 0,
                     duration: 0.4,
-                    // scale: 0.98
+                    scale: 0.97
                 })
-                .to(titleAuthors, {
-                    duration: 0.4,
-                    delay: '-0.4',
-                    y: '2%',
-                    autoAlpha: 1
-                })
-                .from(aboutLeft, {
+                .from(titleAuthors, {
+                    duration: '0.3',
+                    delay: '-0.1',
                     autoAlpha: 0,
-                    duration: 0.4,
-                    delay: '-0.3'
-                })
-                .from(aboutRight, {
-                    autoAlpha: 0,
-                    duration: 0.4,
-                    delay: '-0.3'
+                    y: '-10%'
                 })
                 .from(containerAboutPerson, {
                     autoAlpha: 0,
@@ -110,18 +68,6 @@ class About {
                     y: "-0.5rem",
                     stagger: 0.07
                 })
-                .from(aboutFeather, {
-                    autoAlpha: 0,
-                    duration: 1,
-                    delay: '-0.2',
-                    scale: 1.05
-                })
-                .from(aboutSparkle, {
-                    autoAlpha: 0,
-                    duration: 0.8,
-                    delay: '-0.4',
-                    scale: 0.90
-                })
             ;
         }
         aboutAuthorsAnim();
@@ -129,23 +75,19 @@ class About {
 
     aboutLibrary(libraryLeftText, libraryRightText) {
         const
-            containerWrapper = document.createElement('div'),
-            containerTitle = document.createElement('div'),
             wrapperTitleAuthors = document.createElement('div'),
+            wrapperTop = document.querySelector('.wrapper__top'),
             containerAboutLeft = document.createElement('div'),
             containerAboutRight = document.createElement('div')
         ;
-        containerWrapper.className = 'container__wrapper container__wrapper_about';
-        containerTitle.className = 'container__title container__title_category';
-        containerAboutLeft.className = 'container__about container__about_left';
-        containerAboutRight.className = 'container__about container__about_right';
-        wrapperTitleAuthors.className = 'wrapper__top';
-        container.className = 'container container--about';
+
+        containerAboutLeft.className = 'container__about_block container__about_left';
+        containerAboutRight.className = 'container__about_block container__about_right';
+        wrapperTitleAuthors.className = 'wrapper__top_title';
+        container.className = 'container container__about';
 
         wrapperTitleAuthors.innerHTML = `
-            <picture id="authorsTitle" class="wrapper__top_title wrapper__top_title--about">
-                <img src="assets/games/magicFeather/images/mf_titleLibrary.png" alt="Волшебное перо. О библиотеке">
-            </picture>
+            <h2>О библиотеке</h2>
         `;
 
         containerAboutLeft.innerHTML = `
@@ -159,57 +101,29 @@ class About {
                 <p>${libraryRightText}</p>
             </div>
         `;
-        wrapper.appendChild(wrapperTitleAuthors);
-        container.appendChild(containerWrapper);
-        containerWrapper.appendChild(containerAboutLeft);
-        containerWrapper.appendChild(containerAboutRight);
+        wrapperTop.appendChild(wrapperTitleAuthors);
+        container.appendChild(containerAboutLeft);
+        container.appendChild(containerAboutRight);
 
-        const introBlockBack = document.createElement('div');
-        introBlockBack.className = 'wrapper__service';
-        wrapper.appendChild(introBlockBack);
-
-        // const wrapperAboutBack = document.createElement('div');
-        // wrapperAboutBack.className = 'wrapper__back_about';
-        // wrapper.appendChild(wrapperAboutBack);
-
-        let titleAuthors = document.querySelector('.wrapper__top'),
-            containerAboutPerson = document.querySelectorAll('.container__about_person'),
-            aboutBack = document.querySelector('.wrapper__back_about'),
-            aboutLeft = document.querySelector('.container__about_left'),
-            aboutRight = document.querySelector('.container__about_right')
+        let titleAuthors = document.querySelector('.wrapper__top_title'),
+            aboutBlock = document.querySelectorAll('.container__about_block')
         ;
 
         function aboutLibraryAnim() {
             let tl = new gsap.timeline();
 
             tl
-                .from(introBlockBack, {
+                .from(aboutBlock, {
                     autoAlpha: 0,
                     duration: 0.4,
-                    // scale: 0.98
+                    y: '-3%',
+                    stagger: 0.08
                 })
-                .to(titleAuthors, {
-                    duration: 0.4,
-                    delay: '-0.4',
-                    y: '2%',
-                    autoAlpha: 1
-                })
-                .from(aboutLeft, {
+                .from(titleAuthors, {
+                    duration: '0.3',
+                    delay: '-0.1',
                     autoAlpha: 0,
-                    duration: 0.4,
-                    delay: '-0.3'
-                })
-                .from(aboutRight, {
-                    autoAlpha: 0,
-                    duration: 0.4,
-                    delay: '-0.3'
-                })
-                .from(containerAboutPerson, {
-                    autoAlpha: 0,
-                    duration: 0.4,
-                    delay: '-0.2',
-                    y: "-0.5rem",
-                    stagger: 0.07
+                    y: '-10%'
                 })
             ;
         }

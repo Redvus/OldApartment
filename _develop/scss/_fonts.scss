@@ -44,7 +44,7 @@ $font-size-large:   calc(#{$body-font-size} + 0.2rem) !default; // ~18px
 $font-size-small:   calc(#{$body-font-size} - 0.15rem) !default; // ~14px
 
 $font-size-h1:      calc(#{$body-font-size} * 3.8) !default; // ~3rem 48px modular-scale(6)
-$font-size-h2:      calc(#{$body-font-size} + 3vmin) !default; // ~2.5rem 40px modular-scale(5)
+$font-size-h2:      calc(#{$body-font-size} * 2.5) !default; // ~2.5rem 40px modular-scale(5)
 $font-size-h3:      calc(#{$body-font-size} + 2vmin) !default; // ~2rem 33px
 $font-size-h4:      calc(#{$body-font-size} + 1vmin) !default; // ~1.728rem 28px
 $font-size-h5:      calc(#{$body-font-size} + 0.75vmin) !default; // ~1.44rem 23px
@@ -117,8 +117,10 @@ h1 {
 
 h2 {
     @extend %hx;
+    font-family: $heading-font;
     font-size: $font-size-h2;
     color: $primary;
+    letter-spacing: 0.2rem;
 
     @include grid-media($Small) {
         font-size: calc(1rem + 2vmin);
@@ -161,9 +163,9 @@ h6 {
 ul {
     margin: 0;
     padding: 0;
-    list-style: disc;
-    margin-left: 0.9rem;
-    padding-left: -0.9rem;
+    list-style: none;
+    //margin-left: 0.9rem;
+    //padding-left: -0.9rem;
 
     li {
         font-size: $font-size-base;

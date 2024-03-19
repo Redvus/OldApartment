@@ -110,12 +110,14 @@ function questionCat_4_1() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_4_1.png',
         'Антонина любит возиться с «пузелями». Что же такое «пузеля»?',
         'Пупсы',
         'Пазлы',
         'Пудели'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         'В Российской империи складывание фрагментов в одну картинку чрезвычайно популярны. Произносится на немецкий манер: «пузель»');
@@ -169,12 +171,14 @@ function questionCat_4_2() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_4_2.png',
         'Словосочетание «Добчинский и Бобчинский» всегда приводит Антонину в восторг. Это словосочетание относится:',
         'к настольной игре',
         'к названию книги',
         'к названию фирмы, выпускающей игрушки'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         'Игру «Добчинский и Бобчинский», напоминающую домино назвали в честь городских помещиков, героев комедии Н.В. Гоголя «Ревизор»');
@@ -228,12 +232,14 @@ function questionCat_4_3() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_4_3.png',
         'Любимая сказка Антонины «Аленький цветочек» Сергея Аксакова. А кто из художников сделал первые иллюстрации к этой сказке?',
         'Владимир Сутеев',
         'Иван Билибин',
         'Николай Богатов'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         'Первым иллюстратором был Николай Алексеевич Богатов, создавший несколько чёрно-белых рисунков для альманаха «Волшебный фонарь»');
@@ -287,12 +293,14 @@ function questionCat_4_4() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_4_4.png',
         'Летом особое место уделяется играм в саду, их разнообразие поражает. Подскажите, какая игра появилась значительно позже 1907 года?',
         '«Жмурки»',
         '«Лапта»',
         '«Резиночки»'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         'Игра «резиночки» стала известна и обрела большую популярность лишь в 1990 – х годах');
@@ -340,20 +348,22 @@ function questionCat_4_4() {
 function questionCat_4_5() {
     let answerWrightNum = 0;
 
-    if (localStorage.getItem('progressOldApartment_4_0') === null ||
-        localStorage.getItem('progressOldApartment_4_0') >= 0) {
-        localStorage.setItem('progressOldApartment_4_0', JSON.stringify(0));
+    if (localStorage.getItem('progressOldApartment_4_5') === null ||
+        localStorage.getItem('progressOldApartment_4_5') >= 0) {
+        localStorage.setItem('progressOldApartment_4_5', JSON.stringify(0));
     }
 
     const finalBlock = new Settings();
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_4_5.png',
         'Антонина в саду часто играет с обручем. Эта игра называется?',
         '«Серсо»',
         '«Кольцо»',
         '«Волчок»'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         '«Серсо» - так назывался обруч, который катали особой палочкой, считалось, что эта игра развивает у девочек грацию и красоту движений');

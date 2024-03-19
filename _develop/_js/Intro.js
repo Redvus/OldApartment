@@ -64,9 +64,7 @@ class Intro {
             familyPersonGirl = document.createElement('picture'),
             familyTextMan = document.createElement('div'),
             familyTextWoman = document.createElement('div'),
-            familyTextGirl = document.createElement('div'),
-            wrapperTopAbout = document.createElement('div'),
-            wrapperBack = document.createElement('div')
+            familyTextGirl = document.createElement('div')
         ;
 
         familyManBlock.className = 'container__block';

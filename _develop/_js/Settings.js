@@ -35,6 +35,8 @@ class Settings {
             settingsClearButton = document.getElementById('clearProgressButton')
         ;
 
+        let wrapperTopCount = document.querySelector('.wrapper__top_count');
+
         settingsClearButton.addEventListener('click', () => {
             localStorage.clear();
             localStorage.setItem('progressOldApartment_1_0', JSON.stringify(0));
@@ -66,6 +68,10 @@ class Settings {
             localStorage.setItem('progressOldApartment_4_5', JSON.stringify(0));
             localStorage.setItem('progressOldApartment_4', JSON.stringify(0));
             localStorage.setItem('progressOldApartment', JSON.stringify(0));
+            wrapperTopCount.innerHTML = `
+                <span>Прогресс: 0%</span>
+            `;
+            location.reload();
         });
 
         settingsClearButton.addEventListener('mouseover', () => {

@@ -112,14 +112,14 @@ function questionCat_3_1() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_3_1.png',
         'Как называлось в то время учебное заведение, в которомучительствовала Анна Семёновна? Сейчас это школа № 13',
         'Кружок для девочек',
         'Гимназия княгини Хованской',
         'Женская школа при монастыре'
     );
-
-    // }
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, '');
 
@@ -171,12 +171,14 @@ function questionCat_3_2() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_3_2.png',
         'В каком магазине самарские рукодельницы приобретают швейную машинку?',
         'В магазине Гольдебаева',
         'В фирменном магазине',
         'Заказать в Германии'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, 'Наряд можно было сшить на швейной машинке, купленной у Гольдебаева. У него же можно было научиться управляться с этим чудом техники. При магазине имелась и мастерская «для исправления швейных машин, даже старых, негодных, которые могут шить также, как шили новые»');
 
@@ -229,12 +231,14 @@ function questionCat_3_3() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_3_3.png',
         'Шерсть из этого необыкновенного состава доступна самарским модницам:',
         'Синтетическая',
         'Сосновая',
         'Паутинная'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum,
         '«Лесная или сосновая шерсть приготовляется из волокон, заключающихся в хвое сосен. Применение находит для изготовления тканей, ношение которых будто бы должно иметь целебное значение»');
@@ -288,12 +292,14 @@ function questionCat_3_4() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_3_4.png',
         'Как называется устройство для стирки белья, предложенное водопроводной и технической конторой «Донат»?',
         'Стиральная машина',
         'Устройство паровое прачечное',
         'Устройство прачечное механическое'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, 'Водопроводная и техническая контора «Донат» предлагала устройство «паровых прачешень»');
 
@@ -337,7 +343,7 @@ function questionCat_3_4() {
 }
 
 function questionCat_3_5() {
-    let answerWrightNum = 2;
+    let answerWrightNum = 0;
 
     if (localStorage.getItem('progressOldApartment_3_5') === null ||
         localStorage.getItem('progressOldApartment_3_5') >= 0) {
@@ -345,12 +351,14 @@ function questionCat_3_5() {
     }
 
     questionLoad.questionBlock(
-        'oa_grammofon.png',
+        'oa_quest_3_5.png',
         'Парфюмерию и косметику самарчанки приобретают в:',
         'Аптеках',
         'Парикмахерских',
         'Частных лавках'
     );
+    const questTopImage = document.querySelector('.container-quest__top_image');
+    questTopImage.style.height = '73%';
 
     questionLoad.answerBlock(answerWrightNum, 'Косметику и парфюмерию дамы приобретают в аптеках. Именно аптекарские магазины предлагают «духи английские и французские во флаконах и в развес, личную пудру»');
 
