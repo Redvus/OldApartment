@@ -60,6 +60,7 @@ function questionCat_2_0() {
 
     for (let i = 0; i < itemOfficeList.length; i++) {
         itemOfficeList[i].addEventListener('click', () => {
+            soundsLoad.rightAnswer('assets/games/oldApartment/sounds/rightAnswer_1.ogg');
             let officeRoomQuest_2_0 = JSON.parse(localStorage.getItem('officeRoomQuest_2_0'));
             let officeRoomQuest_2_0_sum = officeRoomQuest_2_0 + 1;
             localStorage.setItem('officeRoomQuest_2_0', JSON.stringify(officeRoomQuest_2_0_sum));

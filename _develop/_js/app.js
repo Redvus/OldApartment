@@ -31,11 +31,11 @@ function introDev() {
     // `;
 
     clickLoadGame.addEventListener('click', () => {
-        // soundsLoad.rightAnswer('assets/games/magicFeather/sounds/cp_progressClear.ogg');
+
 
         // Music Background
         // if (backgroundMusicID === null) {
-        //     soundsLoad.backgroundMusicLoad('assets/games/magicFeather/sounds/mf_ambient.ogg');
+        //     soundsLoad.backgroundMusicLoad('assets/games/oldApartment/sounds/oa_ambient.ogg');
         //     localStorage.setItem('backgroundMusic', JSON.stringify(1));
         // } else if (backgroundMusicID.paused || localStorage.getItem('backgroundMusic') === '0') {
         //     backgroundMusicID.pause();
@@ -321,6 +321,7 @@ function familyDev() {
                 container.removeChild(familyManBlock);
                 container.removeChild(familyWomanBlock);
                 container.removeChild(familyGirlBlock);
+
                 if (progressOldApartment_1 < 6) {
                     catLivingRoomLoad();
                 } else if (progressOldApartment_1 === 6 && progressOldApartment_2 < 6) {
@@ -340,13 +341,16 @@ function familyDev() {
                         <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
                     `;
                     settingsTextWright.innerHTML = `
-                        <p>Вы отлично справились, поздравляем!</p>
+                        <p>Поздравляем, вы прошли игру! Даже если были допущены ошибки, вы познакомились с кусочком истории нашего города.</p>
                     `;
-                    if (progressOldApartment < 24) {
-                        settingsBlock.appendChild(settingsTextWrong);
-                    } else if (progressOldApartment === 24) {
-                        settingsBlock.appendChild(settingsTextWright);
-                    }
+
+                    // if (progressOldApartment < 24) {
+                    //     settingsBlock.appendChild(settingsTextWrong);
+                    // } else if (progressOldApartment === 24) {
+                    //     settingsBlock.appendChild(settingsTextWright);
+                    // }
+
+                    settingsBlock.appendChild(settingsTextWright);
 
                     const finalButtonBlock = document.getElementById('finalButton');
 
@@ -358,7 +362,7 @@ function familyDev() {
                         let tl = gsap.timeline({
                             onComplete: () => {
                                 wrapper.removeChild(settingsBack);
-                                introDev();
+                                familyDev();
                             }
                         });
                         tl

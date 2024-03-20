@@ -64,6 +64,7 @@ function questionCat_1_0() {
 
     for (let i = 0; i < itemLivingList.length; i++) {
         itemLivingList[i].addEventListener('click', () => {
+            soundsLoad.rightAnswer('assets/games/oldApartment/sounds/rightAnswer_1.ogg');
             let livingRoomQuest_1_0 = JSON.parse(localStorage.getItem('livingRoomQuest_1_0'));
             let livingRoomQuest_1_0_sum = livingRoomQuest_1_0 + 1;
             localStorage.setItem('livingRoomQuest_1_0', JSON.stringify(livingRoomQuest_1_0_sum));

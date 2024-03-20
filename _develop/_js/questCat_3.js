@@ -60,6 +60,7 @@ function questionCat_3_0() {
 
     for (let i = 0; i < itemBedList.length; i++) {
         itemBedList[i].addEventListener('click', () => {
+            soundsLoad.rightAnswer('assets/games/oldApartment/sounds/rightAnswer_1.ogg');
             let bedRoomQuest_3_0 = JSON.parse(localStorage.getItem('bedRoomQuest_3_0'));
             let bedRoomQuest_3_0_sum = bedRoomQuest_3_0 + 1;
             localStorage.setItem('bedRoomQuest_3_0', JSON.stringify(bedRoomQuest_3_0_sum));

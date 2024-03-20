@@ -406,6 +406,7 @@ class Question {
                 });
             } else if (answerVarArray[i] !== answerVarArray[answerVarNum]) {
                 answerVarArray[i].addEventListener('click', () => {
+                    soundsLoad.rightAnswer('assets/games/oldApartment/sounds/wrongAnswer.ogg');
                     let tl = gsap.timeline();
                     let answerBlockWrongText = document.getElementById('answerWrong');
                     answerLiRight[i].className += 'container-quest__bottom_buttons--wrong';

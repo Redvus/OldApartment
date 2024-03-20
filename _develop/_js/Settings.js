@@ -18,7 +18,7 @@ class Settings {
         `;
         settingsButtons.innerHTML = `
             <a href="javascript:void(0);" class="wrapper__lightbox_button" id="clearProgressButton">Сбросить прогресс</a>
-            <a href="javascript:void(0);" class="wrapper__lightbox_button" id="turnOfSoundButton">Выключить музыку</a>
+<!--            <a href="javascript:void(0);" class="wrapper__lightbox_button" id="turnOfSoundButton">Выключить музыку</a>-->
         `;
         settingsTitle.innerHTML = `
             <h3 class="wrapper__lightbox_title-text">Настройки</h3>
@@ -71,7 +71,11 @@ class Settings {
             wrapperTopCount.innerHTML = `
                 <span>Прогресс: 0%</span>
             `;
-            location.reload();
+            soundsLoad.rightAnswer('assets/games/oldApartment/sounds/progressClear.ogg');
+            setTimeout(() => {
+                location.reload();
+            }, 800);
+
         });
 
         settingsClearButton.addEventListener('mouseover', () => {

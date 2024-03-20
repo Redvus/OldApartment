@@ -58,6 +58,7 @@ function questionCat_4_0() {
 
     for (let i = 0; i < itemChildList.length; i++) {
         itemChildList[i].addEventListener('click', () => {
+            soundsLoad.rightAnswer('assets/games/oldApartment/sounds/rightAnswer_1.ogg');
             let childRoomQuest_4_0 = JSON.parse(localStorage.getItem('childRoomQuest_4_0'));
             let childRoomQuest_4_0_sum = childRoomQuest_4_0 + 1;
             localStorage.setItem('childRoomQuest_4_0', JSON.stringify(childRoomQuest_4_0_sum));
@@ -406,25 +407,28 @@ function questionCat_4_5() {
                         wrapperBack.removeChild(wrapperCatBack);
                         wrapperTop.removeChild(wrapperCatTitle);
                         finalBlock.finalBlock();
+                        soundsLoad.rightAnswer('assets/games/oldApartment/sounds/gameOver.ogg');
                         const
                             settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
                             settingsTextWrong = document.createElement('div'),
                             settingsTextWright = document.createElement('div')
                         ;
                         settingsTextWrong.innerHTML = `
-                        <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
-                    `;
+                            <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
+                        `;
                         settingsTextWright.innerHTML = `
-                        <p>Вы отлично справились, поздравляем!</p>
-                    `;
-                        if (progressOldApartment < 24) {
-                            settingsBlock.appendChild(settingsTextWrong);
-                        } else if (progressOldApartment === 24) {
-                            settingsBlock.appendChild(settingsTextWright);
-                        }
+                            <p>Поздравляем, вы прошли игру! Даже если были допущены ошибки, вы познакомились с кусочком истории нашего города.</p>
+                        `;
+
+                        // if (progressOldApartment < 24) {
+                        //     settingsBlock.appendChild(settingsTextWrong);
+                        // } else if (progressOldApartment === 24) {
+                        //     settingsBlock.appendChild(settingsTextWright);
+                        // }
+
+                        settingsBlock.appendChild(settingsTextWright);
 
                         const finalButtonBlock = document.getElementById('finalButton');
-
                         finalButtonBlock.addEventListener('click', () => {
                             const
                                 settingsBack = document.querySelector('.wrapper__lightbox'),
@@ -433,7 +437,7 @@ function questionCat_4_5() {
                             let tl = gsap.timeline({
                                 onComplete: () => {
                                     wrapper.removeChild(settingsBack);
-                                    introDev();
+                                    familyDev();
                                 }
                             });
                             tl
