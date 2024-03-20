@@ -602,7 +602,10 @@
 
 		&__top {
 			width: $introTopBlockWidthMobile;
-			height: calc(#{$introTopBlockWidthMobile} / 2.8);
+			//height: calc(#{$introTopBlockWidthMobile} / 2.8);
+			height: 4rem;
+			min-height: 4rem;
+			margin-top: 0;
 		}
 
 		&__title {
@@ -614,11 +617,20 @@
 			}
 		}
 
+		&__center {
+			top: 30%;
+
+			h1 {
+				font-size: calc(#{$body-font-size} + 10vmin);
+			}
+		}
+
 		&__bottom {
 			width: calc(100% - 2rem);
+			height: initial;
 			margin: 0 1rem;
-			top: 40vmin;
-			bottom: inherit;
+			top: inherit;
+			bottom: 0;
 
 			&_menu {
 				width: 100%;
@@ -628,7 +640,7 @@
 
 				li {
 					width: 100%;
-					margin-bottom: 1.5rem;
+					margin-bottom: 1rem;
 
 					a {
 						padding: 1rem;
@@ -669,15 +681,17 @@
 
 			&_arrow {
 				width: 10vmin;
-				left: 2rem;
-				bottom: 3.5vh;
+				height: 10vmin;
+				//left: 2rem;
+				//bottom: 3.5vh;
 			}
 
 			&_clear,
 			&_next {
 				width: 10vmin;
-				right: 2rem;
-				bottom: 3vh;
+				height: 10vmin;
+				//right: 2rem;
+				//bottom: 3vh;
 			}
 		}
 	}
@@ -1130,6 +1144,7 @@
 		&_text {
 			width: 100%;
 			min-height: 30%;
+			//height: 40%;
 			display: block;
 			text-align: center;
 		}
@@ -1194,13 +1209,15 @@
 
 	@include grid-media($Small) {
 		width: calc(100% - 2rem);
-		height: calc(100vh - 1rem);
+		height: 100vh;
 		min-height: 100vh;
-		padding: 0 1rem;
+		flex-direction: column;
 		position: relative;
 		top: 0;
 		left: 0;
-		margin-top: 1rem;
+		margin-top: 4rem;
+		padding: 1rem 1rem 2rem;
+		overflow-y: scroll;
 		transform: translate(0, 0);
 
 		&--wide {
@@ -1301,6 +1318,19 @@
 				margin-left: 0;
 				background: none;
 				padding: 0;
+			}
+		}
+
+		&__block {
+			width: calc(100% - 2rem);
+			min-height: 70vh;
+
+			&_image {
+				height: inherit;
+			}
+
+			&:last-child {
+				margin-bottom: 6rem;
 			}
 		}
 	}

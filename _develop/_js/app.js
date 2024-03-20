@@ -1,7 +1,8 @@
 const
     container = document.querySelector('.container'),
     wrapper = document.querySelector('.wrapper'),
-    wrapperBottom = document.querySelector('.wrapper__bottom')
+    wrapperBottom = document.querySelector('.wrapper__bottom'),
+    screenBrowserWidth = 400
 ;
 
 const soundsLoad = new Sounds();
@@ -322,62 +323,112 @@ function familyDev() {
                 container.removeChild(familyWomanBlock);
                 container.removeChild(familyGirlBlock);
 
-                if (progressOldApartment_1 < 6) {
-                    catLivingRoomLoad();
-                } else if (progressOldApartment_1 === 6 && progressOldApartment_2 < 6) {
-                    catOfficeRoomLoad();
-                } else if (progressOldApartment_2 === 6 && progressOldApartment_3 < 6) {
-                    catBedRoomLoad();
-                } else if (progressOldApartment_3 === 6 && progressOldApartment_4 < 6) {
-                    catChildRoomLoad();
-                } else if (progressOldApartment === 24) {
-                    finalBlock.finalBlock();
-                    const
-                        settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
-                        settingsTextWrong = document.createElement('div'),
-                        settingsTextWright = document.createElement('div')
-                    ;
-                    settingsTextWrong.innerHTML = `
-                        <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
-                    `;
-                    settingsTextWright.innerHTML = `
-                        <p>Поздравляем, вы прошли игру! Даже если были допущены ошибки, вы познакомились с кусочком истории нашего города.</p>
-                    `;
-
-                    // if (progressOldApartment < 24) {
-                    //     settingsBlock.appendChild(settingsTextWrong);
-                    // } else if (progressOldApartment === 24) {
-                    //     settingsBlock.appendChild(settingsTextWright);
-                    // }
-
-                    settingsBlock.appendChild(settingsTextWright);
-
-                    const finalButtonBlock = document.getElementById('finalButton');
-
-                    finalButtonBlock.addEventListener('click', () => {
+                if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+                    if (progressOldApartment_1 < 6) {
+                        catLivingRoomLoad();
+                    } else if (progressOldApartment_1 === 6 && progressOldApartment_2 < 6) {
+                        catOfficeRoomLoad();
+                    } else if (progressOldApartment_2 === 6 && progressOldApartment_3 < 6) {
+                        catBedRoomLoad();
+                    } else if (progressOldApartment_3 === 6 && progressOldApartment_4 < 6) {
+                        catChildRoomLoad();
+                    } else if (progressOldApartment === 24) {
+                        finalBlock.finalBlock();
                         const
-                            settingsBack = document.querySelector('.wrapper__lightbox'),
-                            settingsBlock = document.querySelector('.wrapper__lightbox_block--final')
+                            settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
+                            settingsTextWrong = document.createElement('div'),
+                            settingsTextWright = document.createElement('div')
                         ;
-                        let tl = gsap.timeline({
-                            onComplete: () => {
-                                wrapper.removeChild(settingsBack);
-                                familyDev();
-                            }
+                        settingsTextWrong.innerHTML = `
+                            <p>Вы молодец, но можно лучше, попробуйте еще раз, все получится!</p>
+                        `;
+                        settingsTextWright.innerHTML = `
+                            <p>Поздравляем, вы прошли игру! Даже если были допущены ошибки, вы познакомились с кусочком истории нашего города.</p>
+                        `;
+
+                        // if (progressOldApartment < 24) {
+                        //     settingsBlock.appendChild(settingsTextWrong);
+                        // } else if (progressOldApartment === 24) {
+                        //     settingsBlock.appendChild(settingsTextWright);
+                        // }
+
+                        settingsBlock.appendChild(settingsTextWright);
+
+                        const finalButtonBlock = document.getElementById('finalButton');
+                        finalButtonBlock.addEventListener('click', () => {
+                            const
+                                settingsBack = document.querySelector('.wrapper__lightbox'),
+                                settingsBlock = document.querySelector('.wrapper__lightbox_block--final')
+                            ;
+                            let tl = gsap.timeline({
+                                onComplete: () => {
+                                    wrapper.removeChild(settingsBack);
+                                    familyDev();
+                                }
+                            });
+                            tl
+                                .to(settingsBack, {
+                                    duration: 0.3,
+                                    autoAlpha: 0
+                                })
+                                .to(settingsBlock, {
+                                    duration: 0.3,
+                                    delay: '-0.07',
+                                    y: '-5%',
+                                    autoAlpha: 0
+                                })
+                            ;
                         });
-                        tl
-                            .to(settingsBack, {
-                                duration: 0.3,
-                                autoAlpha: 0
-                            })
-                            .to(settingsBlock, {
-                                duration: 0.3,
-                                delay: '-0.07',
-                                y: '-5%',
-                                autoAlpha: 0
-                            })
+                    }
+                } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+                    if (progressOldApartment_1 < 5) {
+                        catLivingRoomLoad();
+                    } else if (progressOldApartment_1 === 5 && progressOldApartment_2 < 5) {
+                        catOfficeRoomLoad();
+                    } else if (progressOldApartment_2 === 5 && progressOldApartment_3 < 5) {
+                        catBedRoomLoad();
+                    } else if (progressOldApartment_3 === 5 && progressOldApartment_4 < 5) {
+                        catChildRoomLoad();
+                    } else if (progressOldApartment === 20) {
+                        finalBlock.finalBlock();
+                        const
+                            settingsBlock = document.querySelector('.wrapper__lightbox_block--final'),
+                            settingsTextWrong = document.createElement('div'),
+                            settingsTextWright = document.createElement('div')
                         ;
-                    });
+
+                        settingsTextWright.innerHTML = `
+                            <p>Поздравляем, вы прошли игру! Даже если были допущены ошибки, вы познакомились с кусочком истории нашего города.</p>
+                        `;
+
+                        settingsBlock.appendChild(settingsTextWright);
+
+                        const finalButtonBlock = document.getElementById('finalButton');
+                        finalButtonBlock.addEventListener('click', () => {
+                            const
+                                settingsBack = document.querySelector('.wrapper__lightbox'),
+                                settingsBlock = document.querySelector('.wrapper__lightbox_block--final')
+                            ;
+                            let tl = gsap.timeline({
+                                onComplete: () => {
+                                    wrapper.removeChild(settingsBack);
+                                    familyDev();
+                                }
+                            });
+                            tl
+                                .to(settingsBack, {
+                                    duration: 0.3,
+                                    autoAlpha: 0
+                                })
+                                .to(settingsBlock, {
+                                    duration: 0.3,
+                                    delay: '-0.07',
+                                    y: '-5%',
+                                    autoAlpha: 0
+                                })
+                            ;
+                        });
+                    }
                 }
             }
         });
@@ -472,28 +523,51 @@ function catLivingRoomLoad() {
             'categoryLivingRoom');
     }
 
-    if (progressOldApartment_1_0 === 0) {
-        questionCat_1_0();
-    } else if (
-        progressOldApartment_1_1 === 0 &&
-        progressOldApartment_1_0 === 1) {
-        questionCat_1_1();
-    } else if (
-        progressOldApartment_1_2 === 0 &&
-        progressOldApartment_1_1 === 1) {
-        questionCat_1_2();
-    } else if (
-        progressOldApartment_1_3 === 0 &&
-        progressOldApartment_1_2 === 1) {
-        questionCat_1_3();
-    } else if (
-        progressOldApartment_1_4 === 0 &&
-        progressOldApartment_1_3 === 1) {
-        questionCat_1_4();
-    } else if (
-        progressOldApartment_1_5 === 0 &&
-        progressOldApartment_1_4 === 1) {
-        questionCat_1_5();
+    if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_1_0 === 0) {
+            questionCat_1_0();
+        } else if (
+            progressOldApartment_1_1 === 0 &&
+            progressOldApartment_1_0 === 1) {
+            questionCat_1_1();
+        } else if (
+            progressOldApartment_1_2 === 0 &&
+            progressOldApartment_1_1 === 1) {
+            questionCat_1_2();
+        } else if (
+            progressOldApartment_1_3 === 0 &&
+            progressOldApartment_1_2 === 1) {
+            questionCat_1_3();
+        } else if (
+            progressOldApartment_1_4 === 0 &&
+            progressOldApartment_1_3 === 1) {
+            questionCat_1_4();
+        } else if (
+            progressOldApartment_1_5 === 0 &&
+            progressOldApartment_1_4 === 1) {
+            questionCat_1_5();
+        }
+    } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        if (
+            progressOldApartment_1_1 === 0) {
+            questionCat_1_1();
+        } else if (
+            progressOldApartment_1_2 === 0 &&
+            progressOldApartment_1_1 === 1) {
+            questionCat_1_2();
+        } else if (
+            progressOldApartment_1_3 === 0 &&
+            progressOldApartment_1_2 === 1) {
+            questionCat_1_3();
+        } else if (
+            progressOldApartment_1_4 === 0 &&
+            progressOldApartment_1_3 === 1) {
+            questionCat_1_4();
+        } else if (
+            progressOldApartment_1_5 === 0 &&
+            progressOldApartment_1_4 === 1) {
+            questionCat_1_5();
+        }
     }
 }
 
@@ -519,29 +593,53 @@ function catOfficeRoomLoad() {
             'categoryOfficeRoom');
     }
 
-    if (progressOldApartment_2_0 === 0) {
-        questionCat_2_0();
-    } else if (
-        progressOldApartment_2_1 === 0 &&
-        progressOldApartment_2_0 === 1) {
-        questionCat_2_1();
-    } else if (
-        progressOldApartment_2_2 === 0 &&
-        progressOldApartment_2_1 === 1) {
-        questionCat_2_2();
-    } else if (
-        progressOldApartment_2_3 === 0 &&
-        progressOldApartment_2_2 === 1) {
-        questionCat_2_3();
-    } else if (
-        progressOldApartment_2_4 === 0 &&
-        progressOldApartment_2_3 === 1) {
-        questionCat_2_4();
-    } else if (
-        progressOldApartment_2_5 === 0 &&
-        progressOldApartment_2_4 === 1) {
-        questionCat_2_5();
+    if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_2_0 === 0) {
+            questionCat_2_0();
+        } else if (
+            progressOldApartment_2_1 === 0 &&
+            progressOldApartment_2_0 === 1) {
+            questionCat_2_1();
+        } else if (
+            progressOldApartment_2_2 === 0 &&
+            progressOldApartment_2_1 === 1) {
+            questionCat_2_2();
+        } else if (
+            progressOldApartment_2_3 === 0 &&
+            progressOldApartment_2_2 === 1) {
+            questionCat_2_3();
+        } else if (
+            progressOldApartment_2_4 === 0 &&
+            progressOldApartment_2_3 === 1) {
+            questionCat_2_4();
+        } else if (
+            progressOldApartment_2_5 === 0 &&
+            progressOldApartment_2_4 === 1) {
+            questionCat_2_5();
+        }
+    } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        if (
+            progressOldApartment_2_1 === 0) {
+            questionCat_2_1();
+        } else if (
+            progressOldApartment_2_2 === 0 &&
+            progressOldApartment_2_1 === 1) {
+            questionCat_2_2();
+        } else if (
+            progressOldApartment_2_3 === 0 &&
+            progressOldApartment_2_2 === 1) {
+            questionCat_2_3();
+        } else if (
+            progressOldApartment_2_4 === 0 &&
+            progressOldApartment_2_3 === 1) {
+            questionCat_2_4();
+        } else if (
+            progressOldApartment_2_5 === 0 &&
+            progressOldApartment_2_4 === 1) {
+            questionCat_2_5();
+        }
     }
+
 }
 
 function catBedRoomLoad() {
@@ -566,29 +664,53 @@ function catBedRoomLoad() {
             'categoryBedRoom');
     }
 
-    if (progressOldApartment_3_0 === 0) {
-        questionCat_3_0();
-    } else if (
-        progressOldApartment_3_1 === 0 &&
-        progressOldApartment_3_0 === 1) {
-        questionCat_3_1();
-    } else if (
-        progressOldApartment_3_2 === 0 &&
-        progressOldApartment_3_1 === 1) {
-        questionCat_3_2();
-    } else if (
-        progressOldApartment_3_3 === 0 &&
-        progressOldApartment_3_2 === 1) {
-        questionCat_3_3();
-    } else if (
-        progressOldApartment_3_4 === 0 &&
-        progressOldApartment_3_3 === 1) {
-        questionCat_3_4();
-    } else if (
-        progressOldApartment_3_5 === 0 &&
-        progressOldApartment_3_4 === 1) {
-        questionCat_3_5();
+    if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_3_0 === 0) {
+            questionCat_3_0();
+        } else if (
+            progressOldApartment_3_1 === 0 &&
+            progressOldApartment_3_0 === 1) {
+            questionCat_3_1();
+        } else if (
+            progressOldApartment_3_2 === 0 &&
+            progressOldApartment_3_1 === 1) {
+            questionCat_3_2();
+        } else if (
+            progressOldApartment_3_3 === 0 &&
+            progressOldApartment_3_2 === 1) {
+            questionCat_3_3();
+        } else if (
+            progressOldApartment_3_4 === 0 &&
+            progressOldApartment_3_3 === 1) {
+            questionCat_3_4();
+        } else if (
+            progressOldApartment_3_5 === 0 &&
+            progressOldApartment_3_4 === 1) {
+            questionCat_3_5();
+        }
+    } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        if (
+            progressOldApartment_3_1 === 0) {
+            questionCat_3_1();
+        } else if (
+            progressOldApartment_3_2 === 0 &&
+            progressOldApartment_3_1 === 1) {
+            questionCat_3_2();
+        } else if (
+            progressOldApartment_3_3 === 0 &&
+            progressOldApartment_3_2 === 1) {
+            questionCat_3_3();
+        } else if (
+            progressOldApartment_3_4 === 0 &&
+            progressOldApartment_3_3 === 1) {
+            questionCat_3_4();
+        } else if (
+            progressOldApartment_3_5 === 0 &&
+            progressOldApartment_3_4 === 1) {
+            questionCat_3_5();
+        }
     }
+
 }
 
 function catChildRoomLoad() {
@@ -613,37 +735,60 @@ function catChildRoomLoad() {
             'categoryChildRoom');
     }
 
-    if (progressOldApartment_4_0 === 0) {
-        questionCat_4_0();
-    } else if (
-        progressOldApartment_4_1 === 0 &&
-        progressOldApartment_4_0 === 1) {
-        questionCat_4_1();
-    } else if (
-        progressOldApartment_4_2 === 0 &&
-        progressOldApartment_4_1 === 1) {
-        questionCat_4_2();
-    } else if (
-        progressOldApartment_4_3 === 0 &&
-        progressOldApartment_4_2 === 1) {
-        questionCat_4_3();
-    } else if (
-        progressOldApartment_4_4 === 0 &&
-        progressOldApartment_4_3 === 1) {
-        questionCat_4_4();
-    } else if (
-        progressOldApartment_4_5 === 0 &&
-        progressOldApartment_4_4 === 1) {
-        questionCat_4_5();
+    if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_4_0 === 0) {
+            questionCat_4_0();
+        } else if (
+            progressOldApartment_4_1 === 0 &&
+            progressOldApartment_4_0 === 1) {
+            questionCat_4_1();
+        } else if (
+            progressOldApartment_4_2 === 0 &&
+            progressOldApartment_4_1 === 1) {
+            questionCat_4_2();
+        } else if (
+            progressOldApartment_4_3 === 0 &&
+            progressOldApartment_4_2 === 1) {
+            questionCat_4_3();
+        } else if (
+            progressOldApartment_4_4 === 0 &&
+            progressOldApartment_4_3 === 1) {
+            questionCat_4_4();
+        } else if (
+            progressOldApartment_4_5 === 0 &&
+            progressOldApartment_4_4 === 1) {
+            questionCat_4_5();
+        }
+    } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        if (
+            progressOldApartment_4_1 === 0) {
+            questionCat_4_1();
+        } else if (
+            progressOldApartment_4_2 === 0 &&
+            progressOldApartment_4_1 === 1) {
+            questionCat_4_2();
+        } else if (
+            progressOldApartment_4_3 === 0 &&
+            progressOldApartment_4_2 === 1) {
+            questionCat_4_3();
+        } else if (
+            progressOldApartment_4_4 === 0 &&
+            progressOldApartment_4_3 === 1) {
+            questionCat_4_4();
+        } else if (
+            progressOldApartment_4_5 === 0 &&
+            progressOldApartment_4_4 === 1) {
+            questionCat_4_5();
+        }
     }
 }
 
 function init() {
-    introDev();
+    // introDev();
     // authorsStart();
     // aboutStart();
     // writerStart();
-    // familyDev();
+    familyDev();
     // catLivingRoomLoad();
     // catOfficeRoomLoad();
     // catBedRoomLoad();
