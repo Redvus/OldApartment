@@ -512,18 +512,18 @@ function catLivingRoomLoad() {
         progressOldApartment_1_5 = JSON.parse(localStorage.getItem('progressOldApartment_1_5'))
     ;
 
-    if (progressOldApartment_1_0 === 0) {
-        categoryLoad.categoryQuest(
-            'Гостиная',
-            'categoryLivingRoom',
-            'categoryLivingRoomTop');
-    } else if (progressOldApartment_1_0 === 1) {
-        categoryLoad.categoryQuestSimple(
-            'Гостиная',
-            'categoryLivingRoom');
-    }
-
     if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_1_0 === 0) {
+            categoryLoad.categoryQuest(
+                'Гостиная',
+                'categoryLivingRoom',
+                'categoryLivingRoomTop');
+        } else if (progressOldApartment_1_0 === 1) {
+            categoryLoad.categoryQuestSimple(
+                'Гостиная',
+                'categoryLivingRoom');
+        }
+
         if (progressOldApartment_1_0 === 0) {
             questionCat_1_0();
         } else if (
@@ -548,8 +548,13 @@ function catLivingRoomLoad() {
             questionCat_1_5();
         }
     } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
-        if (
-            progressOldApartment_1_1 === 0) {
+        if (progressOldApartment_1_0 === 0) {
+            categoryLoad.categoryQuestSimple(
+                'Гостиная',
+                'categoryLivingRoom');
+        }
+
+        if (progressOldApartment_1_1 === 0) {
             questionCat_1_1();
         } else if (
             progressOldApartment_1_2 === 0 &&
@@ -582,18 +587,18 @@ function catOfficeRoomLoad() {
         progressOldApartment_2_5 = JSON.parse(localStorage.getItem('progressOldApartment_2_5'))
     ;
 
-    if (progressOldApartment_2_0 === 0) {
-        categoryLoad.categoryQuest(
-            'Кабинет',
-            'categoryOfficeRoom',
-            'categoryOfficeRoomTop');
-    } else if (progressOldApartment_2_0 === 1) {
-        categoryLoad.categoryQuestSimple(
-            'Кабинет',
-            'categoryOfficeRoom');
-    }
-
     if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_2_0 === 0) {
+            categoryLoad.categoryQuest(
+                'Кабинет',
+                'categoryOfficeRoom',
+                'categoryOfficeRoomTop');
+        } else if (progressOldApartment_2_0 === 1) {
+            categoryLoad.categoryQuestSimple(
+                'Кабинет',
+                'categoryOfficeRoom');
+        }
+
         if (progressOldApartment_2_0 === 0) {
             questionCat_2_0();
         } else if (
@@ -618,8 +623,13 @@ function catOfficeRoomLoad() {
             questionCat_2_5();
         }
     } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
-        if (
-            progressOldApartment_2_1 === 0) {
+        if (progressOldApartment_2_0 === 0) {
+            categoryLoad.categoryQuestSimple(
+                'Кабинет',
+                'categoryOfficeRoom');
+        }
+
+        if (progressOldApartment_2_1 === 0) {
             questionCat_2_1();
         } else if (
             progressOldApartment_2_2 === 0 &&
@@ -653,18 +663,18 @@ function catBedRoomLoad() {
         progressOldApartment_3_5 = JSON.parse(localStorage.getItem('progressOldApartment_3_5'))
     ;
 
-    if (progressOldApartment_3_0 === 0) {
-        categoryLoad.categoryQuest(
-            'Спальня',
-            'categoryBedRoom',
-            'categoryBedRoomTop');
-    } else if (progressOldApartment_3_0 === 1) {
-        categoryLoad.categoryQuestSimple(
-            'Спальня',
-            'categoryBedRoom');
-    }
-
     if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_3_0 === 0) {
+            categoryLoad.categoryQuest(
+                'Спальня',
+                'categoryBedRoom',
+                'categoryBedRoomTop');
+        } else if (progressOldApartment_3_0 === 1) {
+            categoryLoad.categoryQuestSimple(
+                'Спальня',
+                'categoryBedRoom');
+        }
+
         if (progressOldApartment_3_0 === 0) {
             questionCat_3_0();
         } else if (
@@ -689,8 +699,13 @@ function catBedRoomLoad() {
             questionCat_3_5();
         }
     } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
-        if (
-            progressOldApartment_3_1 === 0) {
+        if (progressOldApartment_3_0 === 0) {
+            categoryLoad.categoryQuestSimple(
+                'Спальня',
+                'categoryBedRoom');
+        }
+
+        if (progressOldApartment_3_1 === 0) {
             questionCat_3_1();
         } else if (
             progressOldApartment_3_2 === 0 &&
@@ -724,18 +739,18 @@ function catChildRoomLoad() {
         progressOldApartment_4_5 = JSON.parse(localStorage.getItem('progressOldApartment_4_5'))
     ;
 
-    if (progressOldApartment_4_0 === 0) {
-        categoryLoad.categoryQuest(
-            'Детская',
-            'categoryChildRoom',
-            'categoryChildRoomTop');
-    } else if (progressOldApartment_4_0 === 1) {
-        categoryLoad.categoryQuestSimple(
-            'Детская',
-            'categoryChildRoom');
-    }
-
     if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        if (progressOldApartment_4_0 === 0) {
+            categoryLoad.categoryQuest(
+                'Детская',
+                'categoryChildRoom',
+                'categoryChildRoomTop');
+        } else if (progressOldApartment_4_0 === 1) {
+            categoryLoad.categoryQuestSimple(
+                'Детская',
+                'categoryChildRoom');
+        }
+
         if (progressOldApartment_4_0 === 0) {
             questionCat_4_0();
         } else if (
@@ -760,6 +775,12 @@ function catChildRoomLoad() {
             questionCat_4_5();
         }
     } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        if (progressOldApartment_4_0 === 0) {
+            categoryLoad.categoryQuestSimple(
+                'Детская',
+                'categoryChildRoom');
+        }
+
         if (
             progressOldApartment_4_1 === 0) {
             questionCat_4_1();
