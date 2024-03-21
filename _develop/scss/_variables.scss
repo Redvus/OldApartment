@@ -61,11 +61,19 @@ $containerAboutPadding: 8vh;
 $containerAboutPaddingTop: 6vh;
 
 // Quest
-$containerQuestTopWidth: 25rem;
+$containerQuestTopWidth: 60vmin;
 $containerQuestTopProp: 1.139;
 $containerQuestBottomHeight: 12rem;
 $containerQuestBottomProp: 4.849;
 $wrapperTopTitleHeight: 7rem;
+
+// Mobile
+$wrapperTopHeightMobile: 4rem;
+$wrapperTopTitleHeightMobile: 3.7rem;
+
+$containerQuestTopWidthMobile: 80vmin;
+$containerQuestTopHeightMobile: 80vmin;
+$containerQuestTopBottomMobile: 80%;
 
 /*=====  End of Variable  ======*/
 

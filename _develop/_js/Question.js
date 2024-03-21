@@ -103,24 +103,30 @@ class Question {
                 settingsBack = document.querySelector('.wrapper__lightbox'),
                 settingsBlock = document.querySelector('.wrapper__lightbox_block'),
                 settingsClose = document.getElementById('settingsCloseButton'),
-                settingsText = document.getElementById('settingsText'),
+                settingsTextBlock = document.getElementById('settingsText'),
                 settingsToggleMusic = document.getElementById('turnOfSoundButton'),
                 settingsToggleMusicID = document.getElementById('backgroundMusicID'),
                 settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'));
 
-            // settingsClearButton.addEventListener('click', () => {
-            //     localStorage.clear();
-            // });
+            settingsClearButton.addEventListener('click', () => {
+                localStorage.clear();
+                localSet();
+                soundsLoad.rightAnswer('assets/games/oldApartment/sounds/progressClear.ogg');
+                setTimeout(() => {
+                    location.reload();
+                }, 800);
 
-            // settingsClearButton.addEventListener('mouseover', () => {
-            //     settingsText.textContent = 'Вы уверены?';
-            //     settingsClearButton.textContent = 'Да';
-            // });
-            //
-            // settingsClearButton.addEventListener('mouseleave', () => {
-            //     settingsText.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
-            //     settingsClearButton.textContent = 'Сбросить прогресс';
-            // });
+            });
+
+            settingsClearButton.addEventListener('mouseover', () => {
+                settingsTextBlock.textContent = 'Вы уверены?';
+                settingsClearButton.textContent = 'Да';
+            });
+
+            settingsClearButton.addEventListener('mouseleave', () => {
+                settingsTextBlock.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
+                settingsClearButton.textContent = 'Сбросить прогресс';
+            });
 
             // if (localStorage.getItem('backgroundMusic') === '0') {
             //     settingsToggleMusic.textContent = 'Включить музыку';
@@ -271,32 +277,35 @@ class Question {
         //Settings
         settingsClick.addEventListener('click', () => {
             settingsLoad.settingsBlock();
-            const settingsClearButton = document.getElementById('clearProgressButton'),
+            const
+                settingsClearButton = document.getElementById('clearProgressButton'),
                 settingsBack = document.querySelector('.wrapper__lightbox'),
                 settingsBlock = document.querySelector('.wrapper__lightbox_block'),
                 settingsClose = document.getElementById('settingsCloseButton'),
-                settingsText = document.getElementById('settingsText'),
+                settingsTextBlock = document.getElementById('settingsText'),
                 settingsToggleMusic = document.getElementById('turnOfSoundButton'),
                 settingsToggleMusicID = document.getElementById('backgroundMusicID'),
                 settingsMusicValue = JSON.parse(localStorage.getItem('backgroundMusic'));
 
-            // settingsClearButton.addEventListener('click', () => {
-            //     localStorage.clear();
-            // });
+            settingsClearButton.addEventListener('click', () => {
+                localStorage.clear();
+                localSet();
+                soundsLoad.rightAnswer('assets/games/oldApartment/sounds/progressClear.ogg');
+                setTimeout(() => {
+                    location.reload();
+                }, 800);
 
-            // settingsClearButton.addEventListener('mouseover', () => {
-            //     settingsText.textContent = 'Вы уверены?';
-            //     settingsClearButton.textContent = 'Да';
-            // });
-            //
-            // settingsClearButton.addEventListener('mouseleave', () => {
-            //     settingsText.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
-            //     settingsClearButton.textContent = 'Сбросить прогресс';
-            // });
+            });
 
-            // if (localStorage.getItem('backgroundMusic') === '0') {
-            //     settingsToggleMusic.textContent = 'Включить музыку';
-            // }
+            settingsClearButton.addEventListener('mouseover', () => {
+                settingsTextBlock.textContent = 'Вы уверены?';
+                settingsClearButton.textContent = 'Да';
+            });
+
+            settingsClearButton.addEventListener('mouseleave', () => {
+                settingsTextBlock.textContent = 'Весь игровой процесс будет сброшен и вы начнете игру с начала';
+                settingsClearButton.textContent = 'Сбросить прогресс';
+            });
 
             // settingsToggleMusic.addEventListener('click', () => {
             //     if (settingsToggleMusicID.paused || settingsMusicValue === '0') {

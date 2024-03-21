@@ -39,35 +39,7 @@ class Settings {
 
         settingsClearButton.addEventListener('click', () => {
             localStorage.clear();
-            localStorage.setItem('progressOldApartment_1_0', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1_1', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1_2', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1_3', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1_4', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1_5', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_1', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_0', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_1', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_2', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_3', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_4', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2_5', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_2', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_0', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_1', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_2', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_3', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_4', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3_5', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_3', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_0', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_1', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_2', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_3', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_4', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4_5', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment_4', JSON.stringify(0));
-            localStorage.setItem('progressOldApartment', JSON.stringify(0));
+            localSet();
             wrapperTopCount.innerHTML = `
                 <span>Прогресс: 0%</span>
             `;
