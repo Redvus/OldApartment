@@ -87,7 +87,7 @@ class About {
         container.className = 'container container__about';
 
         wrapperTitleAuthors.innerHTML = `
-            <h2>О библиотеке</h2>
+            <h2>Библиотека</h2>
         `;
 
         containerAboutLeft.innerHTML = `

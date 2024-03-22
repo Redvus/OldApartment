@@ -950,13 +950,15 @@
 					flex-direction: column;
 
 					li {
-						width: 100%;
+						width: calc(100% - (#{$paddingBase} * 2));
 						height: calc((100% / 3) - (#{$paddingBase} * 0.5));
 						padding-bottom: calc(#{$paddingBase} * 0.5);
+						margin: 0 $paddingBase;
 
 						a {
-							color: $introButtonTextColor;
+							width: calc(100% - #{$paddingBase});
 							font-size: $font-size-base;
+							padding: 0 calc(#{$paddingBase} / 2);
 
 							&.container-quest__bottom_buttons {
 
@@ -1201,6 +1203,9 @@
 			justify-content: flex-start;
 
 			&_block {
+				width: 100%;
+				height: 80%;
+				padding: 0;
 				background: none;
 			}
 
@@ -1220,6 +1225,8 @@
 				}
 
 				ul {
+					margin-left: 0;
+
 					li {
 						font-size: $font-size-large;
 					}
