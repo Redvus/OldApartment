@@ -12,6 +12,10 @@ function introDev() {
     const introDevLoad = new Intro();
     introDevLoad.introStart();
 
+    // if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+    //     fullScreen();
+    // }
+
     const
         clickLoadGame = document.getElementById('clickLoadGame'),
         clickAuthors = document.getElementById('clickAboutAuthors'),
@@ -245,16 +249,30 @@ function familyDev() {
         <div class="wrapper__bottom_part wrapper__bottom_part--right"></div>
     `;
 
-    let progressCount = Math.floor(((
-        progressOldApartment_1 +
-        progressOldApartment_2 +
-        progressOldApartment_3 +
-        progressOldApartment_4) * 100) / 24);
+    if (document.body.clientWidth > screenBrowserWidth || screen.width > screenBrowserWidth) {
+        let progressCount = Math.floor(((
+            progressOldApartment_1 +
+            progressOldApartment_2 +
+            progressOldApartment_3 +
+            progressOldApartment_4) * 100) / 24);
 
-    wrapperTopCount.className = 'wrapper__top_count';
-    wrapperTopCount.innerHTML = `
-        <span>Прогресс: ${progressCount}%</span>
-    `;
+        wrapperTopCount.className = 'wrapper__top_count';
+        wrapperTopCount.innerHTML = `
+            <span>Прогресс: ${progressCount}%</span>
+        `;
+    } else if (document.body.clientWidth < screenBrowserWidth || screen.width < screenBrowserWidth) {
+        let progressCount = Math.floor(((
+            progressOldApartment_1 +
+            progressOldApartment_2 +
+            progressOldApartment_3 +
+            progressOldApartment_4) * 100) / 20);
+
+        wrapperTopCount.className = 'wrapper__top_count';
+        wrapperTopCount.innerHTML = `
+            <span>Прогресс: ${progressCount}%</span>
+        `;
+    }
+
     wrapperTop.appendChild(wrapperTopCount);
     gsap.from(wrapperTopCount, {
         duration: 0.3,
@@ -837,6 +855,39 @@ function localSet() {
         localStorage.setItem('progressOldApartment_4', JSON.stringify(0));
         localStorage.setItem('progressOldApartment', JSON.stringify(0));
     }
+}
+
+function fullScreen() {
+    /* Получить documentElement (<html>) для отображения страницы в полноэкранном режиме */
+    const fullScreenGame = document.documentElement;
+
+    /* Просмотр в полноэкранном режиме */
+    function openFullscreen() {
+        if (fullScreenGame.requestFullscreen) {
+            fullScreenGame.requestFullscreen();
+        } else if (fullScreenGame.mozRequestFullScreen) { /* Firefox */
+            fullScreenGame.mozRequestFullScreen();
+        } else if (fullScreenGame.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            fullScreenGame.webkitRequestFullscreen();
+        } else if (fullScreenGame.msRequestFullscreen) { /* IE/Edge */
+            fullScreenGame.msRequestFullscreen();
+        }
+    }
+    openFullscreen();
+
+    /* Закрыть полный экран */
+    function closeFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+        }
+    }
+    closeFullscreen();
 }
 
 function init() {
