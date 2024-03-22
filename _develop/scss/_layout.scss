@@ -1140,23 +1140,6 @@
 				}
 			}
 
-			#aboutWriter {
-				width: 100%;
-				height: 100%;
-			}
-
-			#aboutSparkle {
-
-				img {
-					width: 200%;
-					height: auto;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					object-fit: cover;
-				}
-			}
-
 			&--center {
 				width: calc(100% - (#{$paddingBase} * 2));
 				padding: 0 $paddingBase;
@@ -1208,6 +1191,71 @@
 				border: $border_4;
 				padding: calc(#{$paddingBase} / 4) calc(#{$paddingBase} / 2);
 				display: inline-block;
+			}
+		}
+
+		@include grid-media($Small) {
+			//height: inherit;
+			min-height: 50%;
+			top: 0;
+			justify-content: flex-start;
+
+			&_block {
+				background: none;
+			}
+
+			&_back {
+				background: none;
+			}
+
+			&_text {
+				height: inherit;
+				flex-direction: column;
+				color: $primary;
+				margin-top: 0;
+				overflow: auto;
+
+				p {
+					font-size: $font-size-large;
+				}
+
+				ul {
+					li {
+						font-size: $font-size-large;
+					}
+				}
+			}
+
+			&_person {
+				color: $primary;
+
+				p {
+					font-size: $font-size-large;
+				}
+
+				&--gone {
+					border-color: $primary;
+				}
+
+				&:first-child {
+					margin-top: 2rem;
+				}
+			}
+
+			&_left {
+				width: 100%;
+				height: initial;
+				margin-right: 0;
+				background: none;
+				padding: 0;
+			}
+
+			&_right {
+				width: 100%;
+				height: initial;
+				margin-left: 0;
+				background: none;
+				padding: 0;
 			}
 		}
 	}
@@ -1361,64 +1409,6 @@
 
 		&__title {
 			margin-bottom: 1rem;
-		}
-
-		&__about {
-			//height: inherit;
-			min-height: 50%;
-			top: 0;
-			justify-content: flex-start;
-
-			&_back {
-				background: none;
-			}
-
-			&_text {
-				height: inherit;
-				flex-direction: column;
-				color: $fourth;
-				font-size: $font-size-large;
-				margin-top: 0;
-				overflow: auto;
-
-				ul {
-					li {
-						font-size: $font-size-large;
-					}
-				}
-			}
-
-			&_person {
-				color: $fourth;
-
-				p {
-					font-size: $font-size-large;
-				}
-
-				&--gone {
-					border-color: $fourth;
-				}
-
-				&:first-child {
-					margin-top: 2rem;
-				}
-			}
-
-			&_left {
-				width: 100%;
-				height: initial;
-				margin-right: 0;
-				background: none;
-				padding: 0;
-			}
-
-			&_right {
-				width: 100%;
-				height: initial;
-				margin-left: 0;
-				background: none;
-				padding: 0;
-			}
 		}
 
 		&__block {
